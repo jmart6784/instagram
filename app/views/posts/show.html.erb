@@ -1,9 +1,8 @@
 <h1>Show post</h1>
 
 <h3>Caption: <%= @post.caption %></h3>
-
-<%= link_to "Home", root_path %>
-<br /><br />
+<h3>By: <%= @user.email %></h3>
+<br />
 <%= link_to "Edit", edit_post_url(@post) %>
 
 <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,20 +1,29 @@
-<h1>Post Index</h1>
+<h1>Post Index <%= current_user.email %></h1>
 
 <%= link_to "New Post", new_post_path %>
 <br /><br />
 <%= link_to "Sign in", new_user_session_url %>
 <%= link_to "Sign up", new_user_registration_url %>
 
-<% if user_signed_in? %>
-  <h1>CURRENTLY SIGNED IN</h1>
-<% else %>
-  <h1>CURRENTLY SIGNED OUT</h1>
-<% end %>
+<br /><br />
 
-<ul>
-  <% @post.each do |post| %>
-    <li>
-        <%= link_to post.caption, post %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Caption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @post.each do |post| %>
+      <tr>
+        <td>
+          <%= link_to post.caption, post %>
+        </td>
+        <td>
+          <%= User.find(post.user_id).email %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
