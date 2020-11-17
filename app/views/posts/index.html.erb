@@ -1,5 +1,7 @@
 <h1>Post Index</h1>
 
+<%= link_to "New Post", new_post_path %>
+<br /><br />
 <%= link_to "Sign in", new_user_session_url %>
 <%= link_to "Sign up", new_user_registration_url %>
 
@@ -8,3 +10,11 @@
 <% else %>
   <h1>CURRENTLY SIGNED OUT</h1>
 <% end %>
+
+<ul>
+  <% @post.each do |post| %>
+    <li>
+        <%= link_to post.caption, post %>
+    </li>
+  <% end %>
+</ul>

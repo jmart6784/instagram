@@ -1,0 +1,32 @@
+<div>
+  <h1>Form</h1>
+
+  <% if @post.errors.any? %>
+    <div>
+      <p><%= flash[:danger] %></p>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><span><%= msg %></span></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= form_with model: @post, local: true do |f| %>
+    <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
+
+    <% if false %>
+      <% if @post.image.attached? && @post.image.content_type.in?(%(image/jpeg image/png)) %>
+        <%= image_tag @post.image.variant(resize: '300x300!') %><br>
+      <% end %>
+
+      <div>
+        <%= f.label :image, "Image(optional if body is filled out)" %><br>
+        <%= f.file_field :image, class: "choose-pic", id: "post-image-field" %>
+      </div>
+    <% end %>
+
+    <%= f.submit "Share" %>
+  <% end %>
+</div>
