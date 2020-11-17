@@ -1,0 +1,10 @@
+<h1>Post Index</h1>
+
+<%= link_to "Sign in", new_user_session_url %>
+<%= link_to "Sign up", new_user_registration_url %>
+
+<% if user_signed_in? %>
+  <h1>CURRENTLY SIGNED IN</h1>
+<% else %>
+  <h1>CURRENTLY SIGNED OUT</h1>
+<% end %>
