@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
     @post = Post.all
@@ -25,6 +25,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = User.find(@post.user_id)
+    @comment = Comment.new
   end
 
   def edit
@@ -52,9 +53,9 @@ class PostsController < ApplicationController
     params.require(:post).permit(:caption)
   end
 
-  # def set_post
-  #   if Post.find(params[:id]).user != current_user
-  #     redirect_to posts_path
-  #   end
-  # end
+  def set_post
+    if Post.find(params[:id]).user != current_user
+      redirect_to posts_path
+    end
+  end
 end
