@@ -18,6 +18,7 @@
     <tr>
       <th>Body</th>
       <th>Email</th>
+      <th>Likes</th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +26,18 @@
       <tr>
         <td><%= comment.body %></td>
         <td><%= User.find(comment.user_id).email %></td>
+
+        <td>
+          <% comment_like_exists = Like.where(comment_id: comment.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+
+          <%= link_to comment_like_exists, ajax_likes_update_like_path(id: comment.id, type: "comment", html_id: "likeable_comment_id_#{comment.id}", html_count_id: "comment_like_count#{comment.id}"), method: :put, remote: true, id: "likeable_comment_id_#{comment.id}" %>
+        </td>
+
+        <td>
+          <p id=<%= "comment_like_count#{comment.id}" %>>
+            <%= "#{comment.likes.count} Like".pluralize(comment.likes.count) %>
+          </p>
+        </td>
 
         <% if current_user.id === comment.user_id %>
           <td><%= link_to "Edit", edit_post_comment_path(@post.id, comment.id) %></td>
