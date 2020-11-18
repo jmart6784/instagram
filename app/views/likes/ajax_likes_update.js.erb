@@ -1,0 +1,11 @@
+<% @post = Post.find(params[:id]) %>
+
+<% like_exists = Like.where(post_id: @post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+
+document.getElementById("likeable_id_<%= @post.id %>").textContent = "<%= like_exists %>";
+
+<% like_count = @post.likes.count %>
+
+<% plur_likes = "Like".pluralize(like_count) %>
+
+document.getElementById("like_count<%= @post.id %>").textContent = "<%= like_count %> <%= plur_likes %>";
