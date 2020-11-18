@@ -1,29 +1,25 @@
-<h1>Post Index Welcome <%= current_user.first_name.downcase.capitalize %></h1>
+<h1>Show User</h1>
 
-<%= link_to "New Post", new_post_path %>
+<h3><%= @user.email %></h3>
+<h3><%= "#{@user.first_name.downcase.capitalize} #{@user.last_name.downcase.capitalize}" %></h3>
+<h3><%= @user.username %></h3>
 <br /><br />
-<%= link_to "Sign in", new_user_session_url %>
-<%= link_to "Sign up", new_user_registration_url %>
-
-<br /><br />
+<h1><%= current_user === @user ? "My posts" : "#{@user.first_name.downcase.capitalize}'s' posts" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Username</th>
+      <th>User name</th>
       <th>Caption</th>
-      <th>Comments</th>
     </tr>
   </thead>
   <tbody>
-    <% @post.each do |post| %>
+    <% @user_posts.each do |post| %>
       <% user = User.find(post.user_id) %>
       <tr>
         <td><%= link_to user.username, user %></td>
-        <td>
-          <%= link_to post.caption, post %>
-        </td>
-        <td><%= post.comments.length %></td>
+        <td><%= link_to post.caption, post %></td>
+
         <% if current_user === user %>
           <td>
             <%= link_to "Edit", edit_post_url(post) %>

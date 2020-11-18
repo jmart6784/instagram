@@ -1,0 +1,22 @@
+<h1>Users Index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Full Name</th>
+      <th>User name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td>
+          <%= link_to "#{user.first_name.downcase.capitalize} #{user.last_name.downcase.capitalize}", user %>
+        </td>
+        <td><%= user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
