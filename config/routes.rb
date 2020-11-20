@@ -25,5 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :follows, only: [:update, :destroy]
+  resources :follows, only: [:update] do
+    member do
+      put :ajax_follows_update
+    end
+  end
 end

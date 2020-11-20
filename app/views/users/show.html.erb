@@ -3,14 +3,13 @@
 <% if current_user != @user %>
   <% @follow = Follow.find_by(user_id: current_user.id, following_id: @user.id) %>
 
-  <% if @follow %>
-    <h2><%= link_to "Unfollow", @follow, method: :delete, data: { confirm: "Are you sure?" } %></h2>
-  <% else %>
-    <h2><%= link_to "Follow", follow_path(user_id: current_user.id, following_id: @user.id), method: :put %></h2>
-  <% end %>
+  <% follow_txt = @follow ? "Unfollow" : "Follow" %>
+
+  <h2><%= link_to follow_txt, ajax_follows_update_follow_path(user_id: current_user.id, following_id: @user.id, html_id: "follow-#{@user.id}"), method: :put, remote: true, id: "follow-#{@user.id}" %></h2>
 <% end %>
 
 <h3><%= @user.email %></h3>
+<h3>BIO: <%= @user.bio %></h3>
 <h3><%= "#{@user.first_name.downcase.capitalize} #{@user.last_name.downcase.capitalize}" %></h3>
 <h3><%= @user.username %></h3>
 <br /><br />
