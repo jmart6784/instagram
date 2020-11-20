@@ -24,4 +24,6 @@ Rails.application.routes.draw do
       put :ajax_likes_update
     end
   end
+
+  resources :follows, only: [:update, :destroy]
 end

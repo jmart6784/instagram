@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  has_many :follows
+
+  has_many :follower_relationships, foreign_key: "following_id", class_name: "Follow"
+  has_many :followers, through: :follower_relationships, source: :follower, dependent: :destroy
+
+  has_many :following_relationships, foreign_key: "user_id", class_name: "Follow"
+  has_many :following, through: :following_relationships, source: :following, dependent: :destroy
   
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :username, uniqueness: true, case_sensitive: false, presence: true, length: {minimum: 4, maximum: 16}, format: { with: VALID_USERNAME_REGEX }

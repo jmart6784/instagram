@@ -1,34 +1,53 @@
 <h1>Show User</h1>
 
+<% if current_user != @user %>
+  <% @follow = Follow.find_by(user_id: current_user.id, following_id: @user.id) %>
+
+  <% if @follow %>
+    <h2><%= link_to "Unfollow", @follow, method: :delete, data: { confirm: "Are you sure?" } %></h2>
+  <% else %>
+    <h2><%= link_to "Follow", follow_path(user_id: current_user.id, following_id: @user.id), method: :put %></h2>
+  <% end %>
+<% end %>
+
 <h3><%= @user.email %></h3>
 <h3><%= "#{@user.first_name.downcase.capitalize} #{@user.last_name.downcase.capitalize}" %></h3>
 <h3><%= @user.username %></h3>
 <br /><br />
-<h1><%= current_user === @user ? "My posts" : "#{@user.first_name.downcase.capitalize}'s' posts" %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User name</th>
-      <th>Caption</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_posts.each do |post| %>
-      <% user = User.find(post.user_id) %>
+<% if @user_posts.length != 0 %>
+  <h1><%= current_user === @user ? "My posts" : "#{@user.first_name.downcase.capitalize}'s' posts" %></h1>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to user.username, user %></td>
-        <td><%= link_to post.caption, post %></td>
-
-        <% if current_user === user %>
-          <td>
-            <%= link_to "Edit", edit_post_url(post) %>
-          </td>
-          <td>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        <% end %>
+        <th>User name</th>
+        <th>Caption</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @user_posts.each do |post| %>
+        <% user = User.find(post.user_id) %>
+        <tr>
+          <td><%= link_to user.username, user %></td>
+          <td><%= link_to post.caption, post %></td>
+
+          <% if current_user === user %>
+            <td>
+              <%= link_to "Edit", edit_post_url(post) %>
+            </td>
+            <td>
+              <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <% if current_user === @user %>
+    <h2>You haven't posted anything!</h2>
+    <%= link_to "Add Post", new_post_path %>
+  <% else %>
+    <h2><%= "#{@user.first_name} #{@user.last_name} hasn't posted yet." %></h2>
+  <% end %>
+<% end %>
