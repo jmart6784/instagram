@@ -9,7 +9,7 @@
 <% end %>
 
 <h3><%= @user.email %></h3>
-<h3>BIO: <%= @user.bio %></h3>
+<h3><%= @user.bio === nil || @user.bio.strip === ""  ? "No Bio added" : "Bio " + @user.bio %></h3>
 <h3><%= "#{@user.first_name.downcase.capitalize} #{@user.last_name.downcase.capitalize}" %></h3>
 <h3><%= @user.username %></h3>
 <br /><br />
@@ -49,4 +49,27 @@
   <% else %>
     <h2><%= "#{@user.first_name} #{@user.last_name} hasn't posted yet." %></h2>
   <% end %>
+<% end %>
+
+<% if current_user === @user %>
+  <h1>Saved posts</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User name</th>
+        <th>Caption</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @saved_posts.each do |saved_post| %>
+        <% post = Post.find(saved_post.post_id) %>
+        <% user = User.find(post.user_id) %>
+        <tr>
+          <td><%= link_to user.username, user %></td>
+          <td><%= link_to post.caption, post %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

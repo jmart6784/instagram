@@ -30,4 +30,10 @@ Rails.application.routes.draw do
       put :ajax_follows_update
     end
   end
+
+  resources :saved_posts, only: [:update] do
+    member do
+      put :ajax_saved_posts
+    end
+  end
 end

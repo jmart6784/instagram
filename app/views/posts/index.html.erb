@@ -1,9 +1,6 @@
 <h1>Post Index</h1>
 
 <%= link_to "New Post", new_post_path %>
-<br /><br />
-<%= link_to "Sign in", new_user_session_url %>
-<%= link_to "Sign up", new_user_registration_url %>
 
 <br /><br />
 
@@ -34,6 +31,14 @@
             <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
           </p>
         </td>
+
+        <% unless current_user === user %>
+          <td>
+            <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+
+            <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+          </td>
+        <% end %>
 
         <% if current_user === user %>
           <td>
