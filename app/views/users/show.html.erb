@@ -12,6 +12,9 @@
 <h3><%= @user.bio === nil || @user.bio.strip === ""  ? "No Bio added" : "Bio " + @user.bio %></h3>
 <h3><%= "#{@user.first_name.downcase.capitalize} #{@user.last_name.downcase.capitalize}" %></h3>
 <h3><%= @user.username %></h3>
+<h3><%= "#{@user.posts.count} posts" %></h3>
+<h3><%= "#{@user.followers.count} followers" %></h3>
+<h3><%= "#{@user.following.count} following" %></h3>
 <br /><br />
 
 <% if @user_posts.length != 0 %>
@@ -68,6 +71,11 @@
         <tr>
           <td><%= link_to user.username, user %></td>
           <td><%= link_to post.caption, post %></td>
+          <td>
+            <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+
+            <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

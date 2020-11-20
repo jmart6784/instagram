@@ -152,3 +152,12 @@ span,
 div {
   color: white;
 }
+
+/* Navigation Bar */
+#nav-bar {
+  border: 1px solid white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

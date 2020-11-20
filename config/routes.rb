@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
+  get "/following_feed", to: "posts#following_feed"
+
   resources :likes, only: [:update] do
     member do
       put :ajax_likes_update

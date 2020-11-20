@@ -1,0 +1,21 @@
+<h1>Following Feed</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Caption</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sorted_feed.each do |post| %>
+    <% user = User.find(post.user_id) %>
+    <tr>
+      <td><%= link_to user.username, user %></td>
+      <td><%= link_to post.caption, post %></td>
+      <td><%= post.created_at.strftime("%b %e %Y") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

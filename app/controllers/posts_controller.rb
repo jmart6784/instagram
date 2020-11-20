@@ -47,6 +47,19 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def following_feed
+    @following = current_user.following
+    @following_posts = []
+
+    @following.each do |user|
+      user.posts.each do |post|
+        @following_posts << post
+      end
+    end
+
+    @sorted_feed = @following_posts.sort_by(&:created_at).reverse!
+  end
+
   private
 
   def post_params
