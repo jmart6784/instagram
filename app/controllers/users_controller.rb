@@ -1,11 +1,30 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if params[:search]
+      search_txt = params[:search].downcase
+      @users = []
+      
+      User.all.select do |user|
+        if user.first_name != ""
+          if user.first_name.downcase[search_txt] || user.last_name.downcase[search_txt] || user.username.downcase[search_txt]
+            @users << user
+          end
+        end
+      end
+    else
+      @users = User.all
+    end
   end
 
   def show
     @user = User.find(params[:id])
     @user_posts = @user.posts.order("created_at DESC")
     @saved_posts = @user.saved_posts
+  end
+
+  private
+
+  def search_params
+    params.require(:user).permit(:search)
   end
 end
