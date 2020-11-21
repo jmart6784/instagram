@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   get "/following_feed", to: "posts#following_feed"
+  get "/activity", to: "posts#activity"
 
   resources :likes, only: [:update] do
     member do

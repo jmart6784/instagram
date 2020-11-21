@@ -1,0 +1,27 @@
+<h1>Activity page</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activity.each do |activity| %>
+      <% user = User.find(activity.user_id) %>
+
+      <% if activity.class.name === "Like" %>
+        <tr>
+          <td><%= link_to user.username, user %>Liked your <%= link_to "Post", Post.find(activity.post_id) %></td>
+          <td><%= time_ago_in_words(activity.created_at) %> ago</td>
+        <tr>
+      <% elsif activity.class.name === "Comment" %>
+        <tr>
+          <td><%= link_to user.username, user %> commented <%= link_to activity.body, Post.find(activity.post_id) %></td>
+          <td><%= time_ago_in_words(activity.created_at) %> ago</td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -60,6 +60,27 @@ class PostsController < ApplicationController
     @sorted_feed = @following_posts.sort_by(&:created_at).reverse!
   end
 
+  def activity
+    all_likes = []
+    all_comments = []
+
+    current_user.posts.each do |post|
+      post.likes.each do |like|
+        next if current_user.id === like.user_id
+        all_likes << like
+      end
+    end
+
+    current_user.posts.each do |post|
+      post.comments.each do |comment|
+        next if current_user.id === comment.user_id
+        all_comments << comment
+      end
+    end
+
+    @activity = (all_likes + all_comments).sort_by(&:created_at).reverse!
+  end
+
   private
 
   def post_params
