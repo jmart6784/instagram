@@ -2,7 +2,19 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @post = Post.all
+    posts = Post.all
+    temp_ary = []
+    @sorted_by_likes = []
+
+    posts.each do |post|
+      temp_ary << { likes: post.likes.count, post_obj: post }
+    end
+
+    temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
+    
+    temp_ary.each do |obj|
+      @sorted_by_likes << obj[:post_obj]
+    end
   end
 
   def new

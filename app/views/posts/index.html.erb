@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @post.each do |post| %>
+    <% @sorted_by_likes.each do |post| %>
       <% user = User.find(post.user_id) %>
       <tr>
         <td><%= link_to user.username, user %></td>
@@ -31,6 +31,8 @@
             <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
           </p>
         </td>
+
+        <td><%= post.created_at.strftime("%B, %d %Y") %></td>
 
         <% unless current_user === user %>
           <td>
