@@ -6,7 +6,7 @@ class LikesController < ApplicationController
 
       if @like == []
         @post.likes.create!(user_id: current_user.id, post_id: @post.id)
-        @like_txt = "UnLike"
+        @like_txt = "Unlike"
       else
         @like.destroy_all
         @like_txt = "Like"
@@ -19,7 +19,7 @@ class LikesController < ApplicationController
 
       if @like == []
         @comment.likes.create!(user_id: current_user.id, comment_id: @comment.id)
-        @like_txt = "UnLike"
+        @like_txt = "Unlike"
       else
         @like.destroy_all
         @like_txt = "Like"

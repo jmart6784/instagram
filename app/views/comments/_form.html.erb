@@ -11,9 +11,18 @@
 
 <h2>Comment</h2>
 
+<%= form_for [ @post, @comment ], html: {remote: true} do |f| %>
+  <%= f.text_area :body, placeholder: "Share your thoughts", id: "comment-text-field", required: true %><br>
+
+
+  <%= f.submit "Comment" %>
+<% end %>
+
+<% if false %>
 <%= form_for [ @post, @comment ] do |f| %>
   <%= f.text_area :body, placeholder: "Share your thoughts", required: true %><br>
 
 
   <%= f.submit "Comment" %>
+<% end %>
 <% end %>

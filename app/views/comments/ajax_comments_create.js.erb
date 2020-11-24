@@ -1,0 +1,75 @@
+document.getElementById("comment-text-field").value = "";
+
+var parentComment = document.getElementById("parent-comments-div");
+
+var tableRow = document.createElement("tr");
+parentComment.insertBefore(tableRow, parentComment.firstChild);
+
+// Show comment body
+var tdCommentBody = document.createElement("td");
+var tdCommentBodyTxt = document.createTextNode(
+  "<%= params[:comment][:body] %>"
+);
+tdCommentBody.appendChild(tdCommentBodyTxt);
+tableRow.appendChild(tdCommentBody);
+
+// Show Username
+var tdUsername = document.createElement("td");
+var tdUsernameTxt = document.createTextNode("<%= @user.email %>");
+
+tdUsername.appendChild(tdUsernameTxt);
+tableRow.appendChild(tdUsername);
+
+// Create like link
+var tdLike = document.createElement("a");
+tdLike.innerHTML =
+  "<%=  Like.where(comment_id: @comment.id, user_id: current_user.id) == [] ? 'Like' : 'Unlike' %>";
+
+tdLike.href =
+  '<%= raw ajax_likes_update_like_path(id: @comment.id, type: "comment", html_id: "likeable_comment_id_#{@comment.id}", html_count_id: "comment_like_count#{@comment.id}") %>';
+
+tdLike.setAttribute("data-method", "put");
+
+tdLike.setAttribute("data-remote", "true");
+
+tdLike.id = '<%= "likeable_comment_id_#{@comment.id}" %>';
+
+// tdLike.appendChild(tdLikeTxt);
+tableRow.appendChild(tdLike);
+
+// Create like count
+var tdCount = document.createElement("td");
+var tdCountP = document.createElement("p");
+
+tdCountP.innerHTML =
+  '<%= "#{@comment.likes.count} Like".pluralize(@comment.likes.count) %>';
+
+tdCountP.id = '<%= "comment_like_count#{@comment.id}" %>';
+
+tableRow.appendChild(tdCount);
+tdCount.appendChild(tdCountP);
+
+// Create Edit link
+var tdEdit = document.createElement("td");
+var editLink = document.createElement("a");
+
+editLink.innerHTML = "Edit";
+
+editLink.href = "<%= edit_post_comment_path(params[:post_id], @comment.id) %>";
+
+tableRow.appendChild(tdEdit);
+tdEdit.appendChild(editLink);
+
+// Create Delete link
+var tdDelete = document.createElement("td");
+var deleteLink = document.createElement("a");
+
+deleteLink.innerHTML = "Delete";
+
+deleteLink.href = "<%= post_comment_path(params[:post_id], @comment.id) %>";
+
+deleteLink.setAttribute("data-method", "delete");
+deleteLink.setAttribute("data-confirm", "Are You sure?");
+
+tableRow.appendChild(tdDelete);
+tdDelete.appendChild(deleteLink);

@@ -21,7 +21,7 @@
       <th>Likes</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="parent-comments-div">
     <% @post.comments.each do |comment| %>
       <tr>
         <td><%= comment.body %></td>

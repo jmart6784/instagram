@@ -1,14 +1,21 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy, :ajax_comment_create]
 
   def create
     @comment = Comment.new(comment_params)
     @comment.post_id = params[:post_id]
     @comment.user_id = current_user.id
+    @user = User.find(@comment.user_id)
 
-    @comment.save
-
-    redirect_to post_path(@comment.post)
+    if @comment.save
+      respond_to do |format|
+        format.js { render 'comments/ajax_comments_create' }
+      end
+    else
+      puts "******************************"
+      puts "FAILED TO SAVE COMMENT"
+      puts "******************************"
+    end
   end
 
   def edit
