@@ -9,6 +9,7 @@
       <%= submit_tag "Search", name: nil %>
     <% end %>
     <h3><%= link_to "Following Feed", following_feed_path %></h3>
+    <h3><%= link_to "Messages", conversations_path %></h3>
     <h3><%= link_to "Activity", activity_path %></h3>
     <h3><%= link_to "Settings", edit_user_registration_path %></h3>
     <h3><%= link_to "Log Out", destroy_user_session_path, method: :delete %></h3>

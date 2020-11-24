@@ -39,4 +39,8 @@ Rails.application.routes.draw do
       put :ajax_saved_posts
     end
   end
+
+  resources :conversations do
+    resources :messages
+  end
 end

@@ -1,0 +1,25 @@
+<h3>Mailbox</h3>
+
+<% @conversations.each do |conversation| %>
+  <% if conversation.sender_id === current_user.id || conversation.recipient_id === current_user.id %>
+    <% if conversation.sender_id === current_user.id %>
+      <% recipient = User.find(conversation.recipient_id) %>
+    <% else %>
+      <% recipient = User.find(conversation.sender_id) %>
+    <% end %>
+    
+    <h3>
+      <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+    </h3>
+    <br />
+  <% end %>
+<% end %>
+
+
+ <h3>All Users</h3>
+
+<% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+    <h3><%= user.username %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %></h3>
+  <% end %>
+ <% end %>
