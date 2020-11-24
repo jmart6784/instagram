@@ -11,6 +11,10 @@
     <h3>
       <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
     </h3>
+
+    <h3>
+      <%= link_to "Delete", conversation, method: :delete, data: { confirm: "Are you sure?" } %>
+    </h3>
     <br />
   <% end %>
 <% end %>

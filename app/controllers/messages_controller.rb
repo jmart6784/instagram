@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
   end
 
   def set_message
-    if Message.find(params[:id]). != current_user
+    if Message.find(params[:id]).user != current_user
       redirect_to session.delete(:return_to)
     end
   end

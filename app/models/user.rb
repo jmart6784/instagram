@@ -18,7 +18,8 @@ class User < ApplicationRecord
 
   has_many :saved_posts, dependent: :destroy
 
-  has_many :conversations, dependent: :destroy
+  has_many :conversations, foreign_key: "sender_id", class_name: "Conversation", dependent: :destroy
+  
   has_many :messages, dependent: :destroy
   
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
