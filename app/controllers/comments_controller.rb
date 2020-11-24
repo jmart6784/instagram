@@ -12,9 +12,7 @@ class CommentsController < ApplicationController
         format.js { render 'comments/ajax_comments_create' }
       end
     else
-      puts "******************************"
-      puts "FAILED TO SAVE COMMENT"
-      puts "******************************"
+      redirect_to Post.find(params[:post_id])
     end
   end
 
