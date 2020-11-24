@@ -14,6 +14,10 @@
     <h4><%= current_user === user ? "You" : user.username %></h4>
     <h3><%= message.body %></h3>
     <h4><%= message.created_at.strftime("%B %e, %Y %H:%M:%S%p") %></h4>
+
+    <% if current_user.id === message.user_id %>
+      <h4><%= link_to "Delete", conversation_message_path(@conversation.id, message.id), method: :delete, data: { confirm: 'Are you sure?' } %></h4>
+    <% end %>
     <br /><br />
   <% end %>
 <% end %>
@@ -21,6 +25,5 @@
 
 <%= form_for [@conversation, @message] do |f| %>
   <%= f.text_area :body %>
-  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-  <%= f.submit "Add Reply" %>
+  <%= f.submit "Send" %>
 <% end %>
