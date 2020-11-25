@@ -28,4 +28,19 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, length: { minimum: 2, maximum: 60 }
 
   validates :bio, length: { maximum: 1000 }
+
+  has_one_attached :avatar, dependent: :destroy
+  validate :avatar_type
+
+  private
+
+  def avatar_type
+    if avatar.attached?
+      if !avatar.content_type.in?(%('image/jpeg image/jpg image/png'))
+        errors.add(:avatar, "needs to be JPG or PNG")
+      end
+    else
+      'default_profile.jpg'
+    end
+  end
 end

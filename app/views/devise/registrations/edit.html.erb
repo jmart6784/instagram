@@ -3,6 +3,14 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div>
+    <%= user_avatar(current_user, size=256) %>
+  </div>
+
+  <div>
+    <%= f.file_field :avatar %>
+  </div>
+
   <div class="field">
     <%= f.label :bio %><br />
     <%= f.text_area :bio %>
