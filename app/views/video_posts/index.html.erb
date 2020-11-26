@@ -1,6 +1,6 @@
-<h1>Post Index</h1>
-<%= link_to "VIDEO POSTS INDEX", video_posts_path %>
-<%= link_to "New Post", new_post_path %>
+<h1>Video Post Index</h1>
+
+<%= link_to "New Post", new_video_post_path %>
 
 <br /><br />
 
@@ -21,9 +21,9 @@
         <td><%= post.comments.length %></td>
 
         <td>
-          <% like_exists = Like.where(post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+          <% like_exists = Like.where(video_post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
 
-          <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
+          <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "video post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
         </td>
 
         <td>

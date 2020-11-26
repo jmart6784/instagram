@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_025008) do
+ActiveRecord::Schema.define(version: 2020_11_26_195912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_025008) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "video_post_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -58,9 +59,19 @@ ActiveRecord::Schema.define(version: 2020_11_25_025008) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "feeds", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
     t.integer "following_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "image_posts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_025008) do
     t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "video_post_id"
     t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
   end
 
@@ -92,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_11_25_025008) do
     t.integer "like_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "postable_type"
+    t.integer "postable_id"
   end
 
   create_table "saved_posts", force: :cascade do |t|
@@ -121,6 +135,15 @@ ActiveRecord::Schema.define(version: 2020_11_25_025008) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "video_posts", force: :cascade do |t|
+    t.text "caption"
+    t.integer "user_id"
+    t.integer "comment_id"
+    t.integer "like_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

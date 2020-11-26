@@ -1,3 +1,9 @@
+<% if params[:video_post_id] %>
+  <% id_param = params[:video_post_id] %>
+<% else %>
+  <% id_param = params[:post_id] %>
+<% end %>
+
 document.getElementById("comment-text-field").value = "";
 
 var parentComment = document.getElementById("parent-comments-div");
@@ -55,7 +61,7 @@ var editLink = document.createElement("a");
 
 editLink.innerHTML = "Edit";
 
-editLink.href = "<%= edit_post_comment_path(params[:post_id], @comment.id) %>";
+editLink.href = "<%= edit_post_comment_path(id_param, @comment.id) %>";
 
 tableRow.appendChild(tdEdit);
 tdEdit.appendChild(editLink);
@@ -66,7 +72,7 @@ var deleteLink = document.createElement("a");
 
 deleteLink.innerHTML = "Delete";
 
-deleteLink.href = "<%= post_comment_path(params[:post_id], @comment.id) %>";
+deleteLink.href = "<%= post_comment_path(id_param, @comment.id) %>";
 
 deleteLink.setAttribute("data-method", "delete");
 deleteLink.setAttribute("data-confirm", "Are You sure?");

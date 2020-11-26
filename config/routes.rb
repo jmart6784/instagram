@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   get "/following_feed", to: "posts#following_feed"
   get "/activity", to: "posts#activity"
 
+  resources :video_posts
+
+  resources :video_posts do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
+
   resources :likes, only: [:update] do
     member do
       put :ajax_likes_update

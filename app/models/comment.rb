@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :post
+  belongs_to :post, optional: true
+  belongs_to :video_post, optional: true
   has_many :likes, as: :likeable, dependent: :destroy
 
   validates :body, presence: true
