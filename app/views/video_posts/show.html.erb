@@ -5,7 +5,7 @@
 <br />
 
 <% if current_user === @user %>
-  <%= link_to "Edit", edit_post_url(@post) %>
+  <%= link_to "Edit", edit_video_post_url(@post) %>
   <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 

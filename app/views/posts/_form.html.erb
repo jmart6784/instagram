@@ -14,18 +14,16 @@
 
 
   <%= form_with model: @post, local: true do |f| %>
-    <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
-
-    <% if false %>
-      <% if @post.image.attached? && @post.image.content_type.in?(%(image/jpeg image/png)) %>
-        <%= image_tag @post.image.variant(resize: '300x300!') %><br>
-      <% end %>
-
-      <div>
-        <%= f.label :image, "Image(optional if body is filled out)" %><br>
-        <%= f.file_field :image, class: "choose-pic", id: "post-image-field" %>
-      </div>
+    <% if @post.media.attached? && @post.media.content_type.in?(%(image/jpeg image/png)) %>
+      <%= image_tag @post.media.variant(resize: '300x300!') %><br>
     <% end %>
+
+    <div>
+      <%= f.label :media, "Share a picure" %><br>
+      <%= f.file_field :media %>
+    </div>
+
+    <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
 
     <%= f.submit "Share" %>
   <% end %>

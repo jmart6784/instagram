@@ -59,40 +59,6 @@ class VideoPostsController < ApplicationController
     redirect_to video_posts_path
   end
 
-  def following_feed
-    @following = current_user.following
-    @following_video_posts = []
-
-    @following.each do |user|
-      user.video_posts.each do |post|
-        @following_video_posts << post
-      end
-    end
-
-    @sorted_feed = @following_video_posts.sort_by(&:created_at).reverse!
-  end
-
-  def activity
-    all_likes = []
-    all_comments = []
-
-    current_user.video_posts.each do |video_post|
-      video_post.likes.each do |like|
-        next if current_user.id === like.user_id
-        all_likes << like
-      end
-    end
-
-    current_user.posts.each do |video_post|
-      video_post.comments.each do |comment|
-        next if current_user.id === comment.user_id
-        all_comments << comment
-      end
-    end
-
-    @activity = (all_likes + all_comments).sort_by(&:created_at).reverse!
-  end
-
   private
 
   def video_post_params
