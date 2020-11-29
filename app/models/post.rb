@@ -7,16 +7,16 @@ class Post < ApplicationRecord
   validates :caption, presence: true
   validates :caption, length: { maximum: 250 }
 
-  has_one_attached :media, dependent: :destroy
-  validates :media, presence: true
+  has_one_attached :image, dependent: :destroy
+  validates :image, presence: true
 
-  validate :media_type, unless: ->(x) { x.media.blank? }
+  validate :image_type, unless: ->(x) { x.image.blank? }
   
   private
 
-  def media_type
-    if media.attached? && !media.content_type.in?(%(image/jpeg image/png))
-      errors.add(:media, "must be a JPEG or PNG.")
+  def image_type
+    if image.attached? && !image.content_type.in?(%(image/jpeg image/png))
+      errors.add(:image, "must be a JPEG or PNG.")
     end
   end
 end

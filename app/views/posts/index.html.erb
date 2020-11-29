@@ -17,8 +17,8 @@
       <% user = User.find(post.user_id) %>
       <tr>
         <td><%= link_to user.username, user %></td>
-        <% if post.media.attached? %>
-        <td><%= image_tag post.media.variant(resize: '300x300!') %></td>
+        <% if post.image.attached? %>
+        <td><%= image_tag post.image.variant(resize: '300x300!') %></td>
         <% end %>
         <td><%= link_to post.caption, post %></td>
         <td><%= post.comments.length %></td>

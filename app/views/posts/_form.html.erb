@@ -14,13 +14,13 @@
 
 
   <%= form_with model: @post, local: true do |f| %>
-    <% if @post.media.attached? && @post.media.content_type.in?(%(image/jpeg image/png)) %>
-      <%= image_tag @post.media.variant(resize: '300x300!') %><br>
+    <% if @post.image.attached? && @post.image.content_type.in?(%(image/jpeg image/png)) %>
+      <%= image_tag @post.image.variant(resize: '300x300!') %><br>
     <% end %>
 
     <div>
-      <%= f.label :media, "Share a picure" %><br>
-      <%= f.file_field :media %>
+      <%= f.label :image, "Share a picure" %><br>
+      <%= f.file_field :image %>
     </div>
 
     <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
