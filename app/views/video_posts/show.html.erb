@@ -1,5 +1,6 @@
 <h1>Show Video post</h1>
 
+<%= video_tag url_for(@post.clip), controls: "" %>
 <h3>Caption: <%= @post.caption %></h3>
 <h3>By: <%= @user.email %></h3>
 <br />

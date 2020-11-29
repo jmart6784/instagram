@@ -7,8 +7,8 @@ class Post < ApplicationRecord
   validates :caption, presence: true
   validates :caption, length: { maximum: 250 }
 
-  validates :media, presence: true
   has_one_attached :media, dependent: :destroy
+  validates :media, presence: true
 
   validate :media_type, unless: ->(x) { x.media.blank? }
   

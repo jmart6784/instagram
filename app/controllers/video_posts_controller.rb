@@ -62,7 +62,7 @@ class VideoPostsController < ApplicationController
   private
 
   def video_post_params
-    params.require(:video_post).permit(:caption)
+    params.require(:video_post).permit(:caption, :clip)
   end
 
   def set_video_post

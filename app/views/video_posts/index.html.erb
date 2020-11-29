@@ -17,6 +17,7 @@
       <% user = User.find(post.user_id) %>
       <tr>
         <td><%= link_to user.username, user %></td>
+        <td><%= video_tag url_for(post.clip), controls: "" %></td>
         <td><%= link_to post.caption, post %></td>
         <td><%= post.comments.length %></td>
 

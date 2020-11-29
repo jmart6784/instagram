@@ -16,16 +16,14 @@
   <%= form_with model: @video_post, local: true do |f| %>
     <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
 
-    <% if false %>
-      <% if @video_post.video.attached? && @video_post.video.content_type.in?(%(image/jpeg image/png)) %>
-        <%= video_tag @video_post.video.variant(resize: '300x300!') %><br>
-      <% end %>
-
-      <div>
-        <%= f.label :clip, "Share video" %><br>
-        <%= f.file_field :clip %>
-      </div>
+    <% if @video_post.clip.attached? && @video_post.clip.content_type.in?(%(video/mp4)) %>
+      <%= video_tag url_for(@video_post.video), controls: "" %><br>
     <% end %>
+
+    <div>
+      <%= f.label :clip, "Share video" %><br>
+      <%= f.file_field :clip %>
+    </div>
 
     <%= f.submit "Share" %>
   <% end %>
