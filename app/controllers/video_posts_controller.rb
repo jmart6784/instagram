@@ -1,22 +1,6 @@
 class VideoPostsController < ApplicationController
   before_action :set_video_post, only: [:edit, :update, :destroy]
 
-  def index
-    video_posts = VideoPost.all
-    temp_ary = []
-    @sorted_by_likes = []
-
-    video_posts.each do |video_post|
-      temp_ary << { likes: video_post.likes.count, video_post_obj: video_post }
-    end
-
-    temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
-    
-    temp_ary.each do |obj|
-      @sorted_by_likes << obj[:video_post_obj]
-    end
-  end
-
   def new
     @video_post = VideoPost.new
   end

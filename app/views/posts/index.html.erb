@@ -1,5 +1,4 @@
 <h1>Post Index</h1>
-<%= link_to "VIDEO POSTS INDEX", video_posts_path %>
 <%= link_to "New Post", new_post_path %>
 
 <br /><br />
@@ -15,45 +14,86 @@
   <tbody>
     <% @sorted_by_likes.each do |post| %>
       <% user = User.find(post.user_id) %>
-      <tr>
-        <td><%= link_to user.username, user %></td>
-        <% if post.image.attached? %>
-        <td><%= image_tag post.image.variant(resize: '300x300!') %></td>
-        <% end %>
-        <td><%= link_to post.caption, post %></td>
-        <td><%= post.comments.length %></td>
 
-        <td>
-          <% like_exists = Like.where(post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+      <% if post.class.method_defined? :image %>
+        <tr>
+          <td><%= link_to user.username, user %></td>
 
-          <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
-        </td>
+          <td><%= image_tag post.image.variant(resize: '300x300!') %></td>
+          <td><%= link_to post.caption, post %></td>
+          <td><%= post.comments.length %></td>
 
-        <td>
-          <p id=<%= "like_count#{post.id}" %>>
-            <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
-          </p>
-        </td>
-
-        <td><%= post.created_at.strftime("%B, %d %Y") %></td>
-
-        <% unless current_user === user %>
           <td>
-            <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+            <% like_exists = Like.where(post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
 
-            <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+            <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
           </td>
-        <% end %>
 
-        <% if current_user === user %>
           <td>
-            <%= link_to "Edit", edit_post_url(post) %>
+            <p id=<%= "like_count#{post.id}" %>>
+              <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
+            </p>
           </td>
+
+          <td><%= post.created_at.strftime("%B, %d %Y") %></td>
+
+          <% unless current_user === user %>
+            <td>
+              <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+
+              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+            </td>
+          <% end %>
+
+          <% if current_user === user %>
+            <td>
+              <%= link_to "Edit", edit_post_url(post) %>
+            </td>
+            <td>
+              <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          <% end %>
+        </tr>
+      <% elsif post.class.method_defined? :clip %>
+        <tr>
+          <td><%= link_to user.username, user %></td>
+          <td><%= video_tag url_for(post.clip), controls: "" %></td>
+          <td><%= link_to post.caption, post %></td>
+          <td><%= post.comments.length %></td>
+
           <td>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% like_exists = Like.where(video_post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+
+            <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "video post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
           </td>
-        <% end %>
-      </tr>
+
+          <td>
+            <p id=<%= "like_count#{post.id}" %>>
+              <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
+            </p>
+          </td>
+
+          <td><%= post.created_at.strftime("%B, %d %Y") %></td>
+
+          <% unless current_user === user %>
+            <td>
+              <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+
+              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+            </td>
+          <% end %>
+
+          <% if current_user === user %>
+            <td>
+              <%= link_to "Edit", edit_video_post_url(post) %>
+            </td>
+            <td>
+              <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+
     <% end %>
   </tbody>
 </table>
