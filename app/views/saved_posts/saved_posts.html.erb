@@ -1,0 +1,46 @@
+<h1>Saved posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>Media</th>
+      <th>Caption</th>
+      <th>Add/Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @saved_posts.each do |saved_post| %>
+      <% if saved_post.post_id != nil %>
+        <% post = Post.find(saved_post.post_id) %>
+        <% user = User.find(post.user_id) %>
+
+        <tr>
+          <td><%= link_to user.username, user %></td>
+          <td><%= image_tag post.image.variant(resize: '300x300!') %></td>
+          <td><%= link_to post.caption, post %></td>
+          <td>
+            <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+
+            <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "image", html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+          </td>
+        </tr>
+      <% elsif !saved_post.video_post_id != nil %>
+        <% post = VideoPost.find(saved_post.video_post_id) %>
+        <% user = User.find(post.user_id) %>
+
+        <tr>
+          <td><%= link_to user.username, user %></td>
+          <td><%= video_tag url_for(post.clip), controls: "" %></td>
+          <td><%= link_to post.caption, post %></td>
+
+          <td>
+            <% save_exists = SavedPost.where(user_id: current_user.id, video_post_id: post.id) === [] ? "Add" : "Remove" %>
+
+            <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "video", html_id: "saveable_video_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_video_post_id_#{post.id}" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

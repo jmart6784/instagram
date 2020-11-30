@@ -20,8 +20,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user_posts = (@user.posts + @user.video_posts).sort_by(&:created_at).reverse!
-
-    @saved_posts = @user.saved_posts
   end
 
   private

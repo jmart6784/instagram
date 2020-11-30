@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get "/following_feed", to: "posts#following_feed"
   get "/activity", to: "posts#activity"
+  get "/saved_posts", to: "saved_posts#saved_posts"
 
   resources :video_posts
 

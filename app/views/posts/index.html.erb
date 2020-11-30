@@ -41,7 +41,7 @@
             <td>
               <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
 
-              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "image", html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
             </td>
           <% end %>
 
@@ -77,9 +77,9 @@
 
           <% unless current_user === user %>
             <td>
-              <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+              <% save_exists = SavedPost.where(user_id: current_user.id, video_post_id: post.id) === [] ? "Add" : "Remove" %>
 
-              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}" %>
+              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "video", html_id: "saveable_video_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_video_post_id_#{post.id}" %>
             </td>
           <% end %>
 
