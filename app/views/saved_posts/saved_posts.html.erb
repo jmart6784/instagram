@@ -6,6 +6,8 @@
       <th>User name</th>
       <th>Media</th>
       <th>Caption</th>
+      <th>Like Button</th>
+      <th>Like Count</th>
       <th>Add/Remove</th>
     </tr>
   </thead>
@@ -19,6 +21,13 @@
           <td><%= link_to user.username, user %></td>
           <td><%= image_tag post.image.variant(resize: '300x300!') %></td>
           <td><%= link_to post.caption, post %></td>
+
+         <td>
+            <% like_exists = Like.where(post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+
+            <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
+          </td>
+
           <td>
             <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
 
@@ -33,6 +42,18 @@
           <td><%= link_to user.username, user %></td>
           <td><%= video_tag url_for(post.clip), controls: "" %></td>
           <td><%= link_to post.caption, post %></td>
+
+          <td>
+            <% like_exists = Like.where(video_post_id: post.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+
+            <%= link_to like_exists, ajax_likes_update_like_path(id: post.id, type: "video post", html_id: "likeable_id_#{post.id}", html_count_id: "like_count#{post.id}"), method: :put, remote: true, id: "likeable_id_#{post.id}" %>
+          </td>
+
+          <td>
+            <p id=<%= "like_count#{post.id}" %>>
+              <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
+            </p>
+          </td>
 
           <td>
             <% save_exists = SavedPost.where(user_id: current_user.id, video_post_id: post.id) === [] ? "Add" : "Remove" %>
