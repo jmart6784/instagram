@@ -18,7 +18,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_posts = @user.posts.order("created_at DESC")
+
+    @user_posts = (@user.posts + @user.video_posts).sort_by(&:created_at).reverse!
+
     @saved_posts = @user.saved_posts
   end
 
