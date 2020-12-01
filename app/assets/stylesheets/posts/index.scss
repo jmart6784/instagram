@@ -1,5 +1,5 @@
-#post-index-container {
-}
+// #post-index-container {
+// }
 
 .post-display-grid {
   margin: auto;
@@ -74,4 +74,169 @@
   background-repeat: no-repeat, repeat;
   background-size: cover;
   background-position: center center;
+}
+
+@media only screen and (max-width: 1717px) {
+  .post-display-grid {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1586px) {
+  .post-display-grid {
+    width: 60%;
+  }
+
+  .post-index-tile-div {
+    height: 292px;
+  }
+
+  .tinted-tile {
+    height: 292px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .post-display-grid {
+    width: 65%;
+  }
+
+  .post-index-tile-div {
+    height: 280px;
+  }
+
+  .tinted-tile {
+    height: 280px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .post-display-grid {
+    width: 70%;
+  }
+
+  .post-index-tile-div {
+    height: 260px;
+  }
+
+  .tinted-tile {
+    height: 260px;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .post-display-grid {
+    width: 80%;
+  }
+
+  .post-index-tile-div {
+    height: 250px;
+  }
+
+  .tinted-tile {
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 1060px) {
+  .post-display-grid {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .post-display-grid {
+    width: 97%;
+    column-gap: 15px;
+    row-gap: 15px;
+  }
+
+  .post-index-tile-div {
+    height: 230px;
+  }
+
+  .tinted-tile {
+    height: 230px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .post-display-grid {
+    column-gap: 12px;
+    row-gap: 12px;
+  }
+
+  .post-index-tile-div {
+    height: 220px;
+  }
+
+  .tinted-tile {
+    height: 220px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .post-display-grid {
+    column-gap: 5px;
+    row-gap: 5px;
+  }
+
+  .post-index-tile-div {
+    height: 200px;
+  }
+
+  .tinted-tile {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .post-display-grid {
+    width: 100%;
+    column-gap: 3px;
+    row-gap: 3px;
+  }
+
+  .post-index-tile-div {
+    height: 180px;
+  }
+
+  .tinted-tile {
+    height: 180px;
+  }
+}
+
+@media only screen and (max-width: 592px) {
+  .post-display-grid {
+    column-gap: 1px;
+    row-gap: 1px;
+  }
+
+  .post-index-tile-div {
+    height: 170px;
+  }
+
+  .tinted-tile {
+    height: 170px;
+  }
+}
+
+@media only screen and (max-width: 592px) {
+  .post-index-tile-div {
+    height: 150px;
+  }
+
+  .tinted-tile {
+    height: 150px;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .post-index-tile-div {
+    height: 140px;
+  }
+
+  .tinted-tile {
+    height: 140px;
+  }
 }

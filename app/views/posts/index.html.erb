@@ -1,11 +1,6 @@
 <%= javascript_pack_tag "posts/index" %>
 
 <div id="post-index-container">
-  <h1 id="pi-title">Post Index <i class="fab fa-instagram-square"></i></h1>
-  <%= link_to "New Post", new_post_path %>
-
-  <br /><br />
-
   <div class="post-display-grid">
     <% @sorted_by_likes.each do |post| %>
       <% if post.class.method_defined? :image %>
