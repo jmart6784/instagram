@@ -93,10 +93,6 @@ class PostsController < ApplicationController
     @activity = (all_likes + all_comments).sort_by(&:created_at).reverse!
   end
 
-  def saved_posts
-    
-  end
-
   private
 
   def post_params
