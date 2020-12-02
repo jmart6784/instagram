@@ -1,5 +1,6 @@
-// #post-index-container {
-// }
+#post-index-container {
+  padding-top: 50px;
+}
 
 .post-display-grid {
   margin: auto;
@@ -33,7 +34,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9;
 }
 
 .post-index-info {

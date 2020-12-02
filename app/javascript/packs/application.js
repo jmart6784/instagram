@@ -17,3 +17,22 @@ require("channels");
 
 // Font awesome
 require("@fortawesome/fontawesome-free");
+
+document.addEventListener("turbolinks:load", () => {
+  let profPic = document.getElementById("nav-prof-pic");
+  let dropDiv = document.getElementById("nav-drop-content");
+
+  profPic.addEventListener("click", () => {
+    if (dropDiv.style.display === "block") {
+      dropDiv.style.display = "none";
+    } else {
+      dropDiv.style.display = "block";
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target.id != "nav-prof-pic") {
+      dropDiv.style.display = "none";
+    }
+  });
+});

@@ -147,7 +147,7 @@ table {
 }
 
 body {
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(36, 36, 36);
 }
 
 h1,
@@ -167,13 +167,4 @@ em,
 span,
 div {
   color: white;
-}
-
-/* Navigation Bar */
-#nav-bar {
-  border: 1px solid white;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
