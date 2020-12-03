@@ -89,6 +89,8 @@
   border-radius: 100%;
   display: block;
   cursor: pointer;
+  height: 30px;
+  width: 30px;
 }
 
 #nav-drop-content {
@@ -129,65 +131,294 @@
 
 @media only screen and (max-width: 1700px) {
   #inner-nav-div {
-    width: 55%;
-  }
-}
-
-@media only screen and (max-width: 1500px) {
-  #inner-nav-div {
-    width: 60%;
-  }
-}
-
-@media only screen and (max-width: 1374px) {
-  #inner-nav-div {
-    width: 65%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  #inner-nav-div {
-    width: 70%;
-  }
-}
-
-@media only screen and (max-width: 1100px) {
-  #inner-nav-div {
     width: 75%;
   }
 }
 
-@media only screen and (max-width: 1030px) {
+@media only screen and (max-width: 1500px) {
+  #nav-bar {
+    height: 65px;
+  }
+
+  #nav-clearance {
+    margin-top: 67px;
+  }
+
+  #nav-logo {
+    height: 35px;
+    width: 133px;
+  }
+
+  #nav-form {
+    height: 70%;
+    width: 75%;
+  }
+
+  #nav-search {
+    font-size: 15px;
+  }
+
+  #nav-right {
+    width: 80%;
+  }
+
+  .nav-icon-link {
+    font-size: 27px;
+  }
+
+  #nav-prof-pic {
+    height: 35px;
+    width: 35px;
+  }
+
+  #nav-drop-content {
+    width: 330px;
+  }
+
+  .nav-drop-links {
+    font-size: 20px;
+  }
+
+  .nav-link-txt {
+    font-size: 20px;
+  }
+
   #inner-nav-div {
     width: 80%;
   }
 }
 
-@media only screen and (max-width: 1030px) {
-  #inner-nav-div {
+@media only screen and (max-width: 1374px) {
+  #nav-bar {
+    height: 70px;
+  }
+
+  #nav-clearance {
+    margin-top: 72px;
+  }
+
+  #nav-logo {
+    height: 40px;
+    width: 138px;
+  }
+
+  #nav-form {
+    height: 75%;
+    width: 80%;
+  }
+
+  #nav-search {
+    font-size: 16px;
+  }
+
+  #nav-right {
     width: 85%;
   }
 
+  .nav-icon-link {
+    font-size: 30px;
+  }
+
+  #nav-prof-pic {
+    height: 40px;
+    width: 40px;
+  }
+
+  #nav-drop-content {
+    width: 350px;
+  }
+
+  .nav-drop-links {
+    font-size: 25px;
+  }
+
+  .nav-link-txt {
+    font-size: 25px;
+  }
+
+  #inner-nav-div {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #nav-bar {
+    height: 75px;
+  }
+
+  #nav-clearance {
+    margin-top: 77px;
+  }
+
+  #nav-logo {
+    height: 45px;
+    width: 153px;
+  }
+
+  #nav-form {
+    width: 85%;
+  }
+
+  #nav-search {
+    font-size: 17px;
+  }
+
+  #nav-right {
+    width: 90%;
+  }
+
+  .nav-icon-link {
+    font-size: 31px;
+  }
+
+  #nav-prof-pic {
+    height: 45px;
+    width: 45px;
+  }
+
+  #nav-drop-content {
+    width: 360px;
+  }
+
+  .nav-drop-links {
+    font-size: 30px;
+  }
+
+  .nav-link-txt {
+    font-size: 30px;
+  }
+
+  #inner-nav-div {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #nav-bar {
+    height: 80px;
+  }
+
+  #nav-clearance {
+    margin-top: 82px;
+  }
+
+  #nav-logo {
+    height: 50px;
+    width: 158px;
+  }
+
+  #nav-form {
+    width: 90%;
+  }
+
+  #nav-search {
+    font-size: 18px;
+  }
+
+  #nav-right {
+    width: 95%;
+  }
+
+  .nav-icon-link {
+    font-size: 33px;
+  }
+
+  #nav-prof-pic {
+    height: 50px;
+    width: 50px;
+  }
+
+  #nav-drop-content {
+    width: 380px;
+  }
+
+  .nav-drop-links {
+    font-size: 35px;
+  }
+
+  .nav-link-txt {
+    font-size: 35px;
+  }
+
+  #inner-nav-div {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  #nav-bar {
+    height: 85px;
+  }
+
+  #nav-clearance {
+    margin-top: 87px;
+  }
+
+  #nav-logo-link {
+    justify-self: center;
+  }
+
+  #nav-logo {
+    height: 55px;
+    width: 183px;
+  }
+
+  #nav-form {
+    width: 95%;
+  }
+
+  #nav-search {
+    font-size: 19px;
+  }
+
+  #nav-right {
+    width: 100%;
+  }
+
+  .nav-icon-link {
+    font-size: 35px;
+  }
+
+  #nav-prof-pic {
+    height: 55px;
+    width: 55px;
+  }
+
+  #nav-drop-content {
+    width: 400px;
+  }
+
+  .nav-drop-links {
+    font-size: 40px;
+  }
+
+  .nav-link-txt {
+    font-size: 40px;
+  }
+
+  #inner-nav-div {
+    width: 100%;
+    grid-template-columns: 0.75fr 1fr 1.5fr;
+  }
+}
+
+@media only screen and (max-width: 970px) {
   #nav-form {
     width: 75%;
   }
 }
 
 @media only screen and (max-width: 880px) {
-  #inner-nav-div {
-    width: 90%;
-  }
-
   #nav-form {
     width: 80%;
+  }
+
+  #inner-nav-div {
+    grid-template-columns: 0.5fr 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 760px) {
-  #inner-nav-div {
-    width: 95%;
-  }
-
   #nav-form {
     width: 90%;
   }
@@ -202,9 +433,5 @@
 @media only screen and (max-width: 550px) {
   #nav-right {
     width: 100%;
-  }
-
-  #inner-nav-div {
-    grid-template-columns: 0.5fr 1fr 1.2fr;
   }
 }

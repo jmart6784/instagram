@@ -7,7 +7,7 @@
       <% end %>
 
       <%= form_tag(users_path, method: :get, id: "nav-form") do %>
-        <%= text_field_tag(:search, params[:search], placeholder: "search",id: "nav-search") %>
+        <%= text_field_tag(:search, params[:search], placeholder: "search", id: "nav-search") %>
 
         <button id="nav-search-btn" type="submit" name="commit">
           <i class="fas fa-search"></i>
@@ -32,27 +32,35 @@
         <% end %>
 
         <div>
-          <%= image_tag(current_user.avatar.variant(resize: "30x30!"), id: "nav-prof-pic") %>
+          <% if current_user.avatar.attached? %> 
+            <div id="nav-prof-pic" class="background-image" style="background-image: url('<%= url_for(current_user.avatar) %>');"></div>
+          <% else %>
+            <div id="nav-prof-pic" class="background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+          <% end %>
 
           <div id="nav-drop-content">
-            <div id="drp-arrow">
+            <div id="drp-arrow" class="nav-drop-links">
               <i class="fas fa-chevron-up"></i>
             </div>
-            <%= link_to current_user do %>
-              <i class="far fa-user-circle"></i>
+
+            <%= link_to current_user, class: "nav-drop-links" do %>
+              <i class="far fa-user-circle nav-drop-links"></i>
               <span class="nav-link-txt">Profile</span>
             <% end %>
 
-            <%= link_to saved_posts_path do %>
-              <i class="far fa-bookmark"></i>
+            <%= link_to saved_posts_path, class: "nav-drop-links" do %>
+              <i class="far fa-bookmark nav-drop-links"></i>
               <span class="nav-link-txt">Saved</span>
             <% end %>
 
-            <%= link_to edit_user_registration_path do %>
-              <i class="fas fa-cog"></i>
+            <%= link_to edit_user_registration_path, class: "nav-drop-links" do %>
+              <i class="fas fa-cog nav-drop-links"></i>
               <span class="nav-link-txt">Settings</span>
             <% end %>
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete, id: "nav-log-out" %>
+
+            <%= link_to destroy_user_session_path, method: :delete, id: "nav-log-out", class: "nav-drop" do %>
+              <span class="nav-link-txt">Log Out</span>
+            <% end %>
           </div>
         </div>
       </div>
