@@ -63,8 +63,10 @@
     <div id="user-sh-post-header-links">
       <p class="user-sh-sp"><i class="fas fa-th user-sh-th"></i> Posts<p>
 
-      <%= link_to saved_posts_path, class: "user-sh-sp" do %>
-        <p><i class="far fa-bookmark user-sh-bookmark"></i> Saved</p>
+      <% if current_user === @user %>
+        <%= link_to saved_posts_path, class: "user-sh-sp" do %>
+          <p><i class="far fa-bookmark user-sh-bookmark"></i> Saved</p>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -99,8 +101,8 @@
         <% elsif post.class.method_defined? :clip %>
 
           <%= link_to post, class: "user-sh-post-link" do %>
-            <div class="post-index-tile-div video-container">
-              <%= video_tag url_for(post.clip), class: "post-index-video" %>
+            <div class="user-sh-tile-div video-container">
+              <%= video_tag url_for(post.clip), class: "user-sh-video" %>
 
               <div class="tinted-tile">
                 <p class="post-index-info">
