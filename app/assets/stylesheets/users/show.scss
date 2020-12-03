@@ -1,0 +1,146 @@
+#user-sh-container {
+  padding-top: 40px;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+#user-sh-header-info {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+}
+
+.user-sh-avatar {
+  height: 170px;
+  width: 170px;
+  border-radius: 100%;
+  justify-self: center;
+}
+
+#user-sh-info-1 {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 20px;
+}
+
+.user-sh-username {
+  font-size: 30px;
+  font-weight: 200;
+  display: block;
+}
+
+#user-sh-mnf-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 13px;
+}
+
+.user-sh-mnf-link {
+  background-color: black;
+  border: 1px solid rgb(156, 156, 156);
+  border-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#user-sh-edit-link {
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.user-sh-edit-txt {
+  border: 1px solid white;
+  background-color: black;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.user-sh-cog {
+  font-size: 25px;
+}
+
+#user-sh-info-2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 25px;
+}
+
+.user-sh-info-stats {
+  font-size: 18px;
+  margin-right: 30px;
+}
+
+#user-sh-fullname {
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+#user-sh-bio {
+  margin-top: 5px;
+}
+
+#user-sh-parent-info-div {
+  margin-top: 80px;
+  border-top: 1px solid rgb(128, 128, 128);
+  display: flex;
+  justify-content: center;
+}
+
+#user-sh-post-header-links {
+  width: 100%;
+  padding: 15px 0 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.user-sh-sp {
+  text-decoration: none;
+  color: rgb(134, 134, 134);
+  font-size: 15px;
+}
+
+.user-sh-bookmark,
+.user-sh-th {
+  color: rgb(134, 134, 134);
+  margin-right: 3px;
+}
+
+#user-sh-post-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.user-sh-tile-div {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.user-sh-post-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.us-icon {
+  margin-right: 5px;
+}
+
+.us-icon-like {
+  margin-right: 20px;
+}
+
+// @media only screen and (max-width: 1500px) {
+// }
