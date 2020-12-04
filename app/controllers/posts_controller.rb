@@ -67,6 +67,10 @@ class PostsController < ApplicationController
       user.posts.each do |post|
         @following_posts << post
       end
+
+      user.video_posts.each do |post|
+        @following_posts << post
+      end
     end
 
     @sorted_feed = @following_posts.sort_by(&:created_at).reverse!

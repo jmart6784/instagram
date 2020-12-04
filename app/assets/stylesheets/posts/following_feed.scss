@@ -1,0 +1,93 @@
+#following-container {
+  margin-top: 100px;
+}
+
+#following-mid-container {
+  margin: auto;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#following-post-container {
+  border: 1px solid rgb(153, 153, 153);
+  background-color: black;
+  margin-bottom: 70px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+#following-user-info-div {
+  display: flex;
+  align-items: center;
+  padding: 12px 0 12px 0;
+}
+
+.following-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  margin: 0 10px 0 10px;
+}
+
+.following-header-username {
+  text-decoration: none;
+}
+
+.following-header-username:hover {
+  text-decoration: underline;
+}
+
+.following-feed-image {
+  height: 500px;
+  width: 100%;
+}
+
+.following-feed-video {
+  height: 500px;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.following-pad {
+  display: block;
+  padding: 4px 15px 4px 15px;
+}
+
+.following-activity-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 3px;
+}
+
+.following-activity-lc {
+  display: flex;
+  align-items: center;
+}
+
+.following-like-link {
+  margin-right: 20px;
+}
+
+.foll-activity-link {
+  font-size: 20px;
+}
+
+.following-base-fsize {
+  font-size: 14px;
+}
+
+.following-pdate {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.following-gray-txt {
+  color: rgb(161, 161, 161);
+  text-decoration: none;
+}
