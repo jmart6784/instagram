@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :posts do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      member do
+        post :ajax_feed_comment
+      end
+    end
   end
 
   get "/following_feed", to: "posts#following_feed"

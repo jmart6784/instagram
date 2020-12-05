@@ -91,3 +91,30 @@
   color: rgb(161, 161, 161);
   text-decoration: none;
 }
+
+.following-feed-comment-form {
+  border-top: 1px solid rgb(117, 117, 117);
+  display: flex;
+}
+
+.following-comment-input {
+  flex: 10;
+  width: 100%;
+  display: block;
+  height: 50px;
+  padding-left: 10px;
+  border: 0px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.following-form-comment-submit {
+  flex: 1;
+  display: block;
+  background-color: black;
+  color: rgb(32, 167, 255);
+  outline: none;
+  border: 0px;
+}

@@ -69,9 +69,18 @@
         <div class="following-pad">
           <p class="following-base-fsize"><strong><%= link_to user.username, user, class: "following-header-username" %></strong> <%= post.caption %></p>
         </div>
-        
-        <% unless post.comments.count === 0 %>
-          <div>
+
+        <% if post.class.method_defined? :image %>
+          <% com_div_id = "image-comment-div-#{post.id}" %>
+          <% com_input_id = "image-feed-text-field-#{post.id}" %>
+        <% elsif post.class.method_defined? :clip %>
+          <% com_div_id = "video-comment-div-#{post.id}" %>
+          <% com_input_id = "video-feed-text-field-#{post.id}" %>
+        <% end %>
+
+        <div id=<%= com_div_id %>>
+          <% unless post.comments.count === 0 %>
+
             <%= link_to "View all #{post.comments.count} " + "comment".pluralize(post.comments.count), post, class: "following-pad following-base-fsize following-gray-txt" %>
 
             <% post.comments.limit(3).each do |comment| %>
@@ -83,12 +92,28 @@
                 </strong> <%= comment.body.length > 50 ? "#{comment.body[0..119]}..." : comment.body %>
               </p>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
 
         <div class="following-pad following-pdate following-gray-txt">
           <%= "#{time_ago_in_words(post.created_at)} ago"  %>
         </div>
+
+        <% if post.class.method_defined? :image %>
+          <%= form_for [ post, @comment ], url: ajax_feed_comment_post_comment_path(id: 0, post_id: post.id, video_post_id: 0, type: "image", html_id: com_div_id, html_input: com_input_id), html: {remote: true, class: "following-feed-comment-form"} do |f| %>
+
+            <%= f.text_field :body, placeholder: "Add a comment...", id: com_input_id, class: "following-comment-input", required: true, maxlength: 5000 %>
+
+            <%= f.submit "Post", class: "following-form-comment-submit" %>
+          <% end %>
+        <% elsif post.class.method_defined? :clip %>
+          <%= form_for [ post, @comment ], url: ajax_feed_comment_post_comment_path(id: 0, post_id: 0, video_post_id: post.id, type: "video", html_id: com_div_id, html_input: com_input_id), html: {remote: true, class: "following-feed-comment-form"} do |f| %>
+
+            <%= f.text_field :body, placeholder: "Add a comment...", id: com_input_id, class: "following-comment-input", required: true, maxlength: 5000 %>
+
+            <%= f.submit "Post", class: "following-form-comment-submit" %>
+          <% end %>
+        <% end %>
       </div>
 
     <% end %>

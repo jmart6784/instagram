@@ -33,6 +33,42 @@ class CommentsController < ApplicationController
     end
   end
 
+  def ajax_feed_comment
+    if params[:type] === "image"
+
+      @comment = Comment.new
+      @comment.body = comment_params[:body]
+      @comment.post_id = params[:post_id]
+      @comment.user_id = current_user.id
+      @user = User.find(@comment.user_id)
+
+      if @comment.save
+        respond_to do |format|
+          format.js { render 'comments/ajax_feed_comment' }
+        end
+      else
+        redirect_to following_feed_path
+      end
+
+    elsif params[:type] === "video"
+
+      @comment = Comment.new
+      @comment.body = video_comment_params[:body]
+      @comment.video_post_id = params[:video_post_id]
+      @comment.user_id = current_user.id
+      @user = User.find(@comment.user_id)
+
+      if @comment.save
+        respond_to do |format|
+          format.js { render 'comments/ajax_feed_comment' }
+        end
+      else
+        redirect_to following_feed_path
+      end
+
+    end
+  end
+
   def edit
     if params[:video_post_id]
       @post = VideoPost.find(params[:video_post_id])

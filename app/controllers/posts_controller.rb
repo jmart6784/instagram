@@ -60,6 +60,7 @@ class PostsController < ApplicationController
   end
 
   def following_feed
+    @comment = Comment.new
     @following = current_user.following
     @following_posts = []
 
