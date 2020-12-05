@@ -11,10 +11,10 @@ class SavedPostsController < ApplicationController
       unless current_user.id === post.user_id
         if @saved_post
           @saved_post.destroy
-          @save_txt = "Add"
+          @save_txt = "far fa-bookmark"
         else
           SavedPost.create!(user_id: params[:user_id], video_post_id: params[:id])
-          @save_txt = "Remove"
+          @save_txt = "fas fa-bookmark"
         end
       end
     elsif params[:type] === "image"
@@ -24,10 +24,10 @@ class SavedPostsController < ApplicationController
       unless current_user.id === post.user_id
         if @saved_post
           @saved_post.destroy
-          @save_txt = "Add"
+          @save_txt = "far fa-bookmark"
         else
           SavedPost.create!(user_id: params[:user_id], post_id: params[:id])
-          @save_txt = "Remove"
+          @save_txt = "fas fa-bookmark"
         end
       end
     end

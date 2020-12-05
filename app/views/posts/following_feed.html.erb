@@ -52,13 +52,17 @@
 
           <% unless current_user === user %>
             <% if post.class.method_defined? :image %>
-              <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "Add" : "Remove" %>
+              <% save_exists = SavedPost.where(user_id: current_user.id, post_id: post.id) === [] ? "far fa-bookmark" : "fas fa-bookmark" %>
 
-              <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "image", html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_post_id_#{post.id}", class: "foll-activity-link" %>
+              <%= link_to ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "image", html_id: "saveable_post_id_#{post.id}"), method: :put, remote: true, class: "foll-activity-link" do %>
+                <i id="<%= "saveable_post_id_#{post.id}" %>" class="<%= save_exists %>"></i>
+              <% end %>
             <% elsif post.class.method_defined? :clip %>
-                <% save_exists = SavedPost.where(user_id: current_user.id, video_post_id: post.id) === [] ? "Add" : "Remove" %>
+                <% save_exists = SavedPost.where(user_id: current_user.id, video_post_id: post.id) === [] ? "far fa-bookmark" : "fas fa-bookmark" %>
 
-                <%= link_to save_exists, ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "video", html_id: "saveable_video_post_id_#{post.id}"), method: :put, remote: true, id: "saveable_video_post_id_#{post.id}", class: "foll-activity-link" %>
+                <%= link_to ajax_saved_posts_saved_post_path(user_id: current_user.id, id: post.id, type: "video", html_id: "saveable_video_post_id_#{post.id}"), method: :put, remote: true, class: "foll-activity-link" do %>
+                  <i id="<%= "saveable_video_post_id_#{post.id}" %>" class="<%= save_exists %>"></i>
+                <% end %>
             <% end %>
           <% else %>
             <div></div>
