@@ -6,10 +6,10 @@ class LikesController < ApplicationController
 
       if @like == []
         @post.likes.create!(user_id: current_user.id, post_id: @post.id)
-        @like_txt = "Unlike"
+        @like_txt = "fas fa-heart like-icon-col"
       else
         @like.destroy_all
-        @like_txt = "Like"
+        @like_txt = "far fa-heart"
       end
 
       @like_count = @post.likes.count.to_s + " " + "Like".pluralize(@post.likes.count)
@@ -19,10 +19,10 @@ class LikesController < ApplicationController
 
       if @like == []
         @post.likes.create!(user_id: current_user.id, video_post_id: @post.id)
-        @like_txt = "Unlike"
+        @like_txt = "fas fa-heart like-icon-col"
       else
         @like.destroy_all
-        @like_txt = "Like"
+        @like_txt = "far fa-heart"
       end
 
       @like_count = @post.likes.count.to_s + " " + "Like".pluralize(@post.likes.count)

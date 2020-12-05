@@ -1,3 +1,5 @@
-document.getElementById("<%= params[:html_id] %>").textContent = "<%= @like_txt %>";
+document.getElementById("<%= params[:html_id] %>").className =
+  "<%= @like_txt %>";
 
-document.getElementById("<%= params[:html_count_id] %>").textContent = "<%= @like_count %>";
+document.getElementById("<%= params[:html_count_id] %>").textContent =
+  "<%= @like_count %>";
