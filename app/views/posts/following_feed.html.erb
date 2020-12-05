@@ -13,7 +13,7 @@
             <div class="following-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
           <% end %>
 
-          <p><%= link_to user.username, user, class: "following-header-username" %></p>
+          <p><%= link_to user.username, user, class: "following-header-username following-un-size" %></p>
         </div>
 
         <% if post.class.method_defined? :image %>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="following-pad">
-          <h3 id=<%= "like_count#{post.id}" %> class="following-base-fsize">
+          <h3 id=<%= "like_count#{post.id}" %> class="following-like-count">
             <%= "#{post.likes.count} Like".pluralize(post.likes.count) %>
           </h3>
         </div>

@@ -34,6 +34,11 @@
 
 .following-header-username {
   text-decoration: none;
+  font-weight: 700;
+}
+
+.following-un-size {
+  font-size: 14px;
 }
 
 .following-header-username:hover {
@@ -82,6 +87,10 @@
   font-size: 14px;
 }
 
+.following-like-count {
+  font-size: 14px;
+}
+
 .following-pdate {
   font-size: 13px;
   margin-bottom: 10px;
@@ -127,6 +136,134 @@
   font-size: 25px;
 }
 
-// @media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1650px) {
+  #following-mid-container {
+    width: 40%;
+  }
+}
 
-// }
+@media only screen and (max-width: 1450px) {
+  #following-mid-container {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1260px) {
+  #following-mid-container {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1160px) {
+  #following-mid-container {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1060px) {
+  #following-user-info-div {
+    padding: 20px 0 20px 0;
+  }
+
+  #following-mid-container {
+    width: 100%;
+    background-color: black;
+  }
+
+  #following-post-container {
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .following-avatar {
+    height: 70px;
+    width: 70px;
+    margin: 0 20px 0 20px;
+  }
+
+  .following-un-size {
+    font-size: 30px;
+  }
+
+  .following-feed-image,
+  .following-feed-video {
+    height: 800px;
+  }
+
+  .foll-activity-link {
+    font-size: 40px;
+  }
+
+  .following-like-link {
+    margin-right: 30px;
+  }
+
+  .following-base-fsize {
+    font-size: 25px;
+  }
+
+  .following-like-count {
+    font-size: 30px;
+  }
+
+  .following-pad {
+    padding: 7px 25px 7px 25px;
+  }
+
+  .following-pdate {
+    font-size: 18px;
+  }
+
+  .following-feed-comment-form {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #following-user-info-div {
+    padding: 25px 0 25px 0;
+  }
+
+  .following-avatar {
+    height: 100px;
+    width: 100px;
+    margin: 0 20px 0 20px;
+  }
+
+  .following-un-size {
+    font-size: 40px;
+  }
+
+  .following-feed-image,
+  .following-feed-video {
+    height: 1000px;
+  }
+
+  .foll-activity-link {
+    font-size: 60px;
+  }
+
+  .following-like-link {
+    margin-right: 60px;
+  }
+
+  .following-base-fsize {
+    font-size: 12px;
+  }
+
+  .following-like-count {
+    font-size: 15px;
+  }
+
+  .following-pad {
+    padding: 10px 30px 10px 30px;
+  }
+
+  .following-pdate {
+    font-size: 11px;
+  }
+
+  .following-feed-comment-form {
+    display: none;
+  }
+}
