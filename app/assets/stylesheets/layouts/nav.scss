@@ -347,11 +347,11 @@
 
 @media only screen and (max-width: 1030px) {
   #nav-bar {
-    height: 85px;
+    height: 130px;
   }
 
   #nav-clearance {
-    margin-top: 87px;
+    margin-top: 140px;
   }
 
   #nav-logo-link {
@@ -359,12 +359,13 @@
   }
 
   #nav-logo {
+    margin-left: 20px;
     height: 55px;
     width: 183px;
   }
 
   #nav-form {
-    width: 95%;
+    display: none;
   }
 
   #nav-search {
@@ -376,12 +377,12 @@
   }
 
   .nav-icon-link {
-    font-size: 35px;
+    font-size: 60px;
   }
 
   #nav-prof-pic {
-    height: 55px;
-    width: 55px;
+    height: 65px;
+    width: 65px;
   }
 
   #nav-drop-content {
@@ -398,7 +399,9 @@
 
   #inner-nav-div {
     width: 100%;
-    grid-template-columns: 0.75fr 1fr 1.5fr;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
 }
 
