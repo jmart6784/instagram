@@ -1,50 +1,137 @@
-<h1 id="post-show-title">Show post</h1>
+<div id="show-post-container">
+  <div id="show-post-post">
 
-<%= image_tag @post.image.variant(resize: '300x300!') %>
-<h3>Caption: <%= @post.caption %></h3>
-<h3>By: <%= @user.email %></h3>
-<br />
+    <div id="post-show-split">
+      <div class="post-show-image background-image" style="background-image: url('<%= url_for(@post.image) %>');"></div>
 
-<% if current_user === @user %>
-  <%= link_to "Edit", edit_post_url(@post) %>
-  <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+      <div id="show-post-right-container">
+        <div id="show-post-comments-container">
 
-<%= render "comments/form" %>
+          <div id="show-post-header-user-info">
+            <div id="show-post-ava-un">
+              <% if @user.avatar.attached? %> 
+                <div class="post-show-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
+              <% else %>
+                <div class="post-show-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+              <% end %>
 
-<h2>Comments(<%= @post.comments.length %>)</h2>
+              <h3 id="post-show-op-un"><%= link_to @user.username, @user, class: "post-show-un-link" %></h3>
+            </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th>Email</th>
-      <th>Likes</th>
-    </tr>
-  </thead>
-  <tbody id="parent-comments-div">
-    <% @post.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.body %></td>
-        <td><%= User.find(comment.user_id).email %></td>
+            <% if current_user === @user %>
+              <div>
+                <%= link_to "Edit", edit_post_url(@post) %>
+                <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            <% end %>
+          </div>
 
-        <td>
-          <% comment_like_exists = Like.where(comment_id: comment.id, user_id: current_user.id) == [] ? "Like" : "Unlike" %>
+          <div id="parent-comments-div" class="post-show-base-div-padding post-show-scrollable-comments">
 
-          <%= link_to comment_like_exists, ajax_likes_update_like_path(id: comment.id, type: "comment", html_id: "likeable_comment_id_#{comment.id}", html_count_id: "comment_like_count#{comment.id}"), method: :put, remote: true, id: "likeable_comment_id_#{comment.id}" %>
-        </td>
+            <div id="post-show-split-avacom">
+              <% if @user.avatar.attached? %> 
+                <div class="post-show-comment-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
+              <% else %>
+                <div class="post-show-comment-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+              <% end %>
+            
+              <p class="show-post-comment">
+                <strong>
+                  <%= link_to @user.username, @user, class: "post-show-un-link" %>
+                </strong> 
+                <%= @post.caption %>
+              </p>
+            </div>
 
-        <td>
-          <p id=<%= "comment_like_count#{comment.id}" %>>
-            <%= "#{comment.likes.count} Like".pluralize(comment.likes.count) %>
-          </p>
-        </td>
+            <% @post.comments.each do |comment| %>
+              <% user = User.find(comment.user_id) %>
 
-        <% if current_user.id === comment.user_id %>
-          <td><%= link_to "Edit", edit_post_comment_path(@post.id, comment.id) %></td>
-          <td><%= link_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <div id="post-show-split-avacom">
+
+                <% if user.avatar.attached? %> 
+                  <div class="post-show-comment-avatar background-image" style="background-image: url('<%= url_for(user.avatar) %>');"></div>
+                <% else %>
+                  <div class="post-show-comment-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+                <% end %>
+
+                <div id="post-show-comment-contents">
+                  <div id="show-post-first-row-comment-div">
+
+                    <p class="show-post-comment">
+                      <strong>
+                        <%= link_to user.username, user, class: "post-show-un-link" %>
+                      </strong> 
+                      <%= comment.body %>
+                    </p>
+
+                    <div id="show-post-comment-ld-div">
+
+                      <div>
+                        <% if current_user.id === comment.user_id %>
+                          <i class="fas fa-ellipsis-h show-post-comment-options-container">
+                            <div class="show-post-comment-options-links-div">
+                              <%= link_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-del-link" %>
+                            </div>
+                          </i>
+                        <% end %>
+                      </div>
+
+                      <% comment_like_exists = Like.where(comment_id: comment.id, user_id: current_user.id) == [] ? "far fa-heart" : "fas fa-heart like-icon-col" %>
+
+                      <%= link_to ajax_likes_update_like_path(id: comment.id, type: "comment", html_id: "likeable_comment_id_#{comment.id}", html_count_id: "comment_like_count#{comment.id}"), method: :put, remote: true do %>
+                        <i id="<%= "likeable_comment_id_#{comment.id}" %>" class="<%= comment_like_exists %>"></i>
+                      <% end %>
+                    </div>
+                  </div>
+
+                  <div id="post-show-comment-stats-div">
+                    <p class="post-show-comment-stats p-show-time-stat"><%= "#{time_ago_in_words(comment.created_at)}"  %></p>
+
+                    <p id=<%= "comment_like_count#{comment.id}" %> class="post-show-comment-stats p-show-likes-stat">
+                      <%= "#{comment.likes.count} like".pluralize(comment.likes.count) %> 
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>        
+        </div>
+
+        <div id="post-show-mid-post-info">
+          <div id="post-show-activity-links-div" class="pshow-pl">
+              <% like_exists = Like.where(post_id: @post.id, user_id: current_user.id) == [] ? "far fa-heart" : "fas fa-heart  like-icon-col" %>
+
+              <%= link_to ajax_likes_update_like_path(id: @post.id, type: "post", html_id: "likeable_id_#{@post.id}", html_count_id: "like_count#{@post.id}"), method: :put, remote: true, class: "following-like-link foll-activity-link" do %>
+                <i id="<%= "likeable_id_#{@post.id}" %>" class="<%= like_exists %>"></i>
+              <% end %>  
+
+              <div>
+                <% unless current_user === @user %>
+                  <% save_exists = SavedPost.where(user_id: current_user.id, post_id: @post.id) === [] ? "far fa-bookmark" : "fas fa-bookmark" %>
+
+                  <%= link_to ajax_saved_posts_saved_post_path(user_id: current_user.id, id: @post.id, type: "image", html_id: "saveable_post_id_#{@post.id}"), method: :put, remote: true, class: "post-show-activity-link" do %>
+                    <i id="<%= "saveable_post_id_#{@post.id}" %>" class="<%= save_exists %>"></i>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+
+          <div>
+            <h3 id=<%= "like_count#{@post.id}" %> class="post-show-like-count pshow-pl">
+              <%= "#{@post.likes.count} like".pluralize(@post.likes.count) %>
+            </h3>
+
+            <p class="show-pdate following-gray-txt pshow-pl">
+              <%= "#{time_ago_in_words(@post.created_at)} ago"  %>
+            </p>
+          </div>
+        </div>
+
+        <div id="post-show-comment-form-container" >
+          <%= render "comments/form" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

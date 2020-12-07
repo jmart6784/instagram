@@ -19,6 +19,7 @@ require("channels");
 require("@fortawesome/fontawesome-free");
 
 document.addEventListener("turbolinks:load", () => {
+  // nav bar drop down logic
   let profPic = document.getElementById("nav-prof-pic");
   let dropDiv = document.getElementById("nav-drop-content");
 
@@ -35,9 +36,8 @@ document.addEventListener("turbolinks:load", () => {
       dropDiv.style.display = "none";
     }
   });
-});
 
-document.addEventListener("turbolinks:load", () => {
+  // Tinted tiles hover logic
   let tintedTiles = document.querySelectorAll(".tinted-tile");
 
   tintedTiles.forEach((tile) => {
@@ -49,6 +49,29 @@ document.addEventListener("turbolinks:load", () => {
     tile.addEventListener("mouseleave", () => {
       tile.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
       tile.childNodes[1].style.display = "none";
+    });
+  });
+
+  // post comment options drop down logic
+  let comDots = document.querySelectorAll(
+    ".show-post-comment-options-container"
+  );
+
+  comDots.forEach((dot) => {
+    dot.childNodes[1].style.display = "none";
+
+    dot.addEventListener("click", () => {
+      if (dot.childNodes[1].style.display === "none") {
+        dot.childNodes[1].style.display = "flex";
+      } else {
+        dot.childNodes[1].style.display = "none";
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target != dot) {
+        dot.childNodes[1].style.display = "none";
+      }
     });
   });
 });

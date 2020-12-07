@@ -32,10 +32,10 @@ class LikesController < ApplicationController
 
       if @like == []
         @comment.likes.create!(user_id: current_user.id, comment_id: @comment.id)
-        @like_txt = "Unlike"
+        @like_txt = "fas fa-heart like-icon-col"
       else
         @like.destroy_all
-        @like_txt = "Like"
+        @like_txt = "far fa-heart"
       end
 
       @like_count = @comment.likes.count.to_s + " " + "Like".pluralize(@comment.likes.count)

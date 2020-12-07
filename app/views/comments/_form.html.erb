@@ -1,19 +1,6 @@
-<% if @comment.errors.any? %>
-  <div>
-    <p><%= flash[:danger] %></p>
-    <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><span><%= msg %></span></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<h2>Comment</h2>
-
-<%= form_for [ @post, @comment ], html: {remote: true} do |f| %>
-  <%= f.text_area :body, placeholder: "Share your thoughts", id: "comment-text-field", required: true, maxlength: 5000 %><br>
+<%= form_for [ @post, @comment ], html: {remote: true, id: "comment-form"} do |f| %>
+  <%= f.text_field :body, placeholder: "Add a comment...", id: "comment-text-field", required: true, maxlength: 5000 %><br>
 
 
-  <%= f.submit "Comment" %>
+  <%= f.submit "Post", id: "comment-submit" %>
 <% end %>
