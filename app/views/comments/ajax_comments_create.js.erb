@@ -8,74 +8,107 @@ document.getElementById("comment-text-field").value = "";
 
 var parentComment = document.getElementById("parent-comments-div");
 
-var tableRow = document.createElement("tr");
-parentComment.insertBefore(tableRow, parentComment.firstChild);
+// Create div container for comment
+var comContainer = document.createElement("div");
+comContainer.classList.add("post-show-split-avacom");
+parentComment.insertBefore(comContainer, parentComment.firstChild);
 
-// Show comment body
-var tdCommentBody = document.createElement("td");
-var tdCommentBodyTxt = document.createTextNode(
-  "<%= params[:comment][:body] %>"
-);
-tdCommentBody.appendChild(tdCommentBodyTxt);
-tableRow.appendChild(tdCommentBody);
+// Create user avatar
+var userAvatar = document.createElement("div");
+userAvatar.classList.add("post-show-comment-avatar");
+userAvatar.classList.add("background-image");
 
-// Show Username
-var tdUsername = document.createElement("td");
-var tdUsernameTxt = document.createTextNode("<%= @user.email %>");
+<% if current_user.avatar.attached? %> 
+  userAvatar.style.backgroundImage = "url(<%= url_for(current_user.avatar) %>)";
+<% else %>
+  userAvatar.style.backgroundImage = "url(/assets/default_profile.jpg)";
+<% end %>
 
-tdUsername.appendChild(tdUsernameTxt);
-tableRow.appendChild(tdUsername);
+comContainer.appendChild(userAvatar);
 
-// Create like link
-var tdLike = document.createElement("a");
-tdLike.innerHTML =
-  "<%=  Like.where(comment_id: @comment.id, user_id: current_user.id) == [] ? 'Like' : 'Unlike' %>";
+// Create div for holding comment text and like link
+var comContents = document.createElement("div");
+comContents.id = "post-show-comment-contents";
 
-tdLike.href =
-  '<%= raw ajax_likes_update_like_path(id: @comment.id, type: "comment", html_id: "likeable_comment_id_#{@comment.id}", html_count_id: "comment_like_count#{@comment.id}") %>';
+comContainer.appendChild(comContents);
 
-tdLike.setAttribute("data-method", "put");
+// Create div for first row of comments text and like link
+var comRow1 = document.createElement("div");
+comRow1.id = "show-post-first-row-comment-div";
 
-tdLike.setAttribute("data-remote", "true");
+comContents.appendChild(comRow1);
 
-tdLike.id = '<%= "likeable_comment_id_#{@comment.id}" %>';
+// Create comment body
+var comBody = document.createElement("p");
+comBody.classList.add("show-post-comment");
 
-// tdLike.appendChild(tdLikeTxt);
-tableRow.appendChild(tdLike);
+comRow1.appendChild(comBody);
 
-// Create like count
-var tdCount = document.createElement("td");
-var tdCountP = document.createElement("p");
+// Create bold tag for comment user name
+var comStrong = document.createElement("strong");
 
-tdCountP.innerHTML =
-  '<%= "#{@comment.likes.count} Like".pluralize(@comment.likes.count) %>';
+comBody.appendChild(comStrong);
 
-tdCountP.id = '<%= "comment_like_count#{@comment.id}" %>';
+// Create link for comment user name
+var comUsername = document.createElement("a");
+comUsername.classList.add("post-show-un-link");
+comUsername.href = "<%= url_for(current_user) %>";
+comUsername.textContent = "<%= current_user.username + ' ' %>";
 
-tableRow.appendChild(tdCount);
-tdCount.appendChild(tdCountP);
+comStrong.appendChild(comUsername);
 
-// Create Edit link
-var tdEdit = document.createElement("td");
-var editLink = document.createElement("a");
+// Append comment body
+var comText = document.createElement("span");
+comText.textContent = "<%= params[:comment][:body] %>";
 
-editLink.innerHTML = "Edit";
+comBody.appendChild(comText);
 
-editLink.href = "<%= edit_post_comment_path(id_param, @comment.id) %>";
+// Create container for like and delete links
+var ldDiv = document.createElement("div");
+ldDiv.id = "show-post-comment-ld-div";
 
-tableRow.appendChild(tdEdit);
-tdEdit.appendChild(editLink);
+comRow1.appendChild(ldDiv);
+
+// Create div for delete link
+var delDiv = document.createElement("div");
+
+ldDiv.appendChild(delDiv);
+
+// Create icon
+var iconDel = document.createElement("i");
+iconDel.classList.add("fas");
+iconDel.classList.add("fa-ellipsis-h");
+iconDel.classList.add("show-post-comment-options-container");
+
+delDiv.appendChild(iconDel);
+
+// Create inner div for link
+var delDiv2 = document.createElement("div");
+delDiv2.classList.add("show-post-comment-options-links-div");
+
+iconDel.appendChild(delDiv2);
 
 // Create Delete link
-var tdDelete = document.createElement("td");
-var deleteLink = document.createElement("a");
+var delLink = document.createElement("a");
+delLink.href = "<%= post_comment_path(@post.id, @comment.id) %>";
+delLink.setAttribute("data-method", "delete");
+delLink.setAttribute("data-confirm", "Are you sure?");
 
-deleteLink.innerHTML = "Delete";
+delDiv2.appendChild(delLink);
 
-deleteLink.href = "<%= post_comment_path(id_param, @comment.id) %>";
+// Create Like link
+var likeLink = document.createElement("a");
+likeLink.href = '<%= raw ajax_likes_update_like_path(id: @comment.id, type: "comment", html_id: "likeable_comment_id_#{@comment.id}", html_count_id: "comment_like_count#{@comment.id}") %>';
 
-deleteLink.setAttribute("data-method", "delete");
-deleteLink.setAttribute("data-confirm", "Are You sure?");
+likeLink.setAttribute("data-method", "put");
+likeLink.setAttribute("data-remote", "true");
 
-tableRow.appendChild(tdDelete);
-tdDelete.appendChild(deleteLink);
+ldDiv.appendChild(likeLink);
+
+// Like icon
+var likeIcon = document.createElement("i");
+likeIcon.id = '<%= "likeable_comment_id_#{@comment.id}" %>';
+likeIcon.classList.add("far");
+likeIcon.classList.add("fa-heart");
+
+likeLink.appendChild(likeIcon);

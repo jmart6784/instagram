@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     if params[:video_post_id]
+      @post = VideoPost.find(params[:video_post_id])
       @comment = Comment.new
       @comment.body = video_comment_params[:body]
       @comment.video_post_id = params[:video_post_id]
@@ -14,9 +15,10 @@ class CommentsController < ApplicationController
           format.js { render 'comments/ajax_comments_create' }
         end
       else
-        redirect_to VideoPost.find(params[:video_post_id])
+        redirect_to @post
       end
     else
+      @post = Post.find(params[:post_id])
       @comment = Comment.new
       @comment.body = comment_params[:body]
       @comment.post_id = params[:post_id]
@@ -28,7 +30,7 @@ class CommentsController < ApplicationController
           format.js { render 'comments/ajax_comments_create' }
         end
       else
-        redirect_to Post.find(params[:post_id])
+        redirect_to @post
       end
     end
   end
