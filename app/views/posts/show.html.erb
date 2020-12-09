@@ -69,11 +69,9 @@
 
                         <div>
                           <% if current_user.id === comment.user_id %>
-                            <i class="fas fa-ellipsis-h show-post-comment-options-container">
-                              <div class="show-post-comment-options-links-div">
-                                <%= link_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-del-link" %>
-                              </div>
-                            </i>
+                            <%= link_to post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-del-link" do %>
+                              <i class="far fa-trash-alt comment-del-link"></i>
+                            <% end %>
                           <% end %>
                         </div>
 

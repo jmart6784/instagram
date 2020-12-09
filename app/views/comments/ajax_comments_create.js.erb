@@ -74,27 +74,22 @@ var delDiv = document.createElement("div");
 
 ldDiv.appendChild(delDiv);
 
-// Create icon
-var iconDel = document.createElement("i");
-iconDel.classList.add("fas");
-iconDel.classList.add("fa-ellipsis-h");
-iconDel.classList.add("show-post-comment-options-container");
-
-delDiv.appendChild(iconDel);
-
-// Create inner div for link
-var delDiv2 = document.createElement("div");
-delDiv2.classList.add("show-post-comment-options-links-div");
-
-iconDel.appendChild(delDiv2);
-
 // Create Delete link
 var delLink = document.createElement("a");
 delLink.href = "<%= post_comment_path(@post.id, @comment.id) %>";
 delLink.setAttribute("data-method", "delete");
 delLink.setAttribute("data-confirm", "Are you sure?");
+delLink.classList.add("comment-del-link");
 
-delDiv2.appendChild(delLink);
+delDiv.appendChild(delLink);
+
+// Create icon
+var iconDel = document.createElement("i");
+iconDel.classList.add("far");
+iconDel.classList.add("fa-trash-alt");
+iconDel.classList.add("comment-del-link");
+
+delLink.appendChild(iconDel);
 
 // Create Like link
 var likeLink = document.createElement("a");
@@ -112,3 +107,26 @@ likeIcon.classList.add("far");
 likeIcon.classList.add("fa-heart");
 
 likeLink.appendChild(likeIcon);
+
+// Create second row div that holds date and like count
+var infoDiv = document.createElement("div");
+infoDiv.id = "post-show-comment-stats-div";
+
+comContents.appendChild(infoDiv);
+
+// Create date paragraph element
+var pDate = document.createElement("p");
+pDate.classList.add("post-show-comment-stats");
+pDate.classList.add("p-show-time-stat");
+pDate.textContent = '<%= "#{time_ago_in_words(@comment.created_at)}"  %>';
+
+infoDiv.appendChild(pDate);
+
+// Create Like paragraph element
+var pLikes = document.createElement("p");
+pLikes.id = '<%= "comment_like_count#{@comment.id}" %>';
+pLikes.classList.add("post-show-comment-stats");
+pLikes.classList.add("p-show-likes-stat");
+pLikes.textContent = '<%= "#{@comment.likes.count} like".pluralize(@comment.likes.count) %>';
+
+infoDiv.appendChild(pLikes);

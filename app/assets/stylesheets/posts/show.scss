@@ -111,33 +111,13 @@
   justify-content: space-between;
 }
 
-#show-post-options-container {
-  border: 1px solid red;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  position: relative;
-}
-
-.show-post-comment-options-links-div {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  transform: translate(-80%, 5%);
-  background-color: black;
-  width: fit-content;
-  z-index: 10;
-}
-
 .comment-del-link {
-  color: rgb(153, 10, 0);
-  text-decoration: none;
   padding: 15px;
   font-size: 15px;
 }
 
 .comment-del-link:hover {
-  background-color: rgb(37, 37, 37);
+  color: rgb(255, 0, 0);
 }
 
 #post-show-comment-stats-div {

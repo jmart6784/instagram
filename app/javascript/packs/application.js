@@ -51,27 +51,4 @@ document.addEventListener("turbolinks:load", () => {
       tile.childNodes[1].style.display = "none";
     });
   });
-
-  // post comment options drop down logic
-  let comDots = document.querySelectorAll(
-    ".show-post-comment-options-container"
-  );
-
-  comDots.forEach((dot) => {
-    dot.childNodes[1].style.display = "none";
-
-    dot.addEventListener("click", () => {
-      if (dot.childNodes[1].style.display === "none") {
-        dot.childNodes[1].style.display = "flex";
-      } else {
-        dot.childNodes[1].style.display = "none";
-      }
-    });
-
-    document.addEventListener("click", (e) => {
-      if (e.target != dot) {
-        dot.childNodes[1].style.display = "none";
-      }
-    });
-  });
 });
