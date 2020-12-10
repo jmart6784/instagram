@@ -40,6 +40,14 @@
   padding: 10px;
 }
 
+#mobile-show-post-header-user-info {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  padding: 10px;
+}
+
 #show-post-ava-un {
   display: flex;
   align-items: center;
@@ -85,6 +93,7 @@
   height: 32px;
   width: 32px;
   border-radius: 100%;
+  align-self: start;
 }
 
 #post-show-comment-contents {
@@ -112,7 +121,6 @@
 }
 
 .comment-del-link {
-  padding: 15px;
   font-size: 15px;
 }
 
@@ -206,4 +214,155 @@
   outline: none;
   background-color: black;
   color: rgb(32, 167, 255);
+}
+
+#mobile-bottom {
+  display: none;
+}
+
+@media only screen and (max-width: 1800px) {
+  #show-post-post {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1700px) {
+  #show-post-post {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #show-post-post {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #show-post-post {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #show-post-post {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #show-post-post {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #show-post-post {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #show-post-post {
+    width: 90%;
+  }
+
+  .post-show-activity-link {
+    font-size: 23px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #mobile-bottom {
+    display: block;
+    width: 100%;
+  }
+
+  #post-show-split {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #show-post-container {
+    margin-top: 0px;
+  }
+
+  #show-post-post {
+    width: 100%;
+    border: 0px;
+  }
+
+  #show-post-right-container {
+    max-width: 330px;
+    display: none;
+  }
+
+  #mobile-show-post-header-user-info {
+    display: flex;
+    padding: 25px;
+  }
+
+  .post-show-avatar {
+    height: 84px;
+    width: 84px;
+    margin-right: 30px;
+  }
+
+  .post-show-un-link {
+    text-decoration: none;
+    font-size: 35px;
+  }
+
+  .post-show-image {
+    height: 1000px;
+  }
+
+  #mobile-b-row1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .m-row-padding {
+    padding: 30px 30px 0 30px;
+  }
+
+  .mobile-like {
+    margin-right: 30px;
+  }
+
+  .post-show-activity-link {
+    font-size: 60px;
+    text-decoration: none;
+  }
+
+  .post-show-like-count {
+    font-size: 35px;
+  }
+
+  .show-pdate {
+    font-size: 30px;
+  }
+
+  .mobile-username-link {
+    text-decoration: none;
+  }
+
+  .mobile-show-post-base-fsize {
+    font-size: 35px;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  #mobile-comment-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-comment-p {
+    width: 800px;
+    word-wrap: break-word;
+  }
 }
