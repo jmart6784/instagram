@@ -220,6 +220,143 @@
   display: none;
 }
 
+// Mobile comments
+
+#mobile-full-comment-container {
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  height: 100vh;
+  width: 100vw;
+  padding: 0 25px 0 25px;
+}
+
+#mobile-static-comment-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  border-bottom: 1px solid white;
+}
+
+.mobile-caption-div {
+  padding-bottom: 40px;
+  border-bottom: 1px solid white;
+}
+
+#mob-com-header-row1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+#mob-com-title {
+  font-size: 40px;
+}
+
+#mob-com-close {
+  font-size: 50px;
+}
+
+#mob-com-header-row2 {
+  background-color: rgb(34, 34, 34);
+  padding: 20px 30px 20px 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: center;
+  justify-items: center;
+}
+
+#mob-com-form {
+  display: flex;
+}
+
+#comment-text-field2 {
+  height: 115px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 35px;
+  padding-left: 30px;
+  border-top: 3px solid rgb(122, 122, 122);
+  border-right: 0px;
+  border-bottom: 3px solid rgb(122, 122, 122);
+  border-left: 3px solid rgb(122, 122, 122);
+  border-radius: 50px 0 0 50px;
+  outline: none;
+}
+
+#mob-com-btn {
+  font-size: 35px;
+  background-color: black;
+  color: rgb(32, 167, 255);
+  padding: 0 30px 0 30px;
+  border-radius: 0 50px 50px 0;
+  border-top: 3px solid rgb(122, 122, 122);
+  border-right: 3px solid rgb(122, 122, 122);
+  border-bottom: 3px solid rgb(122, 122, 122);
+  border-left: 0px;
+}
+
+#scrollable-mobile-comments  {
+  margin-top: 325px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.mobile-full-com-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.full-com-fsize {
+  font-size: 35px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.mobile-avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  margin-right: 50px;
+}
+
+.full-mob-com-body {
+  width: 650px;
+  word-wrap: break-word;
+  margin-bottom: 30px;
+}
+
+#mob-comm-links-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-comment-activity-link {
+  font-size: 40px;
+}
+
+.mob-com-stats-parent-container {
+  display: flex;
+}
+
+.mob-com-stat {
+  font-size: 30px;
+}
+
+.mob-com-stat-time {
+  margin-right: 30px;
+}
+
 @media only screen and (max-width: 1800px) {
   #show-post-post {
     width: 55%;

@@ -227,4 +227,95 @@
     </div>
 
   </div>
+
+  <div id="mobile-full-comment-container">
+    <div id="mobile-static-comment-header">
+
+      <div id="mob-com-header-row1">
+        <i id="mob-com-close" class="fas fa-chevron-left"></i>
+        <h1 id="mob-com-title">Comments</h1>
+        <div></div>
+      </div>
+
+      <div id="mob-com-header-row2">
+        <% if current_user.avatar.attached? %> 
+          <div class="mobile-avatar background-image" style="background-image: url('<%= url_for(current_user.avatar) %>');"></div>
+        <% else %>
+          <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+        <% end %>
+
+        <%= form_for [ @post, @comment ], html: {remote: true, id: "mob-com-form"} do |f| %>
+          <%= f.text_field :body, placeholder: "Add a comment...", id: "comment-text-field2", required: true, maxlength: 5000 %><br>
+
+
+          <%= f.submit "Post", id: "mob-com-btn" %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div id="scrollable-mobile-comments">
+      <div class="mobile-caption-div mobile-full-com-container">
+        <% if @user.avatar.attached? %> 
+          <div class="mobile-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
+        <% else %>
+          <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+        <% end %>
+
+        <p class="full-com-fsize">
+          <strong><%= link_to @user.username, @user, class: "mobile-username-link" %></strong>
+          <%= @post.caption %>
+        </p>
+
+        <div></div>
+      </div> 
+
+      <% @post.comments.each do |comment| %>
+        <% user_com = User.find(comment.user_id) %>
+        
+        <div class="mobile-full-com-container">
+          <% if user_com.avatar.attached? %> 
+            <div class="mobile-avatar background-image" style="background-image: url('<%= url_for(user_com.avatar) %>');"></div>
+          <% else %>
+            <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+          <% end %>
+
+          <div>
+            <p class="full-mob-com-body full-com-fsize">
+              <strong><%= link_to user_com.username, user_com, class: "mobile-username-link" %></strong> 
+              <%= comment.body %>
+            </p>
+            
+            <div class="mob-com-stats-parent-container">
+              <p class="mob-com-stat-time mob-com-stat">
+                <%= "#{time_ago_in_words(comment.created_at)}"  %>
+              </p>
+
+              <p id=<%= "mob_full_comment_like_count#{comment.id}" %> class="mob-com-stat">
+                <%= "#{comment.likes.count} like".pluralize(comment.likes.count) %> 
+              </p>
+            </div>
+          </div>
+
+
+          <div id="mob-comm-links-div">
+            <div>
+              <% if current_user.id === comment.user_id %>
+                <%= link_to post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-del-link" do %>
+                  <i class="far fa-trash-alt mobile-comment-activity-link"></i>
+                <% end %>
+              <% end %>
+            </div>
+
+            <% comment_like_exists = Like.where(comment_id: comment.id, user_id: current_user.id) == [] ? "far fa-heart" : "fas fa-heart like-icon-col" %>
+
+            <%= link_to ajax_likes_update_like_path(id: comment.id, type: "comment", html_id: "mob_full_likeable_comment_id_#{comment.id}", html_count_id: "mob_full_comment_like_count#{comment.id}"), method: :put, remote: true, class: "mobile-comment-activity-link" do %>
+              <i id="<%= "mob_full_likeable_comment_id_#{comment.id}" %>" class="<%= comment_like_exists %>"></i>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
 </div>
