@@ -2,7 +2,7 @@
   <div id="nav-bar">
     <div id="inner-nav-div">
 
-      <%= link_to posts_path, id: "nav-logo-link",class: "nav-link" do %>
+      <%= link_to following_feed_path, id: "nav-logo-link",class: "nav-link" do %>
         <%= image_tag ("/assets/logo.png"), id: "nav-logo" %>
       <% end %>
 
@@ -15,7 +15,7 @@
       <% end %>
 
       <div id="nav-right">
-        <%= link_to posts_path, class: "nav-icon-link" do %>
+        <%= link_to following_feed_path, class: "nav-icon-link" do %>
           <i class="fas fa-home"></i>
         <% end %>
         
@@ -23,7 +23,7 @@
           <i class="far fa-paper-plane"></i>
         <% end %>
 
-        <%= link_to following_feed_path, class: "nav-icon-link" do %>
+        <%= link_to posts_path, class: "nav-icon-link" do %>
           <i class="far fa-compass"></i>
         <% end %>
 
