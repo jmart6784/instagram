@@ -14,8 +14,9 @@
 
       <% if current_user === @user %>
         <div>
-          <%= link_to "Edit", edit_post_url(@post) %>
-          <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="far fa-trash-alt mobile-header-del-link"></i>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -39,15 +40,16 @@
 
             <% if current_user === @user %>
               <div>
-                <%= link_to "Edit", edit_post_url(@post) %>
-                <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="far fa-trash-alt header-del-link"></i>
+                <% end %>
               </div>
             <% end %>
           </div>
 
           <div class="post-show-base-div-padding post-show-scrollable-comments">
 
-            <div class="post-show-split-avacom">
+            <div id="show-post-caption-parent-div" class="post-show-split-avacom">
               <% if @user.avatar.attached? %> 
                 <div class="post-show-comment-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
               <% else %>
@@ -161,7 +163,7 @@
               <i id="<%= "mobile_likeable_id_#{@post.id}" %>" class="<%= like_exists %>"></i>
             <% end %>
 
-            <i class="far fa-comment post-show-activity-link"></i>
+            <i id="post-show-mob-com-section" class="far fa-comment post-show-activity-link"></i>
           </div>
 
           <div>
@@ -191,7 +193,7 @@
         </div>
 
         <div class="m-row-padding">
-          <p class="mobile-show-post-base-fsize following-gray-txt">
+          <p id="view-all-mobile-comment-section" class="mobile-show-post-base-fsize following-gray-txt">
             <%= "View all #{@post.comments.count} " + "comment".pluralize %>
           </p>
         </div>

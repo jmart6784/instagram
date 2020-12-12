@@ -6,6 +6,7 @@
   border: 1px solid white;
   width: 50%;
   margin: auto;
+  background-color: black;
 }
 
 #post-show-split {
@@ -48,6 +49,10 @@
   padding: 10px;
 }
 
+.mobile-header-del-link {
+  font-size: 50px;
+}
+
 #show-post-ava-un {
   display: flex;
   align-items: center;
@@ -70,6 +75,10 @@
   text-decoration: underline;
 }
 
+.header-del-link {
+  font-size: 20px;
+}
+
 #post-show-activity-links-div {
   display: flex;
   align-items: center;
@@ -80,6 +89,10 @@
 
 .post-show-activity-link {
   font-size: 22px;
+}
+
+#show-post-caption-parent-div {
+  margin-bottom: 20px;
 }
 
 .post-show-split-avacom {
@@ -222,7 +235,7 @@
 
 // Mobile comments
 #mobile-full-comment-container {
-  // display: none;
+  display: none;
   background-color: rgb(0, 0, 0);
   position: fixed;
   top: 0;
@@ -427,6 +440,7 @@
   #show-post-post {
     width: 100%;
     border: 0px;
+    padding-bottom: 50px;
   }
 
   #show-post-right-container {

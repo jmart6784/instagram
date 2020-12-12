@@ -51,4 +51,22 @@ document.addEventListener("turbolinks:load", () => {
       tile.childNodes[1].style.display = "none";
     });
   });
+
+  // Post-show
+  let viewAllLink = document.getElementById("view-all-mobile-comment-section");
+  let comIcon = document.getElementById("post-show-mob-com-section");
+  let mobileCommentsDiv = document.getElementById("mobile-full-comment-container");
+  let mobileCommentsBackIcon = document.getElementById("mob-com-close");
+
+  const openMobComments = () => {
+    mobileCommentsDiv.style.display = "block";
+  };
+
+  const closeMobComments = () => {
+    mobileCommentsDiv.style.display = "none";
+  };
+
+  viewAllLink.addEventListener("click", openMobComments);
+  comIcon.addEventListener("click", openMobComments);
+  mobileCommentsBackIcon.addEventListener("click", closeMobComments);
 });

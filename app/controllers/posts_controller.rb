@@ -26,7 +26,6 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      flash.notice = "Successfully created a Post!"
       redirect_to @post
     else 
       flash.now[:danger] = "Can't create this Post, there are errors."
@@ -48,15 +47,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     @post.update(post_params)
-    flash.notice = "Post edited!"
     redirect_to post_path(@post)
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash.notice = "Post was deleted!"
-    redirect_to posts_path
+    redirect_to current_user
   end
 
   def following_feed
