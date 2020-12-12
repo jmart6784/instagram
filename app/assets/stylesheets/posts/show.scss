@@ -221,8 +221,8 @@
 }
 
 // Mobile comments
-
 #mobile-full-comment-container {
+  // display: none;
   background-color: rgb(0, 0, 0);
   position: fixed;
   top: 0;
@@ -307,7 +307,7 @@
 #scrollable-mobile-comments  {
   margin-top: 325px;
   overflow-y: auto;
-  height: 100vh;
+  height: 80vh;
 }
 
 .mobile-full-com-container {

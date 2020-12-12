@@ -118,11 +118,11 @@ class CommentsController < ApplicationController
   private
 
   def video_comment_params
-    params.require(:comment).permit(:body, :user_id, :video_post_id)
+    params.require(:comment).permit(:body, :user_id, :video_post_id, :html_text_id, :parent_div_id)
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :user_id, :post_id)
+    params.require(:comment).permit(:body, :user_id, :post_id, :html_text_id, :parent_div_id)
   end
 
   def set_comment
