@@ -2,18 +2,18 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="edit-user-field">
-      <div>
+    <div id="user-avatar-container" class="edit-user-field">
+      <div id="user-avatar-parent-div">
         <% if current_user.avatar.attached? %> 
-          <div class="edit-user-avatar background-image" style="background-image: url('<%= url_for(current_user.avatar) %>');"></div>
+          <div id="edit-user-avatar" class="background-image" style="background-image: url('<%= url_for(current_user.avatar) %>');"></div>
         <% else %>
-          <div class="edit-user-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+          <div id="edit-user-avatar" class="background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
         <% end %>
       </div>
 
       <div>
         <%= f.file_field :avatar, id: "primary-file-input" %>
-        <p class="edit-user-user-title"><%= current_user.username %></p>
+        <p id="edit-user-user-title"><%= current_user.username %></p>
         <p id="choose-file" class="edit-user-field-input-decoy">Change Profile Photo</p>
       </div>
     </div>
@@ -36,11 +36,6 @@
     <div class="edit-user-field">
       <%= f.label :bio %>
       <%= f.text_area :bio %>
-    </div>
-
-    <div class="edit-user-field">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
     </div>
 
     <div class="edit-user-field">
@@ -75,7 +70,12 @@
 
     <div class="edit-user-actions">
       <%= f.submit "Submit", id: "edit-user-submit" %>
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, id: "edit-user-delete" %>
     </div>
   <% end %>
+
+  <div class="edit-user-cancel-div">
+    <h3 id="edit-user-title">Cancel Your Account</h3>
+    <%= button_to "Cancel", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, id: "edit-user-delete" %>
+  </div>
+
 </div>

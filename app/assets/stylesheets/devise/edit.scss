@@ -7,7 +7,7 @@
   padding: 40px 50px 40px 50px;
 }
 
-.edit-user-avatar {
+#edit-user-avatar {
   height: 40px;
   width: 40px;
   max-width: 40px;
@@ -61,8 +61,9 @@
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 #edit-user-submit {
@@ -70,7 +71,24 @@
   color: white;
   border: 0px;
   padding: 10px;
+  font-size: 18px;
   border-radius: 5px;
+  outline: none;
+}
+
+.edit-user-cancel-div {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#edit-user-title {
+  font-size: 17px;
+  margin-bottom: 10px;
 }
 
 #edit-user-delete {
@@ -79,9 +97,149 @@
   border: 1px solid rgb(146, 0, 0);
   background-color: black;
   border-radius: 5px;
+  outline: none;
+  font-size: 18px;
 }
 
 #edit-user-delete:hover {
   color: white;
   background-color: rgb(146, 0, 0);
+}
+
+@media only screen and (max-width: 1700px) {
+  #edit-user-container {
+    background-color: rgb(77, 0, 0);
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #edit-user-container {
+    background-color: rgb(126, 67, 0);
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #edit-user-container {
+    background-color: rgb(154, 165, 0);
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #edit-user-container {
+    background-color: rgb(71, 133, 0);
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #edit-user-container {
+    background-color: rgb(0, 148, 99);
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #edit-user-container {
+    background-color: rgb(0, 138, 138);
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #edit-user-container {
+    background-color: rgb(0, 78, 129);
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #edit-user-container {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+  }
+
+  #user-avatar-container {
+    flex-direction: row;
+  }
+
+  .edit-user-field {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  #user-avatar-parent-div {
+    width: min-content;
+    margin-right: 30px;
+  }
+
+  #edit-user-avatar {
+    height: 100px;
+    width: 100px;
+    max-width: 100px;
+    float: left;
+  }
+
+  #edit-user-user-title {
+    font-size: 50px;
+  }
+
+  #choose-file {
+    font-size: 35px;
+  }
+
+  .edit-user-field :nth-child(1) {
+    font-size: 40px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: start;
+  }
+  
+  .edit-user-field :nth-child(2) {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 5px 0 5px 10px;
+    padding-left: 20px;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .edit-user-field :nth-child(2)input {
+    height: 80px;
+  }
+
+  .edit-user-field :nth-child(2) textarea {
+    border: 1px solid rgb(255, 255, 255);
+    resize: none;
+    height: 140px;
+  }
+
+  .edit-user-actions {
+    width: 100%;
+  }
+
+  #edit-user-title {
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  #edit-user-submit, #edit-user-delete {
+    padding: 10px 20px 10px 20px;
+    font-size: 50px;
+  }
+
+  #edit-user-delete {
+    border: 5px solid rgb(146, 0, 0);
+  }
+
+  #edit-user-delete:hover {
+    border: 5px solid rgb(146, 0, 0);
+    background-color: black;
+    color: rgb(146, 0, 0);
+  }
 }
