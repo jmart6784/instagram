@@ -18,8 +18,8 @@ require("channels");
 // Font awesome
 require("@fortawesome/fontawesome-free");
 
+// nav bar drop down logic
 document.addEventListener("turbolinks:load", () => {
-  // nav bar drop down logic
   let profPic = document.getElementById("nav-prof-pic");
   let dropDiv = document.getElementById("nav-drop-content");
 
@@ -36,8 +36,10 @@ document.addEventListener("turbolinks:load", () => {
       dropDiv.style.display = "none";
     }
   });
+});
 
-  // Tinted tiles hover logic
+// Tinted tiles hover logic
+document.addEventListener("turbolinks:load", () => {
   let tintedTiles = document.querySelectorAll(".tinted-tile");
 
   tintedTiles.forEach((tile) => {
@@ -51,8 +53,10 @@ document.addEventListener("turbolinks:load", () => {
       tile.childNodes[1].style.display = "none";
     });
   });
+});
 
-  // Post-show
+// Post-show
+document.addEventListener("turbolinks:load", () => {
   let viewAllLink = document.getElementById("view-all-mobile-comment-section");
   let comIcon = document.getElementById("post-show-mob-com-section");
   let mobileCommentsDiv = document.getElementById("mobile-full-comment-container");
@@ -69,4 +73,16 @@ document.addEventListener("turbolinks:load", () => {
   viewAllLink.addEventListener("click", openMobComments);
   comIcon.addEventListener("click", openMobComments);
   mobileCommentsBackIcon.addEventListener("click", closeMobComments);
+});
+
+// Click Styled File button
+document.addEventListener("turbolinks:load", () => {
+  let originalFileInput = document.getElementById("primary-file-input")
+  let styledButton = document.getElementById("choose-file");
+
+  console.log("FFFFFFFFFFFFFFFFFFFf");
+
+  styledButton.addEventListener("click", () => {
+    originalFileInput.click();
+  });
 });

@@ -1,0 +1,87 @@
+#edit-user-container {
+  border: 1px solid white;
+  background-color: black;
+  width: 45%;
+  margin: auto;
+  margin-top: 90px;
+  padding: 40px 50px 40px 50px;
+}
+
+.edit-user-avatar {
+  height: 40px;
+  width: 40px;
+  max-width: 40px;
+  border-radius: 100%;
+  float: right;
+}
+
+.edit-user-user-title {
+  font-size: 23px;
+}
+
+.edit-user-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.edit-user-field :nth-child(1) {
+  font-size: 17px;
+  margin-right: 30px;
+  width: 30%;
+  text-align: end;
+}
+
+.edit-user-field :nth-child(2) {
+  width: 50%;
+  background-color: black;
+  color: white;
+  padding: 5px 0 5px 10px;
+  padding-left: 10px;
+  font-size: 17px;
+}
+
+.edit-user-field :nth-child(2)input, textarea {
+  border: 1px solid rgb(255, 255, 255);
+  resize: none;
+}
+
+.edit-user-field-input-decoy {
+  cursor: pointer;
+  color: rgb(32, 167, 255);
+  font-size: 15px;
+}
+
+#primary-file-input {
+  display: none;
+}
+
+.edit-user-actions {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+}
+
+#edit-user-submit {
+  background-color: rgb(0, 40, 66);
+  color: white;
+  border: 0px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#edit-user-delete {
+  padding: 10px;
+  color: rgb(146, 0, 0);
+  border: 1px solid rgb(146, 0, 0);
+  background-color: black;
+  border-radius: 5px;
+}
+
+#edit-user-delete:hover {
+  color: white;
+  background-color: rgb(146, 0, 0);
+}
