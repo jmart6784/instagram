@@ -48,3 +48,67 @@
 .post-activity-time {
   justify-self: end;
 }
+
+@media only screen and (max-width: 1700px) {
+  #post-activity-container {
+    width: 45%;
+  }  
+}
+
+@media only screen and (max-width: 1600px) {
+  #post-activity-container {
+    width: 50%;
+  }  
+}
+
+@media only screen and (max-width: 1500px) {
+  #post-activity-container {
+    width: 55%;
+  }  
+}
+
+@media only screen and (max-width: 1400px) {
+  #post-activity-container {
+    width: 65%;
+  }  
+}
+
+@media only screen and (max-width: 1300px) {
+  #post-activity-container {
+    width: 70%;
+  }  
+}
+
+@media only screen and (max-width: 1200px) {
+  #post-activity-container {
+    width: 75%;
+  }  
+}
+
+@media only screen and (max-width: 1100px) {
+  #post-activity-container {
+    width: 80%;
+  }  
+}
+
+@media only screen and (max-width: 1000px) {
+  #post-activity-container {
+    width: 100%;
+    background-color: black;
+  }
+
+  .activity-like-container {
+    grid-template-columns: 2fr 15fr 3fr;
+    border-top: 1px solid white;
+  }
+
+  .post-activity-avatar {
+    height: 80px;
+    width: 80px;
+  }
+
+  .post-activity-text {
+    font-size: 35px;
+    text-size-adjust: none;
+  }
+}
