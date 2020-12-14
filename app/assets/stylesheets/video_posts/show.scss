@@ -1,0 +1,12 @@
+.post-show-feed-video {
+  height: 500px;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1000px) {
+  .post-show-feed-video {
+    height: 1000px;
+  }
+}

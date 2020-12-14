@@ -40,7 +40,7 @@ class VideoPostsController < ApplicationController
     @video_post = VideoPost.find(params[:id])
     @video_post.destroy
     flash.notice = "Post was deleted!"
-    redirect_to video_posts_path
+    redirect_to current_user
   end
 
   private
