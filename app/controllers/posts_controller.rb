@@ -85,7 +85,21 @@ class PostsController < ApplicationController
       end
     end
 
+    current_user.video_posts.each do |post|
+      post.likes.each do |like|
+        next if current_user.id === like.user_id
+        all_likes << like
+      end
+    end
+
     current_user.posts.each do |post|
+      post.comments.each do |comment|
+        next if current_user.id === comment.user_id
+        all_comments << comment
+      end
+    end
+
+    current_user.video_posts.each do |post|
       post.comments.each do |comment|
         next if current_user.id === comment.user_id
         all_comments << comment
