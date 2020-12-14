@@ -87,6 +87,11 @@
   font-size: 14px;
 }
 
+.following-word-wrap {
+  max-width: 600px;
+  word-wrap: break-word;
+}
+
 .following-like-count {
   font-size: 14px;
 }
@@ -200,6 +205,11 @@
 
   .following-base-fsize {
     font-size: 25px;
+    text-size-adjust: none;
+  }
+
+  .following-word-wrap {
+    max-width: 1000px;
   }
 
   .following-like-count {
@@ -211,7 +221,7 @@
   }
 
   .following-pdate {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .following-feed-comment-form {
@@ -248,7 +258,12 @@
   }
 
   .following-base-fsize {
-    font-size: 12px;
+    font-size: 34px;
+    text-size-adjust: none;
+  }
+
+  .following-word-wrap {
+    max-width: 1000px;
   }
 
   .following-like-count {

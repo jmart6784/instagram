@@ -95,7 +95,7 @@
             <% post.comments.limit(3).each do |comment| %>
               <% user_com = User.find(comment.user_id) %>
 
-              <p class="following-pad following-base-fsize">
+              <p class="following-word-wrap following-pad following-base-fsize">
                 <strong>
                   <%= link_to user_com.username, user_com, class: "following-header-username" %>
                 </strong> <%= comment.body.length > 50 ? "#{comment.body[0..119]}..." : comment.body %>
