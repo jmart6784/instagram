@@ -2,6 +2,7 @@
   width: 40%;
   margin: auto;
   margin-top: 100px;
+  border: 1px solid red;
 }
 
 .post-activity-post-link {
@@ -49,6 +50,25 @@
   justify-self: end;
 }
 
+// No activity Section
+#post-activity-no-act-div {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#no-act-title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+#no-act-description {
+  font-size: 25px;
+}
+
+// Mobile Querys
 @media only screen and (max-width: 1700px) {
   #post-activity-container {
     width: 45%;

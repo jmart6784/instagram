@@ -80,8 +80,6 @@ document.addEventListener("turbolinks:load", () => {
   let originalFileInput = document.getElementById("primary-file-input")
   let styledButton = document.getElementById("choose-file");
 
-  console.log("FFFFFFFFFFFFFFFFFFFf");
-
   styledButton.addEventListener("click", () => {
     originalFileInput.click();
   });
