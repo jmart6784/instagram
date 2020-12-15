@@ -1,29 +1,61 @@
-<h3>Mailbox</h3>
+<% if current_user.sender_conversations.count === 0 && current_user.receiver_conversations.count === 0 %>
+  <div id="empty-conversations-div">
+    <i class="far fa-paper-plane no-convo-icon"></i>
+    <p id="no-convo-text-1">Your Messages</p>
+    <p id="no-convo-text-2">Send private messages to friends.</p>
+  </div>
+<% else %>
 
-<% @conversations.each do |conversation| %>
-  <% if conversation.sender_id === current_user.id || conversation.recipient_id === current_user.id %>
-    <% if conversation.sender_id === current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
+  <div id="conversations-container">
+
+    <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id === current_user.id || conversation.recipient_id === current_user.id %>
+
+        <% if conversation.sender_id === current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+        
+        <div class="convo-div">
+
+          <div class="convo-avatar-div" onclick="location.href='<%= conversation_messages_path(conversation) %>'">
+            <% if recipient.avatar.attached? %> 
+              <div class="convo-index-avatar background-image" style="background-image: url('<%= url_for(recipient.avatar) %>');"></div>
+            <% else %>
+              <div class="convo-index-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+            <% end %>
+          </div>
+
+
+          <div class="conversation-text-div" onclick="location.href='<%= conversation_messages_path(conversation) %>'">
+
+            <p class="conversation-text">
+              <%= recipient.username %>
+            </p>
+
+            <div>
+              <% unless conversation.messages.count === 0 %>
+                <% message_user = User.find(conversation.messages.last.user_id) %>
+                <% last_message = conversation.messages.last.body %>
+
+                <p class="conversation-text conversation-message-last">
+                  <%= current_user === message_user ? "" : message_user.username + " " %>
+                  <%= last_message.length > 40 ? "#{last_message[0..40]}..." : last_message %> 
+                  <%= "· #{time_ago_in_words(conversation.messages.last.created_at)} ago" %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+
+          <%= link_to conversation, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="far fa-trash-alt conversation-del-link"></i>
+          <% end %>
+        </div>
+
+      <% end %>
     <% end %>
-    
-    <h3>
-      <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-    </h3>
-
-    <h3>
-      <%= link_to "Delete", conversation, method: :delete, data: { confirm: "Are you sure?" } %>
-    </h3>
-    <br />
-  <% end %>
+  </div>
+  
 <% end %>
 
-
- <h3>All Users</h3>
-
-<% @users.each do |user| %>
-  <% if user.id != current_user.id %>
-    <h3><%= user.username %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %></h3>
-  <% end %>
- <% end %>

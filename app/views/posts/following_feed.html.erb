@@ -144,7 +144,7 @@
                 <p class="following-word-wrap following-pad following-base-fsize">
                   <strong>
                     <%= link_to user_com.username, user_com, class: "following-header-username" %>
-                  </strong> <%= comment.body.length > 50 ? "#{comment.body[0..119]}..." : comment.body %>
+                  </strong> <%= comment.body.length > 50 ? "#{comment.body[0..50]}..." : comment.body %>
                 </p>
               <% end %>
             <% end %>
