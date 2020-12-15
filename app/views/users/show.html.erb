@@ -127,10 +127,16 @@
 
   <% else %>
     <% if current_user === @user %>
-      <h2>You haven't posted anything!</h2>
-      <%= link_to "Add Post", new_post_path %>
+      <div class="user-show-no-posts">
+        <h1 class="user-show-no-posts-title-current-user">You haven't posted anything!</h1>
+        <%= link_to "Share", new_post_path, id: "user-show-add-post-current-user" %>
+      </div>
+
     <% else %>
-      <h2><%= "#{@user.first_name} #{@user.last_name} hasn't posted yet." %></h2>
+      <div class="user-show-no-posts">
+        <i class="fas fa-camera user-show-no-posts-camera"></i>
+        <h2 class="user-show-no-posts-title-current-user">No Posts Yet</h2>
+      </div>
     <% end %>
   <% end %>
 </div>
