@@ -141,6 +141,64 @@
   font-size: 25px;
 }
 
+// Not Following anyone view
+#following-feed-no-following-container {
+  width: 45%;
+  margin: auto;
+  margin-top: 80px;
+}
+
+#suggested-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.suggested-user-div {
+  background-color: black;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  align-items: center;
+  padding: 10px;
+}
+
+.suggested-avatar-link {
+  display: block;
+  justify-self: center;
+}
+
+.suggested-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+}
+
+.suggested-name-txt {
+  font-size: 15px;
+}
+
+.suggested-username {
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.suggested-username:hover {
+  text-decoration: underline;
+}
+
+.suggested-follow-link {
+  text-decoration: none;
+  color: white;
+  background-color: #00568f;
+  padding: 5px;
+  border-radius: 5px;
+  display: block;
+  width: min-content;
+  justify-self: center;
+  font-size: 15px;
+}
+
+// Mobile querys
 @media only screen and (max-width: 1650px) {
   #following-mid-container {
     width: 40%;
