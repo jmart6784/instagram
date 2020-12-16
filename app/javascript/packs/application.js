@@ -84,3 +84,10 @@ document.addEventListener("turbolinks:load", () => {
     originalFileInput.click();
   });
 });
+
+// Private messages automatic scroll to bottom
+document.addEventListener("turbolinks:load", () => {
+  let msgDiv = document.getElementById("messages-parent-div");
+
+  msgDiv.scrollTo(0, msgDiv.scrollHeight);
+});

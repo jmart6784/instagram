@@ -1,29 +1,65 @@
-<% sender = User.find(@conversation.sender_id) %>
-<% recipient = User.find(@conversation.recipient_id) %>
+<div id="messages-container">
+  <% sender = User.find(@conversation.sender_id) %>
+  <% recipient = User.find(@conversation.recipient_id) %>
 
-<h2>Now messaging: <%= current_user === sender ? "#{recipient.first_name} #{recipient.last_name}" : "#{sender.first_name} #{sender.last_name}" %></h2>
+  <div id="messages-header">
+    <% other_user = current_user === sender ? recipient : sender %>
 
-<% if @over_ten %>
-  <%= link_to "Show older messages", '?m=all' %>
-<% end %>
+    <%= link_to other_user.username, other_user, class: "messages-header-username" %>
 
-
-<% @messages.each do |message| %>
-  <% if message.body %>
-    <% user = User.find(message.user_id) %>
-    <h4><%= current_user === user ? "You" : user.username %></h4>
-    <h3><%= message.body %></h3>
-    <h4><%= message.created_at.strftime("%B %e, %Y %H:%M:%S%p") %></h4>
-
-    <% if current_user.id === message.user_id %>
-      <h4><%= link_to "Delete", conversation_message_path(@conversation.id, message.id), method: :delete, data: { confirm: 'Are you sure?' } %></h4>
+    <%= link_to @conversation, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="far fa-trash-alt messages-conversation-del-link"></i>
     <% end %>
-    <br /><br />
+  </div>
+
+  <div id="messages-parent-div">
+    <% @messages.each do |message| %>
+      <% user = User.find(message.user_id) %>
+
+      <% if current_user === user %>
+        <div class="current-user-msg-container">
+          <p class="message-date">
+            <%= message.created_at.strftime("%B %e, %Y %H:%M:%S%p") %>
+          </p>
+
+          <div class="current-user-message-body-div">
+            <%= link_to conversation_message_path(@conversation.id, message.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "msg-delete-link" do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+
+            <p class="current-user-message-body"><%= message.body %></p>
+          </div>
+        </div>
+
+      <% else %>
+
+        <div class="other-user-message-container">
+          <%= link_to user do %>
+            <% if user.avatar.attached? %> 
+              <div class="message-avatar background-image" style="background-image: url('<%= url_for(user.avatar) %>');"></div>
+            <% else %>
+              <div class="message-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+            <% end %>
+          <% end %>
+
+          <div>
+            <p class="other-user-username"><%= user.username %></p>
+            <p class="other-user-message-body"><%= message.body %></p>
+          </div>
+        </div>
+
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= form_for [@conversation, @message], html: {class: "message-form"} do |f| %>
+    <%= f.text_area :body, placeholder: "Message...", class: "message-text-area" %>
+    <%= f.submit "Send", class: "message-submit" %>
   <% end %>
-<% end %>
+</div>
 
-
-<%= form_for [@conversation, @message] do |f| %>
-  <%= f.text_area :body %>
-  <%= f.submit "Send" %>
+<% if false %>
+  <% if @over_ten %>
+    <%= link_to "Show older messages", '?m=all created_at DESC' %>
+  <% end %>
 <% end %>

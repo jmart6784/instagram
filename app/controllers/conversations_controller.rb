@@ -2,8 +2,7 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:destroy]
 
   def index
-    @users = User.all
-    @conversations = Conversation.all
+    @conversations = current_user.sender_conversations + current_user.receiver_conversations
   end
 
   def create

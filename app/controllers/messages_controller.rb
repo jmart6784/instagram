@@ -7,17 +7,17 @@ class MessagesController < ApplicationController
   def index
     session[:return_to] ||= request.referer
 
-    @messages = @conversation.messages
+    @messages = @conversation.messages.sort_by(&:created_at)
 
-    if @messages.length > 10
-      @over_ten = true
-      @messages = @messages[-10..-1]
-    end
+    # if @messages.length > 10
+    #   @over_ten = true
+    #   @messages = @messages[-10..-1]
+    # end
 
-    if params[:m]
-      @over_ten = false
-      @messages = @conversation.messages
-    end
+    # if params[:m]
+    #   @over_ten = false
+    #   @messages = @conversation.messages
+    # end
 
     if @messages.last
       if @messages.last.user_id != current_user.id
@@ -44,8 +44,7 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
-    flash.notice = "Message was deleted!"
-    redirect_to session.delete(:return_to)
+    redirect_to conversation_messages_path(@conversation)
   end
 
   private
