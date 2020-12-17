@@ -70,3 +70,80 @@
   color: rgb(50, 137, 250);
   text-decoration: none;
 }
+
+@media only screen and (max-width: 1700px) {
+  #su-inner-div {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #su-inner-div {
+    width: 28%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #su-inner-div {
+    width: 31%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #su-inner-div {
+    width: 34%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #su-inner-div {
+    width: 37%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #su-inner-div {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #su-inner-div {
+    width: 43%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #su-inner-div {
+    width: 100%;
+  }
+
+  #su-div {
+    border: 0px;
+  }
+
+  #signup-p {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+
+  .sign-up-field {
+    font-size: 35px;
+    margin-bottom: 20px;
+    height: 40px;
+    padding: 35px 20px 35px 20px;
+  }
+
+  #signup-btn {
+    margin-top: 20px;
+    padding: 20px 0 20px 0;
+    font-size: 35px;
+  }
+  
+  #sign-up-link-p {
+    border: 0px;
+    margin-top: 20px;
+    padding: 30px;
+    font-size: 35px;
+  }
+}
