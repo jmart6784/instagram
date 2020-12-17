@@ -20,7 +20,7 @@
 
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (#{@minimum_password_length} characters)", class: "sign-up-field" %>
 
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password", class: "sign-up-field" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "sign-up-field" %>
 
         <%= f.submit "Sign up", id: "signup-btn" %>
       <% end %>

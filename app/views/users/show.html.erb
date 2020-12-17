@@ -61,6 +61,13 @@
 
   <div id="user-sh-parent-info-div">
     <div id="user-sh-post-header-links">
+
+      <% if current_user === @user %>
+        <%= link_to new_post_path, class: "user-sh-sp" do %>
+          <i class="far fa-plus-square user-sh-plus-icon"></i> New Post
+        <% end %>
+      <% end %>
+
       <p class="user-sh-sp"><i class="fas fa-th user-sh-th"></i> Posts<p>
 
       <% if current_user === @user %>
