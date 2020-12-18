@@ -44,6 +44,7 @@
 
 .user-index-fullname {
   font-size: 15px;
+  color: rgb(170, 170, 170);
 }
 
 .user-index-follow-link {
@@ -56,4 +57,84 @@
   padding: 5px;
   border-radius: 5px;
   font-size: 15px;
+}
+
+@media only screen and (max-width: 1700px) {
+  #user-index-container {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #user-index-container {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #user-index-container {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #user-index-container {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #user-index-container {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #user-index-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #user-index-container {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #user-index-container {
+    width: 100%;
+    margin-top: 150px;
+    row-gap: 40px;
+    padding: 20px;
+  }
+  
+  .user-index-user-container {
+    padding: 20px;
+  }
+  
+  .user-index-ava-un-div {
+    column-gap: 25px;
+  }
+  
+  .user-index-avatar {
+    height: 80px;
+    width: 80px;
+  }
+  
+  .user-index-username {
+    font-size: 30px;
+    text-size-adjust: none;
+  }
+  
+  .user-index-fullname {
+    font-size: 30px;
+    text-size-adjust: none;
+  }
+  
+  .user-index-follow-link {
+    padding: 10px;
+    font-size: 35px;
+    text-size-adjust: none;
+  }
 }
