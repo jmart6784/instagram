@@ -1,6 +1,4 @@
 <div>
-  <h1>Form</h1>
-
   <% if @post.errors.any? %>
     <div>
       <p><%= flash[:danger] %></p>
@@ -13,18 +11,18 @@
   <% end %>
 
 
-  <%= form_with model: @post, local: true do |f| %>
+  <%= form_with model: @post, local: true, class: "post-new-form" do |f| %>
     <% if @post.image.attached? && @post.image.content_type.in?(%(image/jpeg image/png)) %>
       <%= image_tag @post.image.variant(resize: '300x300!') %><br>
     <% end %>
 
     <div>
-      <%= f.label :image, "Share a picure" %><br>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, id: "primary-file-input" %>
+      <p id="choose-file" class="post-new-choose-image">Choose Image...</p>
     </div>
 
-    <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
+    <%= f.text_area :caption, placeholder: "Write a caption...", required: true, id: "post-new-text-area" %>
 
-    <%= f.submit "Share" %>
+    <%= f.submit "Share", id: "new-post-submit-btn" %>
   <% end %>
 </div>
