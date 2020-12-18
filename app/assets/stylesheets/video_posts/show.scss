@@ -1,8 +1,13 @@
 .post-show-feed-video {
   height: 600px;
   max-width: 100%;
+  width: 100%;
   display: block;
   object-fit: cover;
+}
+
+.video-post-show-video-div {
+  width: 100%;
 }
 
 @media only screen and (max-width: 1000px) {
