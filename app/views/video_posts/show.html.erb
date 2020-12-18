@@ -14,6 +14,10 @@
 
       <% if current_user === @user %>
         <div>
+          <%= link_to edit_video_post_path(@post), class: "post-show-pen-link mobile-header-del-link" do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+
           <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
             <i class="far fa-trash-alt mobile-header-del-link"></i>
           <% end %>
@@ -43,6 +47,10 @@
 
             <% if current_user === @user %>
               <div>
+                <%= link_to edit_video_post_path(@post), class: "post-show-pen-link header-del-link" do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+
                 <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <i class="far fa-trash-alt header-del-link"></i>
                 <% end %>
