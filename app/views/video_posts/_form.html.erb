@@ -13,7 +13,9 @@
 
   <%= form_with model: @video_post, local: true do |f| %>
     <% if @video_post.clip.attached? && @video_post.clip.content_type.in?(%(video/mp4)) %>
-      <%= video_tag url_for(@video_post.clip), controls: "" %><br>
+      <div class="video-container">
+        <%= video_tag url_for(@video_post.clip), controls: "", class: "post-edit-video" %>
+      </div>
     <% end %>
 
     <div>
