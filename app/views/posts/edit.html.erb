@@ -1,3 +1,15 @@
-<h1>Edit</h1>
+<div id="new-post-container">
 
-<%= render "form" %>
+  <div id="np-inner-div">
+    <div id="post-type-links-div">
+      <p class="new-post-fp"><i class="fas fa-image"></i> Image</p>
+
+      <%= link_to new_video_post_path, class: "new-post-link-to-video" do %>
+        <i class="fas fa-video"></i> Video
+      <% end %>
+    </div>
+
+    <%= render "form" %>
+  </div>
+
+</div>

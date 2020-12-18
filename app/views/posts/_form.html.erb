@@ -13,7 +13,7 @@
 
   <%= form_with model: @post, local: true, class: "post-new-form" do |f| %>
     <% if @post.image.attached? && @post.image.content_type.in?(%(image/jpeg image/png)) %>
-      <%= image_tag @post.image.variant(resize: '300x300!') %><br>
+      <div class="post-edit-image background-image" style="background-image: url('<%= url_for(@post.image) %>');"></div>
     <% end %>
 
     <div>
