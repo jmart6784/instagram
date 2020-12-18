@@ -108,56 +108,48 @@
 
 @media only screen and (max-width: 1700px) {
   #edit-user-container {
-    background-color: rgb(77, 0, 0);
     width: 50%;
   }
 }
 
 @media only screen and (max-width: 1600px) {
   #edit-user-container {
-    background-color: rgb(126, 67, 0);
     width: 55%;
   }
 }
 
 @media only screen and (max-width: 1500px) {
   #edit-user-container {
-    background-color: rgb(154, 165, 0);
     width: 55%;
   }
 }
 
 @media only screen and (max-width: 1400px) {
   #edit-user-container {
-    background-color: rgb(71, 133, 0);
     width: 60%;
   }
 }
 
 @media only screen and (max-width: 1300px) {
   #edit-user-container {
-    background-color: rgb(0, 148, 99);
     width: 65%;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   #edit-user-container {
-    background-color: rgb(0, 138, 138);
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 1100px) {
   #edit-user-container {
-    background-color: rgb(0, 78, 129);
     width: 75%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
   #edit-user-container {
-    background-color: rgb(0, 0, 0);
     width: 100%;
   }
 
@@ -186,7 +178,7 @@
     font-size: 50px;
   }
 
-  #choose-file {
+  .edit-user-field-input-decoy {
     font-size: 35px;
   }
 

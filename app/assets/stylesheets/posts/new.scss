@@ -79,3 +79,86 @@
   display: block;
   border: 0px;
 }
+
+@media only screen and (max-width: 1700px) {
+  #np-inner-div {
+    width: 28%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #np-inner-div {
+    width: 31%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #np-inner-div {
+    width: 34%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #np-inner-div {
+    width: 37%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #np-inner-div {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #np-inner-div {
+    width: 43%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #np-inner-div {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #np-inner-div {
+    width: 100%;
+    padding: 50px 0 50px 0;
+  }
+
+  #post-type-links-div {
+    padding: 20px 0 20px 0;
+  }
+  
+  .new-post-link-to-video,
+  .new-post-fp {
+    padding-bottom: 10px;
+    font-size: 35px;
+  }
+  
+  .post-new-choose-image {
+    margin: 100px 0 100px 0;
+    font-size: 50px;
+  }
+  
+  .post-new-choose-image:hover {
+    text-decoration: none;
+  }
+  
+  #post-new-text-area {
+    height: 150px;
+    margin-bottom: 40px;
+    font-size: 35px;
+    padding: 20px;
+    text-size-adjust: none;
+  }
+  
+  #new-post-submit-btn {
+    font-size: 35px;
+    text-size-adjust: none;
+    padding: 20px 0 20px 0;
+    margin-bottom: 20px;
+  }
+}
