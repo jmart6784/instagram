@@ -1,6 +1,6 @@
 class SavedPostsController < ApplicationController
   def saved_posts
-    @saved_posts = current_user.saved_posts
+    @saved_posts = current_user.saved_posts.sort_by(&:created_at).reverse!
   end
 
   def ajax_saved_posts
