@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :posts do
-    resources :comments, only: [:create, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :update, :destroy] do
       member do
         post :ajax_feed_comment
       end

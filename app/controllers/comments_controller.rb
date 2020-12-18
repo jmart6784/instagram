@@ -71,16 +71,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-    if params[:video_post_id]
-      @post = VideoPost.find(params[:video_post_id])
-    else
-      @post = Post.find(params[:post_id])
-    end
-
-    @comment = Comment.find(params[:id])
-  end
-
   def update
     if params[:video_post_id]
       @post = Post.find(params[:video_post_id])
