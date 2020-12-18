@@ -199,12 +199,14 @@
             <%= @post.caption %>
           </p>
         </div>
-
-        <div class="m-row-padding">
-          <p id="view-all-mobile-comment-section" class="mobile-show-post-base-fsize following-gray-txt">
-            <%= "View all #{@post.comments.count} " + "comment".pluralize %>
-          </p>
-        </div>
+        
+        <% unless @post.comments.count === 0 %>
+          <div class="m-row-padding">
+            <p id="view-all-mobile-comment-section" class="mobile-show-post-base-fsize following-gray-txt">
+              <%= "View all #{@post.comments.count} " + "comment".pluralize %>
+            </p>
+          </div>
+        <% end %>
 
         <% @post.comments.limit(3).each do |comment| %>
           <div class="m-row-padding">
