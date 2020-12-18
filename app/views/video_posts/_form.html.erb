@@ -1,6 +1,4 @@
 <div>
-  <h1>Video post Form</h1>
-
   <% if @video_post.errors.any? %>
     <div>
       <p><%= flash[:danger] %></p>
@@ -19,12 +17,12 @@
     <% end %>
 
     <div>
-      <%= f.label :clip, "Share video" %><br>
-      <%= f.file_field :clip %>
+      <%= f.file_field :clip, id: "primary-file-input" %>
+      <p id="choose-file" class="post-new-choose-image">Choose Video...</p>
     </div>
 
-    <%= f.text_area :caption, placeholder: "Share your thoughts", required: true %><br>
+    <%= f.text_area :caption, placeholder: "Write a caption...", required: true, id: "post-new-text-area" %>
 
-    <%= f.submit "Share" %>
+    <%= f.submit "Share", id: "new-post-submit-btn" %>
   <% end %>
 </div>
