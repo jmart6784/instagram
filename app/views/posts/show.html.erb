@@ -287,9 +287,13 @@
           <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
         <% end %>
 
-        <p class="full-com-fsize">
+        <p class="full-mob-com-body full-com-fsize">
           <strong><%= link_to @user.username, @user, class: "mobile-username-link" %></strong>
-          <%= @post.caption %>
+          <% if @post.caption.length > 150 %>
+            <%= @post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= @post.caption[150..@post.caption.length] %></span><span class="show-less">...Show Less</span>
+          <% else %>
+            <%= @post.caption %>
+          <% end %>
         </p>
 
         <div></div>
@@ -309,7 +313,11 @@
             <div>
               <p class="full-mob-com-body full-com-fsize">
                 <strong><%= link_to user_com.username, user_com, class: "mobile-username-link" %></strong> 
-                <%= comment.body %>
+                <% if comment.body.length > 150 %>
+                  <%= comment.body[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= comment.body[150..comment.body.length] %></span><span class="show-less">...Show Less</span>
+                <% else %>
+                  <%= comment.body %>
+                <% end %>
               </p>
               
               <div class="mob-com-stats-parent-container">
