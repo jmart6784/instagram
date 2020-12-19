@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
 
   validates :body, presence: true
-  validates :body, length: { maximum: 5000 }
+  validates :body, length: { maximum: 2200 }
 end
