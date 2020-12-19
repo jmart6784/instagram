@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true, length: { minimum: 1, maximum: 60 }
 
-  validates :bio, length: { maximum: 1000 }
+  validates :bio, length: { maximum: 150 }
 
   has_one_attached :avatar, dependent: :destroy
   validate :avatar_type
