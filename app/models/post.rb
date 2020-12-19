@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :saved_posts, dependent: :destroy
 
   validates :caption, presence: true
-  validates :caption, length: { maximum: 250 }
+  validates :caption, length: { maximum: 2200 }
 
   has_one_attached :image, dependent: :destroy
   validates :image, presence: true

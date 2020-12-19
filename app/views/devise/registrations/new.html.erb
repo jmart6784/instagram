@@ -18,7 +18,7 @@
 
         <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "sign-up-field" %>
 
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (#{@minimum_password_length} characters)", class: "sign-up-field" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (#{@minimum_password_length} characters minimum)", class: "sign-up-field" %>
 
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "sign-up-field" %>
 
