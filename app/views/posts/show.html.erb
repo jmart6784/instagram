@@ -228,7 +228,12 @@
               <p class="mobile-show-post-base-fsize mobile-comment-p">
                 <strong>
                   <%= link_to user_com.username, user_com, class: "mobile-username-link" %>
-                </strong> <%= comment.body.length > 50 ? "#{comment.body[0..119]}..." : comment.body %>
+                </strong>
+                <% if comment.body.length > 150 %>
+                  <%= comment.body[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= comment.body[150..comment.body.length] %></span><span class="show-less">...Show Less</span>
+                <% else %>
+                  <%= comment.body %>
+                <% end %>
               </p>
 
               <% comment_like_exists = Like.where(comment_id: comment.id, user_id: current_user.id) == [] ? "far fa-heart" : "fas fa-heart like-icon-col" %>
