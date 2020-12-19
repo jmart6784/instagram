@@ -169,6 +169,21 @@ div {
   color: white;
 }
 
+.more-content {
+  display: none;
+}
+
+.show-more {
+  color: rgb(172, 172, 172);
+  cursor: pointer;
+}
+
+.show-less {
+  display: none;
+  color: rgb(172, 172, 172);
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 1000px) {
   body {
     background-color: black;

@@ -91,3 +91,25 @@ document.addEventListener("turbolinks:load", () => {
 
   msgDiv.scrollTo(0, msgDiv.scrollHeight);
 });
+
+// Show more/less text logic
+document.addEventListener("turbolinks:load", () => {
+  let showMoreSpans = document.querySelectorAll(".show-more");
+  let showLessSpans = document.querySelectorAll(".show-less");
+
+  showMoreSpans.forEach(span => {
+    span.addEventListener("click", () => {
+      span.style.display = "none";
+      span.nextElementSibling.style.display = "inline";
+      span.nextElementSibling.nextElementSibling.style.display = "inline";
+    });
+  });
+
+  showLessSpans.forEach(span => {
+    span.addEventListener("click", () => {
+      span.style.display = "none";
+      span.previousElementSibling.style.display = "none";
+      span.previousElementSibling.previousElementSibling.style.display = "inline";
+    });
+  });
+});
