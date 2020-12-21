@@ -30,6 +30,10 @@
   margin-bottom: 20px;
 }
 
+#edit-user-confirm-p1, #edit-user-confirm-p2 {
+  display: none;
+}
+
 .edit-user-field :nth-child(1) {
   font-size: 17px;
   margin-right: 30px;

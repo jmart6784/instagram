@@ -55,15 +55,15 @@
       <% end %>
 
       <%= f.label "New password (optional)" %>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: placeholder_txt %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: placeholder_txt, id: "edit-user-new-password" %>
     </div>
 
-    <div class="edit-user-field">
+    <div id="edit-user-confirm-p1" class="edit-user-field">
       <%= f.label "Confirm new password" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: placeholder_txt %>
     </div>
 
-    <div class="edit-user-field">
+    <div id="edit-user-confirm-p2" class="edit-user-field">
       <%= f.label "Current Password (required)" %>
       <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "(required)" %>
     </div>

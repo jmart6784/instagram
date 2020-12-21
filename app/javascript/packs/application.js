@@ -114,7 +114,7 @@ document.addEventListener("turbolinks:load", () => {
   });
 });
 
-// Edit user settings page, delete account drop down
+// Edit user settings page, delete account drop down, and show/hide new password fields
 document.addEventListener("turbolinks:load", () => {
   let delText = document.getElementById("edit-user-title");
   let delBtn = document.getElementById("edit-user-delete");
@@ -126,6 +126,20 @@ document.addEventListener("turbolinks:load", () => {
       delBtn.style.display = "block";
     } else {
       delBtn.style.display = "none";
+    }
+  });
+
+  let newPwrdField = document.getElementById("edit-user-new-password");
+  let newPass1 = document.getElementById("edit-user-confirm-p1");
+  let newPass2 = document.getElementById("edit-user-confirm-p2");
+
+  newPwrdField.addEventListener("input", () => {
+    if (newPwrdField.value.length === 0) {
+      newPass1.style.display = "none";
+      newPass2.style.display = "none";
+    } else {
+      newPass1.style.display = "flex";
+      newPass2.style.display = "flex";
     }
   });
 });
