@@ -130,6 +130,8 @@
   .user-index-fullname {
     font-size: 30px;
     text-size-adjust: none;
+    word-wrap: break-word;
+    width: 550px;
   }
   
   .user-index-follow-link {

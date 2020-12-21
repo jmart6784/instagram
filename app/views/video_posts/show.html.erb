@@ -295,7 +295,7 @@
           <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
         <% end %>
 
-        <p class="full-com-fsize">
+        <p class="full-mob-com-body full-com-fsize">
           <strong><%= link_to @user.username, @user, class: "mobile-username-link" %></strong>
           <% if @post.caption.length > 150 %>
             <%= @post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= @post.caption[150..@post.caption.length] %></span><span class="show-less">...Show Less</span>
