@@ -162,6 +162,7 @@
 
 .show-pdate {
   font-size: 12px;
+  text-size-adjust: none;
 }
 
 #show-post-comments-container {
@@ -369,10 +370,12 @@
 
 .mob-com-stat {
   font-size: 30px;
+  text-size-adjust: none;
 }
 
 .mob-com-stat-time {
   margin-right: 30px;
+  text-size-adjust: none;
 }
 
 @media only screen and (max-width: 1800px) {

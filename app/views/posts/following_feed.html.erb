@@ -122,7 +122,16 @@
           </div>
 
           <div class="following-pad">
-            <p class="following-base-fsize"><strong><%= link_to user.username, user, class: "following-header-username" %></strong> <%= post.caption %></p>
+            <p class="following-base-fsize following-word-wrap">
+              <strong>
+                <%= link_to user.username, user, class: "following-header-username" %>
+              </strong> 
+              <% if post.caption.length > 150 %>
+                <%= post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= post.caption[150..post.caption.length] %></span><span class="show-less">...Show Less</span>
+              <% else %>
+                <%= post.caption %>
+              <% end %>
+            </p>
           </div>
 
           <% if post.class.method_defined? :image %>
@@ -144,7 +153,12 @@
                 <p class="following-word-wrap following-pad following-base-fsize">
                   <strong>
                     <%= link_to user_com.username, user_com, class: "following-header-username" %>
-                  </strong> <%= comment.body.length > 50 ? "#{comment.body[0..50]}..." : comment.body %>
+                  </strong> 
+                  <% if comment.body.length > 150 %>
+                    <%= comment.body[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= comment.body[150..comment.body.length] %></span><span class="show-less">...Show Less</span>
+                  <% else %>
+                    <%= comment.body %>
+                  <% end %>
                 </p>
               <% end %>
             <% end %>
