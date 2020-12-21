@@ -35,7 +35,7 @@
         </div>
 
       <% elsif activity.class.name === "Comment" %>
-
+        
         <% if activity.post_id != nil %>
           <% post = Post.find(activity.post_id) %>
         <% elsif activity.video_post_id != nil %>
@@ -54,6 +54,24 @@
           <p class="post-activity-text post-activity-desc">
             <%= link_to user.username, user, class: "post-activity-un" %> 
             <%= link_to "commented: #{activity.body.length > 40 ? activity.body[0..40] + "..." : activity.body}", post, class: "post-activity-post-link" %> 
+          </p>
+
+          <p class="post-activity-time post-activity-text">
+            <%= time_ago_in_words(activity.created_at) %> ago
+          </p>
+        </div>
+      <% elsif activity.class.name === "Follow" %>
+        <div class="activity-like-container">
+          <%= link_to user do %>
+            <% if user.avatar.attached? %> 
+              <div class="post-activity-avatar background-image" style="background-image: url('<%= url_for(user.avatar) %>');"></div>
+            <% else %>
+              <div class="post-activity-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+            <% end %>
+          <% end %>
+
+          <p class="post-activity-text post-activity-desc">
+            <%= link_to user.username, user, class: "post-activity-un" %> <%= link_to "started following you", user, class: "post-activity-post-link" %>
           </p>
 
           <p class="post-activity-time post-activity-text">

@@ -106,7 +106,9 @@ class PostsController < ApplicationController
       end
     end
 
-    @activity = (all_likes + all_comments).sort_by(&:created_at).reverse!
+    follows = Follow.where(following_id: current_user.id)
+
+    @activity = (all_likes + all_comments + follows).sort_by(&:created_at).reverse!
   end
 
   private
