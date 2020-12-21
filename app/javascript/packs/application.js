@@ -113,3 +113,19 @@ document.addEventListener("turbolinks:load", () => {
     });
   });
 });
+
+// Edit user settings page, delete account drop down
+document.addEventListener("turbolinks:load", () => {
+  let delText = document.getElementById("edit-user-title");
+  let delBtn = document.getElementById("edit-user-delete");
+
+  delBtn.style.display = "none";
+
+  delText.addEventListener("click", () => {
+    if (delBtn.style.display === "none") {
+      delBtn.style.display = "block";
+    } else {
+      delBtn.style.display = "none";
+    }
+  });
+});
