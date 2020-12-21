@@ -123,6 +123,13 @@
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .post-index-info {
+    display: none;
+    font-size: 25px;
+  }
+}
+
 @media only screen and (max-width: 1060px) {
   .post-display-grid {
     width: 90%;
