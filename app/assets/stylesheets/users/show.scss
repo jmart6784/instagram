@@ -83,12 +83,14 @@
   font-size: 16px;
   width: 500px;
   word-wrap: break-word;
+  text-size-adjust: none;
 }
 
 #user-sh-bio {
   margin-top: 5px;
   width: 500px;
   word-wrap: break-word;
+  text-size-adjust: none;
 }
 
 #user-sh-parent-info-div {
@@ -267,18 +269,26 @@
     margin-right: 30px;
   }
 
+  .user-sh-avatar {
+    height: 150px;
+    width: 150px;
+    margin-right: 40px;
+    margin-left: 10px;
+  }
+
   #user-sh-fullname {
     font-size: 30px;
     width: 600px;
   }
 
   #user-sh-bio {
-    font-size: 20px;
+    font-size: 25px;
     width: 600px;
   }
 
   .user-sh-username {
-    font-size: 45px;
+    font-size: 40px;
+    text-size-adjust: none;
   }
 
   .user-sh-tile-div {
