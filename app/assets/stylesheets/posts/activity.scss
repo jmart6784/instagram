@@ -45,6 +45,11 @@
   text-decoration: underline;
 }
 
+.post-activity-desc {
+  width: 500px;
+  word-wrap: break-word;
+}
+
 .post-activity-time {
   justify-self: end;
 }
@@ -71,31 +76,47 @@
 @media only screen and (max-width: 1700px) {
   #post-activity-container {
     width: 45%;
-  }  
+  }
+
+  .post-activity-desc {
+    width: 550px;
+  }
 }
 
 @media only screen and (max-width: 1600px) {
   #post-activity-container {
     width: 50%;
-  }  
+  }
+  
+  .post-activity-desc {
+    width: 575px;
+  }
 }
 
 @media only screen and (max-width: 1500px) {
   #post-activity-container {
     width: 55%;
-  }  
+  }
+
+  .post-activity-desc {
+    width: 600px;
+  }
 }
 
 @media only screen and (max-width: 1400px) {
   #post-activity-container {
     width: 65%;
   }  
+
+  .post-activity-desc {
+    width: 650px;
+  }
 }
 
 @media only screen and (max-width: 1300px) {
   #post-activity-container {
     width: 70%;
-  }  
+  }
 }
 
 @media only screen and (max-width: 1200px) {

@@ -25,7 +25,7 @@
             <% end %>
           <% end %>
 
-          <p class="post-activity-text">
+          <p class="post-activity-text post-activity-desc">
             <%= link_to user.username, user, class: "post-activity-un" %> <%= link_to "liked your photo", post, class: "post-activity-post-link" %>
           </p>
 
@@ -51,7 +51,7 @@
             <% end %>
           <% end %>
 
-          <p class="post-activity-text">
+          <p class="post-activity-text post-activity-desc">
             <%= link_to user.username, user, class: "post-activity-un" %> 
             <%= link_to "commented: #{activity.body.length > 40 ? activity.body[0..40] + "..." : activity.body}", post, class: "post-activity-post-link" %> 
           </p>
