@@ -70,9 +70,9 @@ document.addEventListener("turbolinks:load", () => {
     mobileCommentsDiv.style.display = "none";
   };
 
-  viewAllLink.addEventListener("click", openMobComments);
   comIcon.addEventListener("click", openMobComments);
   mobileCommentsBackIcon.addEventListener("click", closeMobComments);
+  viewAllLink.addEventListener("click", openMobComments);
 });
 
 // Click Styled File button

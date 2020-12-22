@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :saved_posts, dependent: :destroy
 
-  validates :caption, presence: true
   validates :caption, length: { maximum: 2200 }
 
   has_one_attached :image, dependent: :destroy

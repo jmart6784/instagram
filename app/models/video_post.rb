@@ -4,7 +4,6 @@ class VideoPost < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :saved_posts, dependent: :destroy
 
-  validates :caption, presence: true
   validates :caption, length: { maximum: 2200 }
 
   validates :clip, presence: true

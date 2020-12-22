@@ -139,16 +139,19 @@
           </div>
 
           <div class="following-pad">
-            <p class="following-base-fsize following-word-wrap">
-              <strong>
-                <%= link_to user.username, user, class: "following-header-username" %>
-              </strong> 
-              <% if post.caption.length > 150 %>
-                <%= post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= post.caption[150..post.caption.length] %></span><span class="show-less">...Show Less</span>
-              <% else %>
-                <%= post.caption %>
-              <% end %>
-            </p>
+            <% unless post.caption === "" %>
+              <p class="following-base-fsize following-word-wrap">
+                <strong>
+                  <%= link_to user.username, user, class: "following-header-username" %>
+                </strong> 
+                <% if post.caption.length > 150 %>
+                  <%= post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= post.caption[150..post.caption.length] %></span><span class="show-less">...Show Less</span>
+                <% else %>
+                  <%= post.caption %>
+                <% end %>
+              </p>
+            <% end %>
+
           </div>
 
           <% if post.class.method_defined? :image %>

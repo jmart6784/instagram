@@ -94,6 +94,7 @@
 
 .following-like-count {
   font-size: 14px;
+  text-size-adjust: none;
 }
 
 .following-pdate {
@@ -335,6 +336,10 @@
     margin-right: 60px;
   }
 
+  .following-like-count {
+    font-size: 35px;
+  }
+
   .following-base-fsize {
     font-size: 34px;
     text-size-adjust: none;
@@ -342,10 +347,6 @@
 
   .following-word-wrap {
     max-width: 1000px;
-  }
-
-  .following-like-count {
-    font-size: 15px;
   }
 
   .following-pad {

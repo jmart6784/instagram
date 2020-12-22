@@ -61,22 +61,24 @@
           <div class="post-show-base-div-padding post-show-scrollable-comments">
 
             <div id="show-post-caption-parent-div" class="post-show-split-avacom">
-              <% if @user.avatar.attached? %> 
-                <div class="post-show-comment-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
-              <% else %>
-                <div class="post-show-comment-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
-              <% end %>
-            
-              <p class="show-post-comment">
-                <strong>
-                  <%= link_to @user.username, @user, class: "post-show-un-link" %>
-                </strong> 
-                <% if @post.caption.length > 150 %>
-                  <%= @post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= @post.caption[150..@post.caption.length] %></span><span class="show-less">...Show Less</span>
+              <% unless @post.caption === "" %>
+                <% if @user.avatar.attached? %> 
+                  <div class="post-show-comment-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
                 <% else %>
-                  <%= @post.caption %>
+                  <div class="post-show-comment-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
                 <% end %>
-              </p>
+              
+                <p class="show-post-comment">
+                  <strong>
+                    <%= link_to @user.username, @user, class: "post-show-un-link" %>
+                  </strong> 
+                  <% if @post.caption.length > 150 %>
+                    <%= @post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= @post.caption[150..@post.caption.length] %></span><span class="show-less">...Show Less</span>
+                  <% else %>
+                    <%= @post.caption %>
+                  <% end %>
+                </p>
+              <% end %>
             </div>
 
             <div id="parent-comments-div">
@@ -203,6 +205,7 @@
         </div>
 
         <div class="m-row-padding">
+          <% unless @post.caption === "" %>
           <p class="mobile-show-post-base-fsize mobile-comment-p">
             <strong>
               <%= link_to @user.username, @user, class: "mobile-username-link" %>
@@ -213,6 +216,7 @@
               <%= @post.caption %>
             <% end %>
           </p>
+          <% end %>
         </div>
 
         <% unless @post.comments.count === 0 %>
@@ -288,24 +292,26 @@
     </div>
 
     <div id="scrollable-mobile-comments">
-      <div class="mobile-caption-div mobile-full-com-container">
-        <% if @user.avatar.attached? %> 
-          <div class="mobile-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
-        <% else %>
-          <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
-        <% end %>
-
-        <p class="full-mob-com-body full-com-fsize">
-          <strong><%= link_to @user.username, @user, class: "mobile-username-link" %></strong>
-          <% if @post.caption.length > 150 %>
-            <%= @post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= @post.caption[150..@post.caption.length] %></span><span class="show-less">...Show Less</span>
+      <% unless @post.caption === "" %>
+        <div class="mobile-caption-div mobile-full-com-container">
+          <% if @user.avatar.attached? %> 
+            <div class="mobile-avatar background-image" style="background-image: url('<%= url_for(@user.avatar) %>');"></div>
           <% else %>
-            <%= @post.caption %>
+            <div class="mobile-avatar background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
           <% end %>
-        </p>
 
-        <div></div>
-      </div> 
+          <p class="full-mob-com-body full-com-fsize">
+            <strong><%= link_to @user.username, @user, class: "mobile-username-link" %></strong>
+            <% if @post.caption.length > 150 %>
+              <%= @post.caption[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= @post.caption[150..@post.caption.length] %></span><span class="show-less">...Show Less</span>
+            <% else %>
+              <%= @post.caption %>
+            <% end %>
+          </p>
+
+          <div></div>
+        </div> 
+      <% end %>
 
       <div id="mob-com-parent">
         <% @comments.each do |comment| %>
