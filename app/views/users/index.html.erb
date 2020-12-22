@@ -1,5 +1,13 @@
 <div id="user-index-container">
 
+  <%= form_tag(users_path, method: :get, id: "user-index-form") do %>
+    <%= text_field_tag(:search, params[:search], placeholder: "search", id: "user-index-search") %>
+
+    <button id="user-index-search-btn" type="submit" name="commit">
+      <i class="fas fa-search"></i>
+    </button>
+  <% end %>
+
   <% @users.each do |user| %>
     <% next if current_user === user %>
 

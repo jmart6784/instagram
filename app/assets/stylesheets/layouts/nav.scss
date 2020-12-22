@@ -73,6 +73,10 @@
   outline: none;
 }
 
+#nav-mobile-search {
+  display: none;
+}
+
 #nav-link {
   display: block;
 }
@@ -364,16 +368,17 @@
     width: 183px;
   }
 
-  #nav-form {
-    display: none;
-  }
-
   #nav-search {
     font-size: 19px;
   }
 
   #nav-right {
     width: 100%;
+  }
+
+  #nav-form {
+    width: 90%;
+    height: 40%;
   }
 
   .nav-icon-link {
@@ -399,6 +404,25 @@
 
   #inner-nav-div {
     width: 100%;
+    grid-template-columns: 1fr 1fr 1.5fr;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #nav-form {
+    display: none;
+  }
+
+  #nav-mobile-search {
+    display: block;
+  }
+
+  #nav-home-icon-link {
+    display: none;
+  }
+
+  #inner-nav-div {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-around;

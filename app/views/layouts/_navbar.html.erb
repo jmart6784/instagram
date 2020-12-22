@@ -15,7 +15,11 @@
       <% end %>
 
       <div id="nav-right">
-        <%= link_to following_feed_path, class: "nav-icon-link" do %>
+        <%= link_to users_path, id: "nav-mobile-search", class: "nav-icon-link" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+
+        <%= link_to following_feed_path, id: "nav-home-icon-link", class: "nav-icon-link" do %>
           <i class="fas fa-home"></i>
         <% end %>
         
