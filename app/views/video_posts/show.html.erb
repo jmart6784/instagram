@@ -80,7 +80,7 @@
             </div>
 
             <div id="parent-comments-div">
-              <% @post.comments.each do |comment| %>
+              <% @comments.each do |comment| %>
                 <% user = User.find(comment.user_id) %>
 
                 <div class="post-show-split-avacom">
@@ -223,7 +223,7 @@
           </div>
         <% end %>
 
-        <% @post.comments.limit(3).each do |comment| %>
+        <% @comments.slice(0, 3).each do |comment| %>
           <div class="m-row-padding">
             <% user_com = User.find(comment.user_id) %>
 
@@ -308,7 +308,7 @@
       </div> 
 
       <div id="mob-com-parent">
-        <% @post.comments.each do |comment| %>
+        <% @comments.each do |comment| %>
           <% user_com = User.find(comment.user_id) %>
           
           <div class="mobile-full-com-container">

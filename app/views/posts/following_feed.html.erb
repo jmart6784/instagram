@@ -49,6 +49,23 @@
 
       <% @sorted_feed.each do |post| %>
 
+        <%
+          all_comments = post.comments 
+
+          temp_ary = []
+          comments = []
+
+          all_comments.each do |comment|
+            temp_ary << { likes: comment.likes.count, com_obj: comment }
+          end
+
+          temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
+          
+          temp_ary.each do |obj|
+            comments << obj[:com_obj]
+          end
+        %>
+
         <div id="following-post-container">
           <% user = User.find(post.user_id) %>
 
@@ -147,7 +164,7 @@
 
               <%= link_to "View all #{post.comments.count} " + "comment".pluralize(post.comments.count), post, class: "following-pad following-base-fsize following-gray-txt" %>
 
-              <% post.comments.limit(3).each do |comment| %>
+              <% comments.slice(0, 3).each do |comment| %>
                 <% user_com = User.find(comment.user_id) %>
 
                 <p class="following-word-wrap following-pad following-base-fsize">

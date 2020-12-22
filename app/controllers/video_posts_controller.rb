@@ -22,6 +22,21 @@ class VideoPostsController < ApplicationController
     @post = VideoPost.find(params[:id])
     @user = User.find(@post.user_id)
     @comment = Comment.new
+
+    all_comments = @post.comments 
+
+    temp_ary = []
+    @comments = []
+
+    all_comments.each do |comment|
+      temp_ary << { likes: comment.likes.count, com_obj: comment }
+    end
+
+    temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
+    
+    temp_ary.each do |obj|
+      @comments << obj[:com_obj]
+    end
   end
 
   def edit
