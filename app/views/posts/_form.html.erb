@@ -1,10 +1,10 @@
 <div>
   <% if @post.errors.any? %>
-    <div>
-      <p><%= flash[:danger] %></p>
-      <ul>
+    <div id="post-form-error-container">
+      <p id="post-form-flash-danger"><%= flash[:danger] %></p>
+      <ul id="post-form-error-ul">
         <% @post.errors.full_messages.each do |msg| %>
-          <li><span><%= msg %></span></li>
+          <li class="post-form-error-list-item"><span><%= msg %></span></li>
         <% end %>
       </ul>
     </div>
