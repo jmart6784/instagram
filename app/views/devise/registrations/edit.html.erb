@@ -1,17 +1,27 @@
 <div id="edit-user-container">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "edit-user-form-container" }) do |f| %>
+
+    <% if resource.errors.any? %>
+      <div id="edit-user-error-explanation">
+
+        <p id="edit-user-form-error-title">Failed to save changes</p>
+
+        <ul id="edit-user-error-ul">
+          <% resource.errors.full_messages.each do |message| %>
+            <li class="edit-user-error-message"><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <div id="user-avatar-container" class="edit-user-field">
-      <div id="user-avatar-parent-div">
-        <% if current_user.avatar.attached? %> 
-          <div id="edit-user-avatar" class="background-image" style="background-image: url('<%= url_for(current_user.avatar) %>');"></div>
-        <% else %>
-          <div id="edit-user-avatar" class="background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
-        <% end %>
-      </div>
+      <% if current_user.avatar.attached? %> 
+        <div id="edit-user-avatar" class="background-image" style="background-image: url('<%= url_for(current_user.avatar) %>');"></div>
+      <% else %>
+        <div id="edit-user-avatar" class="background-image" style="background-image: url('<%= "/assets/default_profile.jpg" %>');"></div>
+      <% end %>
 
-      <div>
+      <div id="edit-user-change-ava-container">
         <%= f.file_field :avatar, id: "primary-file-input" %>
         <p id="edit-user-user-title"><%= current_user.username %></p>
         <p id="choose-file" class="edit-user-field-input-decoy">Change Profile Photo</p>
@@ -19,28 +29,28 @@
     </div>
 
     <div class="edit-user-field">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <%= f.label :first_name, class: "edit-user-label" %>
+      <%= f.text_field :first_name, class: "edit-user-input" %>
     </div>
 
     <div class="edit-user-field">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <%= f.label :last_name, class: "edit-user-label" %>
+      <%= f.text_field :last_name, class: "edit-user-input" %>
     </div>
 
     <div class="edit-user-field">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.label :username, class: "edit-user-label" %>
+      <%= f.text_field :username, class: "edit-user-input" %>
     </div>
 
     <div class="edit-user-field">
-      <%= f.label :bio %>
-      <%= f.text_area :bio, id: "edit-bio-text-area" %>
+      <%= f.label :bio, class: "edit-user-label" %>
+      <%= f.text_area :bio, id: "edit-bio-text-area", class: "edit-user-input" %>
     </div>
 
     <div class="edit-user-field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autocomplete: "email" %>
+      <%= f.label :email, class: "edit-user-label" %>
+      <%= f.email_field :email, autocomplete: "email", class: "edit-user-input" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -54,18 +64,18 @@
         <% placeholder_txt = "" %>
       <% end %>
 
-      <%= f.label "New password (optional)" %>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: placeholder_txt, id: "edit-user-new-password" %>
+      <%= f.label "New password (optional)", class: "edit-user-label" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: placeholder_txt, id: "edit-user-new-password", class: "edit-user-input" %>
     </div>
 
     <div id="edit-user-confirm-p1" class="edit-user-field">
-      <%= f.label "Confirm new password" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: placeholder_txt %>
+      <%= f.label "Confirm new password", class: "edit-user-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: placeholder_txt, class: "edit-user-input" %>
     </div>
 
     <div id="edit-user-confirm-p2" class="edit-user-field">
-      <%= f.label "Current Password (required)" %>
-      <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "(required)" %>
+      <%= f.label "Current Password (required)", class: "edit-user-label" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "(required)", class: "edit-user-input" %>
     </div>
 
     <div class="edit-user-actions">

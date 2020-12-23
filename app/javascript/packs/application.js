@@ -138,8 +138,8 @@ document.addEventListener("turbolinks:load", () => {
       newPass1.style.display = "none";
       newPass2.style.display = "none";
     } else {
-      newPass1.style.display = "flex";
-      newPass2.style.display = "flex";
+      newPass1.style.display = "grid";
+      newPass2.style.display = "grid";
     }
   });
 });
