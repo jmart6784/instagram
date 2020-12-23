@@ -71,34 +71,14 @@ class CommentsController < ApplicationController
     end
   end
 
-  def update
-    if params[:video_post_id]
-      @post = Post.find(params[:video_post_id])
-      @comment = Comment.find(params[:id])
-      @comment.user_id = current_user.id
-      @comment.update(video_comment_params)
-      flash.notice = "Comment was edited!"
-      redirect_to video_post_path(@post)
-    else
-      @post = Post.find(params[:post_id])
-      @comment = Comment.find(params[:id])
-      @comment.user_id = current_user.id
-      @comment.update(comment_params)
-      flash.notice = "Comment was edited!"
-      redirect_to post_path(@post)
-    end
-  end
-
   def destroy
     @comment = Comment.find(params[:id])
 
     if @comment.video_post_id
       @post = VideoPost.find(@comment.video_post_id)
-      flash.notice = "Comment was deleted!"
       redirect_to video_post_path(@post)
     else
       @post = Post.find(@comment.post_id)
-      flash.notice = "Comment was deleted!"
       redirect_to post_path(@post)
     end
 

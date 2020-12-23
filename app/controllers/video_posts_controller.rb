@@ -10,7 +10,6 @@ class VideoPostsController < ApplicationController
     @video_post.user_id = current_user.id
 
     if @video_post.save
-      flash.notice = "Successfully created a Post!"
       redirect_to @video_post
     else 
       flash.now[:danger] = "Can't create this Post, there are errors."
@@ -47,14 +46,12 @@ class VideoPostsController < ApplicationController
     @video_post = VideoPost.find(params[:id])
     @video_post.user_id = current_user.id
     @video_post.update(video_post_params)
-    flash.notice = "Post edited!"
     redirect_to video_post_path(@video_post)
   end
 
   def destroy
     @video_post = VideoPost.find(params[:id])
     @video_post.destroy
-    flash.notice = "Post was deleted!"
     redirect_to current_user
   end
 
