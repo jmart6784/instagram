@@ -47,6 +47,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "followers_index/:id", to: "follows#followers_index", as: :followers_index
+  get "following_index/:id", to: "follows#following_index", as: :following_index
+
   resources :saved_posts, only: [:update] do
     member do
       put :ajax_saved_posts
