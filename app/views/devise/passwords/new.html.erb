@@ -12,7 +12,17 @@
       </p>
 
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "forgot-password-form" }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <% if resource.errors.any? %>
+          <div id="signup-form-error-container">
+            <p id="post-form-flash-danger">Error</p>
+            <ul id="post-form-error-ul">
+              <% resource.errors.full_messages.each do |msg| %>
+                <li class="post-form-error-list-item"><span><%= msg %></span></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "forgot-passsword-email-field" %>
 
