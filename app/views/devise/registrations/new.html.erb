@@ -8,7 +8,17 @@
       <p id="signup-p">Sign up to see photos and videos from your friends.</p>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "signup-form"}) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <% if resource.errors.any? %>
+          <div id="signup-form-error-container">
+            <p id="post-form-flash-danger">Sign up failed</p>
+            <ul id="post-form-error-ul">
+              <% resource.errors.full_messages.each do |msg| %>
+                <li class="post-form-error-list-item"><span><%= msg %></span></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <%= f.text_field :first_name, placeholder: "First Name", class: "sign-up-field" %>
 

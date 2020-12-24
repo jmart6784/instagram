@@ -71,6 +71,14 @@
   text-decoration: none;
 }
 
+#signup-form-error-container {
+  border: 1px solid red;
+  background-color: rgb(56, 0, 0);
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
 @media only screen and (max-width: 1700px) {
   #su-inner-div {
     width: 25%;
@@ -145,5 +153,10 @@
     margin-top: 20px;
     padding: 30px;
     font-size: 35px;
+  }
+
+  #signup-form-error-container {
+    padding: 20px;
+    margin-bottom: 60px;
   }
 }
