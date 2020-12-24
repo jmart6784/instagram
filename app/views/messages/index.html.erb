@@ -60,7 +60,7 @@
 
   <div id="message-form-container">
     <%= form_for [@conversation, @message], html: {class: "message-form"} do |f| %>
-      <%= f.text_area :body, placeholder: "Message...", class: "message-text-area" %>
+      <%= f.text_area :body, placeholder: "Message...", class: "message-text-area", required: true %>
       <%= f.submit "Send", class: "message-submit" %>
     <% end %>
   </div>

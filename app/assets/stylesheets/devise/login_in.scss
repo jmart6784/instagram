@@ -80,6 +80,16 @@
   text-decoration: none;
 }
 
+.login-flash-msg {
+  background-color: rgb(53, 0, 0);
+  border: 1px solid red;
+  margin-bottom: 20px;
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+
 @media only screen and (max-width: 1700px) {
   #login-form-container {
     width: 27%;
@@ -222,5 +232,11 @@
     margin-top: 30px;
     border: 0px;
     font-size: 35px;
+  }
+
+  .login-flash-msg {
+    margin-bottom: 30px;
+    font-size: 30px;
+    padding: 20px;
   }
 }

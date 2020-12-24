@@ -6,6 +6,23 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
 
+      <% flash.each do |key, value| %>
+        <div class="login-flash-msg"><%= value %></div>
+      <% end %>
+
+      <% if resource.errors.any? %>
+        <div id="edit-user-error-explanation">
+
+          <p id="edit-user-form-error-title">Failed to Log in</p>
+
+          <ul id="edit-user-error-ul">
+            <% resource.errors.full_messages.each do |message| %>
+              <li class="edit-user-error-message"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
         <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "login-field" %>
 
         <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "login-field" %>
