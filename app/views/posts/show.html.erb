@@ -123,7 +123,7 @@
                     </div>
 
                     <div id="post-show-comment-stats-div">
-                      <p class="post-show-comment-stats p-show-time-stat"><%= "#{time_ago_in_words(comment.created_at)}"  %></p>
+                      <p class="post-show-comment-stats p-show-time-stat"><%= "#{time_ago_in_words(comment.created_at.localtime)}"  %></p>
 
                       <p id=<%= "comment_like_count#{comment.id}" %> class="post-show-comment-stats p-show-likes-stat">
                         <%= "#{comment.likes.count} like".pluralize(comment.likes.count) %> 
@@ -162,7 +162,7 @@
             </h3>
 
             <p class="show-pdate following-gray-txt pshow-pl">
-              <%= "#{time_ago_in_words(@post.created_at)} ago"  %>
+              <%= "#{time_ago_in_words(@post.created_at.localtime)} ago"  %>
             </p>
           </div>
         </div>
@@ -252,7 +252,7 @@
 
         <div class="m-row-padding">
           <p class="show-pdate following-gray-txt">
-            <%= "#{time_ago_in_words(@post.created_at)} ago"  %>
+            <%= "#{time_ago_in_words(@post.created_at.localtime)} ago" %>
           </p>
         </div>
 
@@ -331,7 +331,7 @@
               
               <div class="mob-com-stats-parent-container">
                 <p class="mob-com-stat-time mob-com-stat">
-                  <%= "#{time_ago_in_words(comment.created_at)}"  %>
+                  <%= "#{time_ago_in_words(comment.created_at.localtime)}"  %>
                 </p>
 
                 <p id=<%= "mob_full_comment_like_count#{comment.id}" %> class="mob-com-stat">
@@ -339,7 +339,6 @@
                 </p>
               </div>
             </div>
-
 
             <div id="mob-comm-links-div">
               <div>

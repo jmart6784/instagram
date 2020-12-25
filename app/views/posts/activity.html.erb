@@ -30,7 +30,7 @@
           </p>
 
           <p class="post-activity-time post-activity-text">
-            <%= time_ago_in_words(activity.created_at) %> ago
+            <%= time_ago_in_words(activity.created_at.localtime) %> ago
           </p>
         </div>
 
@@ -57,7 +57,7 @@
           </p>
 
           <p class="post-activity-time post-activity-text">
-            <%= time_ago_in_words(activity.created_at) %> ago
+            <%= time_ago_in_words(activity.created_at.localtime) %> ago
           </p>
         </div>
       <% elsif activity.class.name === "Follow" %>
@@ -75,7 +75,7 @@
           </p>
 
           <p class="post-activity-time post-activity-text">
-            <%= time_ago_in_words(activity.created_at) %> ago
+            <%= time_ago_in_words(activity.created_at.localtime) %> ago
           </p>
         </div>
       <% end %>

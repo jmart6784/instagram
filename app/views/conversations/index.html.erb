@@ -42,7 +42,7 @@
                 <p class="conversation-text conversation-message-last">
                   <%= current_user === message_user ? "" : message_user.username + " " %>
                   <%= last_message.length > 35 ? "#{last_message[0..35]}..." : last_message %> 
-                  <%= "· #{time_ago_in_words(conversation.messages.last.created_at)} ago" %>
+                  <%= "· #{time_ago_in_words(conversation.messages.last.created_at.localtime)} ago" %>
                 </p>
               <% end %>
             </div>

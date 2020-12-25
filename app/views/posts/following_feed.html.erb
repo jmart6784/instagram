@@ -185,7 +185,7 @@
           </div>
 
           <div class="following-pad following-pdate following-gray-txt">
-            <%= "#{time_ago_in_words(post.created_at)} ago"  %>
+            <%= "#{time_ago_in_words(post.created_at.localtime)} ago"  %>
           </div>
 
           <% if post.class.method_defined? :image %>
