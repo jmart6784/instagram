@@ -44,7 +44,7 @@
         <% else %>
           <%= link_to followers_index_path(@user.id), class: "user-show-follow-index-link" do %>
             <p class="user-sh-info-stats">
-              <strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %>
+              <strong><%= simple_number(@user.followers.count) %></strong> <%= "follower".pluralize(@user.followers.count) %>
             </p>
           <% end %>
         <% end %>
@@ -56,7 +56,7 @@
         <% else %>
           <%= link_to following_index_path(@user.id), class: "user-show-follow-index-link" do %>
             <p class="user-sh-info-stats">
-              <strong><%= @user.following.count %></strong> following
+              <strong><%= simple_number(@user.following.count) %></strong> following
             </p>
           <% end %>
         <% end %>
