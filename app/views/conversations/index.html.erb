@@ -9,6 +9,8 @@
   <div id="conversations-container">
 
     <% @conversations.each do |conversation| %>
+      <% next if conversation.messages.count === 0 %>
+
       <% if conversation.sender_id === current_user.id || conversation.recipient_id === current_user.id %>
 
         <% if conversation.sender_id === current_user.id %>
@@ -35,16 +37,14 @@
             </p>
 
             <div>
-              <% unless conversation.messages.count === 0 %>
-                <% message_user = User.find(conversation.messages.last.user_id) %>
-                <% last_message = conversation.messages.last.body %>
+              <% message_user = User.find(conversation.messages.last.user_id) %>
+              <% last_message = conversation.messages.last.body %>
 
-                <p class="conversation-text conversation-message-last">
-                  <%= current_user === message_user ? "" : message_user.username + " " %>
-                  <%= last_message.length > 35 ? "#{last_message[0..35]}..." : last_message %> 
-                  <%= "· #{time_ago_in_words(conversation.messages.last.created_at.localtime)} ago" %>
-                </p>
-              <% end %>
+              <p class="conversation-text conversation-message-last">
+                <%= current_user === message_user ? "" : message_user.username + " " %>
+                <%= last_message.length > 35 ? "#{last_message[0..35]}..." : last_message %> 
+                <%= "· #{time_ago_in_words(conversation.messages.last.created_at.localtime)} ago" %>
+              </p>
             </div>
           </div>
 

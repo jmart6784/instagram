@@ -33,7 +33,13 @@
               <i class="far fa-trash-alt"></i>
             <% end %>
 
-            <p class="current-user-message-body"><%= message.body %></p>
+            <p class="current-user-message-body">
+              <% if message.body.length > 200 %>
+                <%= message.body[0..200] %><span class="show-more">...Show More</span><span class="more-content"><%= message.body[200..message.body.length] %></span><span class="show-less">...Show Less</span>
+              <% else %>
+                <%= message.body %>
+              <% end %>
+            </p>
           </div>
         </div>
 
@@ -50,7 +56,13 @@
 
           <div>
             <p class="other-user-username"><%= user.username %></p>
-            <p class="other-user-message-body"><%= message.body %></p>
+            <p class="other-user-message-body">
+              <% if message.body.length > 150 %>
+                <%= message.body[0..150] %><span class="show-more">...Show More</span><span class="more-content"><%= message.body[150..message.body.length] %></span><span class="show-less">...Show Less</span>
+              <% else %>
+                <%= message.body %>
+              <% end %>
+            </p>
           </div>
         </div>
 
@@ -60,7 +72,7 @@
 
   <div id="message-form-container">
     <%= form_for [@conversation, @message], html: {class: "message-form"} do |f| %>
-      <%= f.text_area :body, placeholder: "Message...", class: "message-text-area", required: true %>
+      <%= f.text_area :body, placeholder: "Message...", class: "message-text-area", required: true, minlength: "1", maxlength: "2200" %>
       <%= f.submit "Send", class: "message-submit" %>
     <% end %>
   </div>
