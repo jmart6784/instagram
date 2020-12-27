@@ -1,27 +1,14 @@
 <div id="login-container">
   <div id="login-form-container">
 
+    <% flash.each do |key, value| %>
+      <div class="login-flash-msg"><%= value %></div>
+    <% end %>
+
     <div id="login-form-top">
       <%= image_tag "/assets/logo.png", id: "login-logo" %>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
-
-      <% flash.each do |key, value| %>
-        <div class="login-flash-msg"><%= value %></div>
-      <% end %>
-
-      <% if resource.errors.any? %>
-        <div id="edit-user-error-explanation">
-
-          <p id="edit-user-form-error-title">Failed to Log in</p>
-
-          <ul id="edit-user-error-ul">
-            <% resource.errors.full_messages.each do |message| %>
-              <li class="edit-user-error-message"><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
         <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "login-field" %>
 
