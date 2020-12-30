@@ -59,19 +59,9 @@ ActiveRecord::Schema.define(version: 2020_11_30_032106) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "feeds", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
     t.integer "following_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "image_posts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -104,8 +94,6 @@ ActiveRecord::Schema.define(version: 2020_11_30_032106) do
     t.integer "like_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "postable_type"
-    t.integer "postable_id"
   end
 
   create_table "saved_posts", force: :cascade do |t|
