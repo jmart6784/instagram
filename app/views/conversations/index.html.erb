@@ -1,4 +1,41 @@
-<% if current_user.sender_conversations.count === 0 && current_user.receiver_conversations.count === 0 %>
+<% cnd1 = current_user.sender_conversations.count === 0 && current_user.receiver_conversations.count === 0 %>
+
+<%
+  has_empty_messages = true
+  empty_count = 0
+
+  current_user.sender_conversations.each do |convo|
+    if convo.messages.count === 0
+      empty_count += 1
+    end
+  end
+
+  if current_user.sender_conversations.count === empty_count
+    has_empty_messages = true
+  else
+    has_empty_messages = false    
+  end
+%>
+
+<%
+  has_empty_messages2 = true
+  empty_count2 = 0
+
+  current_user.sender_conversations.each do |convo|
+    if convo.messages.count === 0
+      empty_count2 += 1
+    end
+  end
+
+  if current_user.sender_conversations.count === empty_count2
+    has_empty_messages2 = true
+  else
+    has_empty_messages2 = false    
+  end
+%>
+
+
+<% if cnd1 || has_empty_messages && has_empty_messages2 %>
   <div id="empty-conversations-div">
     <i class="far fa-paper-plane no-convo-icon"></i>
     <p id="no-convo-text-1">Your Messages</p>

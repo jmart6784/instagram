@@ -176,6 +176,8 @@
 
 .suggested-name-txt {
   font-size: 15px;
+  word-wrap: break-word;
+  width: 600px;
 }
 
 .suggested-username {
@@ -200,6 +202,12 @@
 }
 
 // Mobile querys
+@media only screen and (max-width: 1700px) {
+  .suggested-name-txt {
+    width: 550px;
+  }
+}
+
 @media only screen and (max-width: 1650px) {
   #following-mid-container {
     width: 40%;
@@ -227,6 +235,10 @@
 
   #following-feed-no-following-container {
     width: 60%;
+  }
+
+  .suggested-name-txt {
+    width: 500px;
   }
 }
 
@@ -386,7 +398,6 @@
     font-size: 40px;
     text-size-adjust: none;
     width: 575px;
-    word-wrap: break-word;
   }
   
   .suggested-follow-link {
