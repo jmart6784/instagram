@@ -50,6 +50,9 @@
 .user-index-fullname {
   font-size: 15px;
   color: rgb(170, 170, 170);
+  text-size-adjust: none;
+  width: 550px;
+  word-wrap: break-word;
 }
 
 .user-index-follow-link {
