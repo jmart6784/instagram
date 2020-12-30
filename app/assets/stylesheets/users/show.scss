@@ -25,6 +25,7 @@
 }
 
 .user-sh-username {
+  text-size-adjust: none;
   font-size: 30px;
   font-weight: 200;
   display: block;
@@ -262,14 +263,27 @@
     grid-template-columns: 0.2fr 1fr;
   }
 
+  #user-sh-info-1 {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 30px;
+    margin-bottom: 60px;
+  }
+
   .user-sh-mnf-link {
     font-size: 30px;
     padding: 15px;
   }
 
-  #user-sh-edit-link {
+  .user-sh-edit-txt {
     font-size: 30px;
     padding: 20px;
+    margin-right: 20px;
+  }
+  
+  .user-sh-cog {
+    font-size: 50px;
   }
 
   .user-sh-info-stats {
@@ -296,7 +310,6 @@
 
   .user-sh-username {
     font-size: 40px;
-    text-size-adjust: none;
   }
 
   .user-sh-tile-div {
