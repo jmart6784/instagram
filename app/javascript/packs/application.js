@@ -143,3 +143,8 @@ document.addEventListener("turbolinks:load", () => {
     }
   });
 });
+
+// Press show more btn automatically for endless scroll
+document.addEventListener("turbolinks:load", () => {
+
+});

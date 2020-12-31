@@ -34,7 +34,7 @@
 
       <div id="user-sh-info-2">
         <p class="user-sh-info-stats">
-          <strong><%= @user.posts.count %></strong> <%= "post".pluralize(@user.posts.count) %>
+          <strong><%= @user.posts.count + @user.video_posts.count %></strong> <%= "post".pluralize(@user.posts.count) %>
         </p>
 
         <% if @user.followers.count === 0 %>

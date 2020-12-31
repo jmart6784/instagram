@@ -47,7 +47,7 @@
   <div id="following-container">
     <div id="following-mid-container">
 
-      <% @sorted_feed.each do |post| %>
+      <% @sorted_feed[0, 9].each do |post| %>
 
         <%
           all_comments = post.comments 
@@ -214,4 +214,6 @@
       <% end %>
     </div>
   </div>
+
+  <%= link_to "More posts...", more_following_path(posts: 0, first: 10, last: 20), method: :post, remote: true, id: "more-link" %>
 <% end %>

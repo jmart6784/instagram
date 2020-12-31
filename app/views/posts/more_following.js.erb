@@ -1,0 +1,86 @@
+var moreLink = document.getElementById("more-link");
+
+// Make href request for next 10 posts
+moreLink.href = `/more_following_posts/0?first=${"<%= @next_start_point %>"}&last=${"<%= @next_end_point %>"}`;
+
+var parentDiv = document.getElementById("following-mid-container");
+
+<% @sorted_feed.each do |post| %>
+  // Sort comments by likes
+  <%
+    all_comments = post.comments 
+
+    temp_ary = []
+    comments = []
+
+    all_comments.each do |comment|
+      temp_ary << { likes: comment.likes.count, com_obj: comment }
+    end
+
+    temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
+
+    temp_ary.each do |obj|
+      comments << obj[:com_obj]
+    end
+  %>
+
+  <% user = User.find(post.user_id) %>
+
+  // Create post container
+  var postContainer = document.createElement("div");
+  postContainer.id = "following-post-container";
+  parentDiv.appendChild(postContainer);
+
+  // Create user info div
+  var userInfoDiv = document.createElement("div");
+  userInfoDiv.id = "following-user-info-div";
+  postContainer.appendChild(userInfoDiv);
+
+  // Create User avatar div
+  var userAvatarDiv = document.createElement("div"); 
+  userAvatarDiv.classList.add("following-avatar");
+  userAvatarDiv.classList.add("background-image");
+
+  <% if user.avatar.attached? %>
+    userAvatarDiv.style.backgroundImage = "url(<%= url_for(user.avatar) %>)";
+  <% else %>
+    userAvatarDiv.style.backgroundImage = "url(/assets/default_profile.jpg)";
+  <% end %>
+
+  userInfoDiv.appendChild(userAvatarDiv);
+
+  // Create user name p tag
+  var usernameP = document.createElement("p");
+  userInfoDiv.appendChild(usernameP);
+
+  // Create username link
+  var usernameA = document.createElement("a");
+  usernameA.textContent = "<%= user.username %>";
+  usernameA.href = "<%= url_for(user) %>";
+  usernameA.classList.add("following-header-username");
+  usernameA.classList.add("following-un-size");
+  usernameP.appendChild(usernameA);
+
+  // Create post image or video
+  <% if post.class.method_defined? :image %>
+    var mediaDiv = document.createElement("div");
+    postContainer.appendChild(mediaDiv);
+
+    var imageDiv = document.createElement("div");
+    imageDiv.classList.add("following-feed-image");
+    imageDiv.classList.add("background-image");
+    imageDiv.style.backgroundImage = "url(<%= url_for(post.image) %>)";
+    mediaDiv.appendChild(imageDiv);
+  <% elsif post.class.method_defined? :clip %>
+    var videoContainer = document.createElement("div");
+    videoContainer.classList.add("video-container");
+    postContainer.appendChild(videoContainer);
+
+    var postVideo = document.createElement("video");
+    postVideo.setAttribute("controls", "controls");
+    postVideo.classList.add("following-feed-video");
+    postVideo.setAttribute("src", "<%= url_for(post.clip) %>");
+    postContainer.appendChild(postVideo);
+  <% end %>
+
+<% end %>

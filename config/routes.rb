@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   end
 
   get "/following_feed", to: "posts#following_feed"
+  post "more_following_posts/:posts", to: "posts#more_following", as: :more_following
+
   get "/activity", to: "posts#activity"
   get "/saved_posts", to: "saved_posts#saved_posts"
 

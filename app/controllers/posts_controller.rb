@@ -89,6 +89,31 @@ class PostsController < ApplicationController
     @sorted_feed = @following_posts.sort_by(&:created_at).reverse!
   end
 
+  def more_following
+    @next_start_point = params[:first].to_i + 10
+    @next_end_point = params[:last].to_i + 10
+
+    @following = current_user.following
+    @following_posts = []
+
+    @following.each do |user|
+      user.posts.each do |post|
+        @following_posts << post
+      end
+
+      user.video_posts.each do |post|
+        @following_posts << post
+      end
+    end
+
+    @sorted_feed = @following_posts.sort_by(&:created_at).reverse!
+    @sorted_feed = @sorted_feed.slice(@next_start_point, @next_end_point)
+
+    respond_to do |format|
+      format.js { render "posts/more_following" }
+    end
+  end
+
   def activity
     all_likes = []
     all_comments = []
