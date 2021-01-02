@@ -157,7 +157,6 @@
                 <% end %>
               </p>
             <% end %>
-
           </div>
 
           <% if post.class.method_defined? :image %>
@@ -197,7 +196,7 @@
           <% if post.class.method_defined? :image %>
             <%= form_for [ post, @comment ], url: ajax_feed_comment_post_comment_path(id: 0, post_id: post.id, video_post_id: 0, type: "image", html_id: com_div_id, html_input: com_input_id), html: {remote: true, class: "following-feed-comment-form"} do |f| %>
 
-              <%= f.text_field :body, placeholder: "Add a comment...", id: com_input_id, class: "following-comment-input", required: true, maxlength: 5000 %>
+              <%= f.text_field :body, placeholder: "Add a comment...", id: com_input_id, class: "following-comment-input", required: true, maxlength: 2200 %>
 
               <%= f.submit "Post", class: "following-form-comment-submit" %>
             <% end %>

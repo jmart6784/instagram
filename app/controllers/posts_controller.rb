@@ -107,7 +107,7 @@ class PostsController < ApplicationController
     end
 
     @sorted_feed = @following_posts.sort_by(&:created_at).reverse!
-    @sorted_feed = @sorted_feed.slice(@next_start_point, @next_end_point)
+    @sorted_feed = @sorted_feed.slice(10, 20)
 
     respond_to do |format|
       format.js { render "posts/more_following" }
