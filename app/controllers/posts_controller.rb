@@ -17,6 +17,38 @@ class PostsController < ApplicationController
     end
   end
 
+  def more_index_posts
+    @next_start_point = params[:next].to_i
+
+    posts = Post.all + VideoPost.all
+    temp_ary = []
+    @sorted_by_likes = []
+
+    posts.each do |post|
+      temp_ary << { likes: post.likes.count, post_obj: post }
+    end
+
+    temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
+    
+    temp_ary.each do |obj|
+      @sorted_by_likes << obj[:post_obj]
+    end
+
+    temp_ary2 = []
+
+    15.times do
+      next if @sorted_by_likes[@next_start_point].nil?
+      temp_ary2 << @sorted_by_likes[@next_start_point]
+      @next_start_point += 1
+    end
+    
+    @sorted_by_likes = temp_ary2
+
+    respond_to do |format|
+      format.js { render "posts/more_index_posts" }
+    end
+  end
+
   def new
     @post = Post.new
   end

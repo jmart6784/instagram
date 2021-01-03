@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :posts
+  post "more_index_posts", to: "posts#more_index_posts", as: :more_index_posts
 
   resources :posts do
     resources :comments, only: [:create, :update, :destroy] do
