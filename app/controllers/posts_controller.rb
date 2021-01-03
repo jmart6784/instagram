@@ -90,8 +90,7 @@ class PostsController < ApplicationController
   end
 
   def more_following
-    @next_start_point = params[:first].to_i + 10
-    @next_end_point = params[:last].to_i + 10
+    @next_start_point = params[:next].to_i
 
     @following = current_user.following
     @following_posts = []
@@ -107,7 +106,16 @@ class PostsController < ApplicationController
     end
 
     @sorted_feed = @following_posts.sort_by(&:created_at).reverse!
-    @sorted_feed = @sorted_feed.slice(10, 20)
+
+    temp_ary = []
+
+    10.times do
+      next if @sorted_feed[@next_start_point].nil?
+      temp_ary << @sorted_feed[@next_start_point]
+      @next_start_point += 1
+    end
+    
+    @sorted_feed = temp_ary
 
     respond_to do |format|
       format.js { render "posts/more_following" }

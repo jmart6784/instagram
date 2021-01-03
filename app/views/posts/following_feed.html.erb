@@ -214,5 +214,9 @@
     </div>
   </div>
 
-  <%= link_to "More posts...", more_following_path(posts: 0, first: 10, last: 20), method: :post, remote: true, id: "more-link" %>
+  <% if @sorted_feed.length > 10 %>
+    <%= link_to "More posts...", more_following_path(posts: 0, next: 10), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
+
+    <button id="top-link" class="bottom-links">Back to top</button>
+  <% end %>
 <% end %>

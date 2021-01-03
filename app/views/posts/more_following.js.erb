@@ -1,7 +1,13 @@
 var moreLink = document.getElementById("more-link");
 
-// Make href request for next 10 posts
-moreLink.href = `/more_following_posts/0?first=${"<%= @next_start_point %>"}&last=${"<%= @next_end_point %>"}`;
+<% if @sorted_feed.length === 0 %>
+  // Back to top link when there are no more posts to show
+  moreLink.style.display = "none";
+  document.getElementById("top-link").style.display = "block";
+<% else %>
+  // Make href request for next 10 posts
+  moreLink.href = `/more_following_posts/0?next=${"<%= @next_start_point %>"}"}`;
+<% end %>
 
 var parentDiv = document.getElementById("following-mid-container");
 

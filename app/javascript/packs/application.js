@@ -147,4 +147,28 @@ document.addEventListener("turbolinks:load", () => {
 // Press show more btn automatically for endless scroll
 document.addEventListener("turbolinks:load", () => {
 
+  clickShowMore = () => {
+    if(window.innerHeight + window.pageYOffset >= (document.body.offsetHeight)) {
+      // Remove Event listener to avaid double clicking
+      window.removeEventListener("scroll", clickShowMore);
+
+      document.getElementById("more-link").click();
+
+      setTimeout(() => {
+        // Add event listener again
+        window.addEventListener("scroll", clickShowMore);
+      }, 1000);
+    }
+  };
+
+  window.addEventListener("scroll", clickShowMore);
+});
+
+// Back to top Button
+document.addEventListener("turbolinks:load", () => {
+
+  document.getElementById("top-link").addEventListener("click", () => {
+    window.scrollTo(0,0);
+  });
+
 });
