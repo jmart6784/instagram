@@ -29,6 +29,27 @@ class UsersController < ApplicationController
     @user_posts = (@user.posts + @user.video_posts).sort_by(&:created_at).reverse!
   end
 
+  def more_user_show_posts
+    @next_start_point = params[:next].to_i
+    @user = User.find(params[:id])
+
+    @user_posts = (@user.posts + @user.video_posts).sort_by(&:created_at).reverse!
+
+    temp_ary = []
+
+    21.times do
+      next if @user_posts[@next_start_point].nil?
+      temp_ary << @user_posts[@next_start_point]
+      @next_start_point += 1
+    end
+    
+    @user_posts = temp_ary
+
+    respond_to do |format|
+      format.js { render "users/more_user_show_posts" }
+    end
+  end
+
   private
 
   def search_params

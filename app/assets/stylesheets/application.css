@@ -200,6 +200,7 @@ div {
   text-align: center;
   width: 100%;
   margin-top: 70px;
+  outline: none;
 }
 
 /* Back to top btn */
@@ -210,5 +211,10 @@ div {
 @media only screen and (max-width: 1000px) {
   body {
     background-color: black;
+  }
+
+  .bottom-links {
+    font-size: 50px;
+    padding: 20px 0 20px 0;
   }
 }

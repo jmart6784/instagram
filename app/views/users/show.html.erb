@@ -98,7 +98,7 @@
   <% if @user_posts.length != 0 %>
     
     <div id="user-sh-post-grid">
-      <% @user_posts.each do |post| %>
+      <% @user_posts[0, 21].each do |post| %>
 
         <% if post.class.method_defined? :image %>
 
@@ -148,7 +148,6 @@
 
       <% end %>
     </div>
-
   <% else %>
     <% if current_user === @user %>
       <div class="user-show-no-posts">
@@ -164,3 +163,9 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @user_posts.length > 21 %>
+  <%= link_to "More posts...", more_user_show_posts_path(id: @user.id, next: 21), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
+
+  <button id="top-link" class="bottom-links">Back to top</button>
+<% end %>

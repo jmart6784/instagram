@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
     temp_ary2 = []
 
-    15.times do
+    21.times do
       next if @sorted_by_likes[@next_start_point].nil?
       temp_ary2 << @sorted_by_likes[@next_start_point]
       @next_start_point += 1
