@@ -24,7 +24,7 @@
       </button>
     <% end %>
 
-    <% @users.each do |user| %>
+    <% @users[0, 12].each do |user| %>
       <% next if current_user === user %>
 
       <div class="user-index-user-container">
@@ -53,4 +53,12 @@
     <% end %>
 
   </div>
+
+  <% view_type = params[:search] ? "search" : "all" %>
+
+  <% if @users.length > 13 %>
+    <%= link_to "Show More...", more_user_index_path(next: 13, type: view_type, search: params[:search]), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
+
+    <button id="top-link" class="bottom-links">Back to top</button>
+  <% end %>
 <% end %>

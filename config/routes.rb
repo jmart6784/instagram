@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show]
+  post "more_user_index", to: "users#more_user_index", as: :more_user_index
   post "more_user_show_posts/:id", to: "users#more_user_show_posts", as: :more_user_show_posts
 
   resources :posts
