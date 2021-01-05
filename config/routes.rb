@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   resources :posts
   post "more_index_posts", to: "posts#more_index_posts", as: :more_index_posts
-  post "more_activity", to: "posts#more_activity", as: :more_activity
 
   resources :posts do
     resources :comments, only: [:create, :update, :destroy] do
@@ -33,7 +32,10 @@ Rails.application.routes.draw do
   post "more_following_posts/:posts", to: "posts#more_following", as: :more_following
 
   get "/activity", to: "posts#activity"
+  post "more_activity", to: "posts#more_activity", as: :more_activity
+
   get "/saved_posts", to: "saved_posts#saved_posts"
+  post "more_saved_posts", to: "saved_posts#more_saved_posts", as: :more_saved_posts
 
   resources :video_posts
 
@@ -65,4 +67,6 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  post "more_conversations", to: "conversations#more_conversations", as: :more_conversations
 end

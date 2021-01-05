@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.removeEventListener("scroll", clickShowMore);
 
       document.getElementById("more-link").click();
-      console.log("click");
 
       setTimeout(() => {
         // Add event listener again

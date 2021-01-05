@@ -10,7 +10,7 @@
       </div>
     </div>
   <% else %>
-    <% @saved_posts.each do |saved_post| %>
+    <% @saved_posts[0, 24].each do |saved_post| %>
       <% if saved_post.post_id != nil %>
         <% post = Post.find(saved_post.post_id) %>
 
@@ -57,3 +57,9 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @saved_posts.length > 24 %>
+  <%= link_to "More posts...", more_saved_posts_path(next: 24), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
+
+  <button id="top-link" class="bottom-links">Back to top</button>
+<% end %>

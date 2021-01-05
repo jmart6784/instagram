@@ -34,7 +34,6 @@
   end
 %>
 
-
 <% if cnd1 || has_empty_messages && has_empty_messages2 %>
   <div id="empty-conversations-div">
     <i class="far fa-paper-plane no-convo-icon"></i>
@@ -45,7 +44,7 @@
 
   <div id="conversations-container">
 
-    <% @conversations.each do |conversation| %>
+    <% @conversations[0, 14].each do |conversation| %>
       <% next if conversation.messages.count === 0 %>
 
       <% if conversation.sender_id === current_user.id || conversation.recipient_id === current_user.id %>
@@ -93,6 +92,12 @@
       <% end %>
     <% end %>
   </div>
+
+  <% if @conversations.length > 14 %>
+    <%= link_to "More posts...", more_conversations_path(next: 14), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
+
+    <button id="top-link" class="bottom-links">Back to top</button>
+  <% end %>
   
 <% end %>
 
