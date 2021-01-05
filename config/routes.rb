@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :posts
   post "more_index_posts", to: "posts#more_index_posts", as: :more_index_posts
+  post "more_activity", to: "posts#more_activity", as: :more_activity
 
   resources :posts do
     resources :comments, only: [:create, :update, :destroy] do

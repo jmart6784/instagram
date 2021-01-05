@@ -7,7 +7,7 @@
 <% else %>
   <div id="post-index-container">
     <div class="post-display-grid">
-      <% @sorted_by_likes[0, 20].each do |post| %>
+      <% @sorted_by_likes[0, 21].each do |post| %>
         <% if post.class.method_defined? :image %>
           <%= link_to post, class: "pi-tile-link" do %>
             <div class="post-index-tile-div background-image" style="background-image: url('<%= url_for(post.image) %>');">
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <% if @user_posts.length > 21 %>
+  <% if @sorted_by_likes.length > 21 %>
     <%= link_to "More posts...", more_index_posts_path(next: 21), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
 
     <button id="top-link" class="bottom-links">Back to top</button>

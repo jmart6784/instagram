@@ -5,7 +5,7 @@
   </div>
 <% else %>
   <div id="post-activity-container">
-    <% @activity.each do |activity| %>
+    <% @activity[0, 13].each do |activity| %>
       <% user = User.find(activity.user_id) %>
 
       <% if activity.class.name === "Like" %>
@@ -82,4 +82,10 @@
 
     <% end %>
   </div>
+
+  <% if @activity.length > 13 %>
+    <%= link_to "More posts...", more_activity_path(next: 13), method: :post, remote: true, id: "more-link", class: "bottom-links" %>
+
+    <button id="top-link" class="bottom-links">Back to top</button>
+  <% end %>
 <% end %>

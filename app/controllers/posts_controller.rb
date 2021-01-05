@@ -191,6 +191,59 @@ class PostsController < ApplicationController
     @activity = (all_likes + all_comments + follows).sort_by(&:created_at).reverse!
   end
 
+  def more_activity
+    all_likes = []
+    all_comments = []
+
+    current_user.posts.each do |post|
+      post.likes.each do |like|
+        next if current_user.id === like.user_id
+        all_likes << like
+      end
+    end
+
+    current_user.video_posts.each do |post|
+      post.likes.each do |like|
+        next if current_user.id === like.user_id
+        all_likes << like
+      end
+    end
+
+    current_user.posts.each do |post|
+      post.comments.each do |comment|
+        next if current_user.id === comment.user_id
+        all_comments << comment
+      end
+    end
+
+    current_user.video_posts.each do |post|
+      post.comments.each do |comment|
+        next if current_user.id === comment.user_id
+        all_comments << comment
+      end
+    end
+
+    follows = Follow.where(following_id: current_user.id)
+
+    @activity = (all_likes + all_comments + follows).sort_by(&:created_at).reverse!
+
+    @next_start_point = params[:next].to_i
+
+    temp_ary = []
+
+    13.times do
+      next if @activity[@next_start_point].nil?
+      temp_ary << @activity[@next_start_point]
+      @next_start_point += 1
+    end
+    
+    @activity = temp_ary
+
+    respond_to do |format|
+      format.js { render "posts/more_activity" }
+    end
+  end
+
   private
 
   def post_params

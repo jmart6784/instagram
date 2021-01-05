@@ -145,14 +145,15 @@ document.addEventListener("turbolinks:load", () => {
 });
 
 // Press show more btn automatically for endless scroll
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   clickShowMore = () => {
     if(window.innerHeight + window.pageYOffset >= (document.body.offsetHeight)) {
-      // Remove Event listener to avaid double clicking
+      // Remove Event listener to avoid double clicking
       window.removeEventListener("scroll", clickShowMore);
 
       document.getElementById("more-link").click();
+      console.log("click");
 
       setTimeout(() => {
         // Add event listener again
