@@ -19,7 +19,11 @@
   </div>
 
   <div id="messages-parent-div">
-    <% @messages.each do |message| %>
+    <% if @over_ten %>
+      <%= link_to "Show All", '?m=all', class: "top-message-links" %>
+    <% end %>
+
+    <% @messages[0, @messages.length - 1].each do |message| %>
       <% user = User.find(message.user_id) %>
 
       <% if current_user === user %>
@@ -42,7 +46,6 @@
             </p>
           </div>
         </div>
-
       <% else %>
 
         <div class="other-user-message-container">
@@ -78,9 +81,3 @@
   </div>
 
 </div>
-
-<% if false %>
-  <% if @over_ten %>
-    <%= link_to "Show older messages", '?m=all created_at DESC' %>
-  <% end %>
-<% end %>

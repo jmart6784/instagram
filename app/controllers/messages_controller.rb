@@ -7,7 +7,17 @@ class MessagesController < ApplicationController
   def index
     session[:return_to] ||= request.referer
 
-    @messages = @conversation.messages.sort_by(&:created_at)
+    @messages = @conversation.messages
+
+    if @messages.length > 10
+      @over_ten = true
+      @messages = @messages[-10..-1]
+    end
+
+    if params[:m]
+      @over_ten = false
+      @messages = @conversation.messages
+    end
 
     if @messages.last
       if @messages.last.user_id != current_user.id
