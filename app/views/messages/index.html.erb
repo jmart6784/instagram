@@ -23,7 +23,7 @@
       <%= link_to "Show All", '?m=all', class: "top-message-links" %>
     <% end %>
 
-    <% @messages[0, @messages.length - 1].each do |message| %>
+    <% @messages.each do |message| %>
       <% user = User.find(message.user_id) %>
 
       <% if current_user === user %>

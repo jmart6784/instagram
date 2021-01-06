@@ -17,6 +17,7 @@ class MessagesController < ApplicationController
     if params[:m]
       @over_ten = false
       @messages = @conversation.messages
+      @messages = @messages[0..@messages.length - 1]
     end
 
     if @messages.last
@@ -26,6 +27,15 @@ class MessagesController < ApplicationController
     end
 
     @message = @conversation.messages.new
+
+    temp_ary = []
+
+    @messages.each do |msg|
+      next if msg.id.nil?
+      temp_ary << msg
+    end
+
+    @messages = temp_ary
   end
 
   def new
