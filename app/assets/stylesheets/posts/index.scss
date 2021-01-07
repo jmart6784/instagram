@@ -5,6 +5,7 @@
 .post-display-grid {
   margin: auto;
   width: 53%;
+  max-width: 950px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
