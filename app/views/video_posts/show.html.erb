@@ -58,7 +58,7 @@
             <% end %>
           </div>
 
-          <div class="post-show-base-div-padding post-show-scrollable-comments">
+          <div id="all-comments-div" class="post-show-base-div-padding post-show-scrollable-comments">
 
             <div id="show-post-caption-parent-div" class="post-show-split-avacom">
               <% unless @post.caption === "" %>
@@ -82,7 +82,7 @@
             </div>
 
             <div id="parent-comments-div">
-              <% @comments.each do |comment| %>
+              <% @comments[0, 15].each do |comment| %>
                 <% user = User.find(comment.user_id) %>
 
                 <div class="post-show-split-avacom">
@@ -136,6 +136,12 @@
                 </div>
               <% end %>
             </div>
+
+            <% if @comments.length > 15 %>
+              <%= link_to "Show More...", more_comments_path(post_id: params[:id], next: 15, html_id: "parent-comments-div", type: "desktop", post_type: "video"), method: :post, remote: true, id: "more-comments", class: "com-bottom-links" %>
+
+              <button id="top-of-comments" class="com-bottom-links">Back to top</button>
+            <% end %>
 
           </div>        
         </div>
@@ -314,7 +320,7 @@
       <% end %>
 
       <div id="mob-com-parent">
-        <% @comments.each do |comment| %>
+        <% @comments[0, 15].each do |comment| %>
           <% user_com = User.find(comment.user_id) %>
           
           <div class="mobile-full-com-container">
@@ -365,6 +371,12 @@
 
         <% end %>
       </div>
+
+      <% if @comments.length > 15 %>
+        <%= link_to "Show More...", more_comments_path(post_id: params[:id], next: 15, html_id: "mob-com-parent", type: "mobile", post_type: "video"), method: :post, remote: true, id: "more-comments2", class: "com-bottom-links2" %>
+
+        <button id="top-of-comments2" class="com-bottom-links2">Back to top</button>
+      <% end %>
 
     </div>
   </div>

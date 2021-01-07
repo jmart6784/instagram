@@ -172,3 +172,66 @@ document.addEventListener("turbolinks:load", () => {
   });
 
 });
+
+// Endless scroll comments desktop
+document.addEventListener("turbolinks:load", () => {
+  let parentDiv = document.getElementById("all-comments-div");
+  let moreLink = document.getElementById("more-comments");
+
+  let hitBottom = () => {
+    if (parentDiv.scrollTop >= (parentDiv.scrollHeight - parentDiv.offsetHeight)) {
+      // Remove Event listener to avoid double clicking
+      parentDiv.removeEventListener("scroll", hitBottom);
+
+      moreLink.click();
+
+      setTimeout(() => {
+        // Add event listener again
+        parentDiv.addEventListener("scroll", hitBottom);
+      }, 1000);
+    }
+  };
+
+  parentDiv.addEventListener("scroll", hitBottom);
+});
+
+// Back to top Comments
+document.addEventListener("turbolinks:load", () => {
+  let parentDiv = document.getElementById("all-comments-div");
+
+  document.getElementById("top-of-comments").addEventListener("click", () => {
+    parentDiv.scrollTo(0,0);
+  });
+
+});
+
+// Endless scroll comments mobile
+document.addEventListener("turbolinks:load", () => {
+  let parentDiv = document.getElementById("scrollable-mobile-comments");
+  let moreLink = document.getElementById("more-comments2");
+
+  let hitBottom = () => {
+    if (parentDiv.scrollTop >= (parentDiv.scrollHeight - parentDiv.offsetHeight)) {
+      // Remove Event listener to avoid double clicking
+      parentDiv.removeEventListener("scroll", hitBottom);
+
+      moreLink.click();
+
+      setTimeout(() => {
+        // Add event listener again
+        parentDiv.addEventListener("scroll", hitBottom);
+      }, 1000);
+    }
+  };
+
+  parentDiv.addEventListener("scroll", hitBottom);
+});
+
+// Back to top mobile Comments
+document.addEventListener("turbolinks:load", () => {
+  let parentDiv = document.getElementById("scrollable-mobile-comments");
+
+  document.getElementById("top-of-comments2").addEventListener("click", () => {
+    parentDiv.scrollTo(0,0);
+  });
+});

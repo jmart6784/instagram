@@ -85,6 +85,46 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
+  def more_comments
+    if params[:post_type] === "image"
+      @post = Post.find(params[:post_id].to_i)
+    else
+      @post = VideoPost.find(params[:post_id].to_i)
+    end
+
+    @user = User.find(@post.user_id)
+    @next_start_point = params[:next].to_i
+
+    all_comments = @post.comments 
+
+    temp_ary = []
+    @comments = []
+
+    all_comments.each do |comment|
+      temp_ary << { likes: comment.likes.count, com_obj: comment }
+    end
+
+    temp_ary = (temp_ary.sort_by { |x| x[:likes] }).reverse!
+    
+    temp_ary.each do |obj|
+      @comments << obj[:com_obj]
+    end
+
+    temp_ary2 = []
+
+    15.times do
+      next if @comments[@next_start_point].nil?
+      temp_ary2 << @comments[@next_start_point]
+      @next_start_point += 1
+    end
+    
+    @comments = temp_ary2
+
+    respond_to do |format|
+      format.js { render "comments/more_comments" }
+    end
+  end
+
   private
 
   def video_comment_params

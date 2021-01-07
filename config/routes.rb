@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post "more_comments/:post_id", to: "comments#more_comments", as: :more_comments
+
   get "/following_feed", to: "posts#following_feed"
   post "more_following_posts/:posts", to: "posts#more_following", as: :more_following
 
