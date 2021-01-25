@@ -1,9 +1,11 @@
 #following-container {
   margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #following-mid-container {
-  margin: auto;
   width: 35%;
   max-width: 650px;
   display: flex;
@@ -260,6 +262,7 @@
 
   #following-mid-container {
     width: 100%;
+    max-width: 1000px;
     background-color: black;
   }
 
