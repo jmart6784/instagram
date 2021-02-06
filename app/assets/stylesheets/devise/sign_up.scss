@@ -125,6 +125,7 @@
 @media only screen and (max-width: 1000px) {
   #su-inner-div {
     width: 100%;
+    max-width: 100%;
   }
 
   #su-div {
@@ -138,7 +139,7 @@
 
   .sign-up-field {
     font-size: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     height: 40px;
     padding: 35px 20px 35px 20px;
   }
