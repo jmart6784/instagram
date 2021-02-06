@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 
 gem "sendgrid-ruby"
-# gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3', require: false
 gem "figaro"
 
 # Use Active Storage variant
