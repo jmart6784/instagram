@@ -103,6 +103,7 @@
 .following-pdate {
   font-size: 13px;
   margin-bottom: 10px;
+  text-size-adjust: none;
 }
 
 .following-gray-txt {
@@ -380,30 +381,30 @@
   #following-feed-no-following-container {
     width: 100%;
   }
-  
+
   #suggested-title {
     font-size: 50px;
     margin-bottom: 40px;
     text-size-adjust: none;
   }
-  
+
   .suggested-user-div {
     padding: 20px;
     margin-bottom: 50px;
   }
-  
+
   .suggested-avatar {
     height: 100px;
     width: 100px;
     margin-right: 30px;
   }
-  
+
   .suggested-name-txt {
     font-size: 40px;
     text-size-adjust: none;
     width: 575px;
   }
-  
+
   .suggested-follow-link {
     padding: 10px;
     font-size: 40px;
