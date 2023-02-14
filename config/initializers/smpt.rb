@@ -1,5 +1,5 @@
 ActionMailer::Base.smtp_settings = {
-  domain: 'instagram-clone.fly.dev',
+  domain: 'instagram-app.fly.dev',
   address:        "smtp.sendgrid.net",
   port:            587,
   authentication: :plain,
