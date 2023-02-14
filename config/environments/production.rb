@@ -2,14 +2,14 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.force_ssl = true
 
-  config.action_mailer.default_url_options = { :host => 'cloned-instagram-app.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'instagram-clone.fly.dev' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true 
   config.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    :user_name => Rails.application.credentials.dig(:sendgrid, :username),
-    :password => Rails.application.credentials.dig(:sendgrid, :password),
-    :domain => "heroku.com",
+    :user_name => Rails.application.credentials.dig(:sendgrid_username),
+    :password => Rails.application.credentials.dig(:sendgrid_password),
+    :domain => "fly.io",
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
